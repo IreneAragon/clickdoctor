@@ -1,13 +1,6 @@
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
-
-	// include 'accesoUsuario.php';
-	// require_once 'accesoUsuario.php';
-
-	// $mensajeError = "";
-	//
-	// HOLIIII
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">

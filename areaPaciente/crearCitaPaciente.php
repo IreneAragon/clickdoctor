@@ -1,6 +1,8 @@
 <?php
 include_once '../include/cabeceraUsuarios.html';
 include_once '../include/navPacientes.html';
+
+require '../clases/claseDB.php';
 ?>
 
 
@@ -15,11 +17,13 @@ include_once '../include/navPacientes.html';
                 <div class="form-group">
                     <label for="selectEspecialidad">Elija una especialidad</label>
                     <select class="form-control" id="selectEspecialidad">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option value="0">Seleccione:</option>
+                        <?php
+                            $especialidades = DB::especialidades();
+                            foreach ($especialidades as $especialidad) {
+                                echo '<option value="'.$especialidad['id_especialidad'].'">'.$especialidad['nombre'].'</option>';
+                            }
+                        ?>
                     </select>
                 </div>
             </div>
