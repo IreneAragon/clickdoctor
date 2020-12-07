@@ -1,0 +1,124 @@
+/**************
+*  GENERALES  *
+**************/
+body {
+    background-color: rgb(250, 250, 250);
+    /* min-height: 2000px!important; */
+}
+
+/*********************************************************
+*                                                        *
+*               CABECERA Y NAVEGADOR                     *
+*                                                        *
+**********************************************************/
+
+/**************
+*   SIDEBAR   *
+**************/
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #004DBC;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: white;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/*
+En pantallas pequeñas donde el ancho sea menor de 450px cambia el estilo del sidebar
+    - ancho del sidebar
+    - tamaño y estilo de letra
+*/
+@media (max-width: 450px) {
+    .sidebar {
+        max-width: 150px;
+        z-index: 9999;
+    }
+    .sidebar a {
+        font-size: 18px;
+        font-weight: 400;
+    }
+    #contenidoPrincipal h2:first-child {
+        padding-top: 55px!important;
+    }
+}
+
+
+/***************
+*  Botón Menú  *
+***************/
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: #004DBC;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  color: white;
+}
+
+/*********************************************************
+*                                                        *
+*                   ÁREA PACIENTE                        *
+*                                                        *
+**********************************************************/
+
+/********************************
+*   Tarjetas página principal   *
+*********************************/
+.myCard {
+    width: 70%;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/***********************
+*   Gestión de citas   *
+************************/
+#contenidoCitas {
+    padding-top: 55px!important;
+}
+
+table tbody tr td {
+    line-height: 40px;
+}
+
+footer {
+    margin-bottom: 0;
+    margin-top: 50px;
+}
+
+#citaCreada {
+    display: none;
+}

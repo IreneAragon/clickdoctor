@@ -1,0 +1,113 @@
+
+
+
+
+
+
+
+/**************
+*  GENERALES  *
+***************/
+
+body {
+  background-color: rgb(250, 250, 250);
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+header {
+  display: block;
+}
+
+/*************
+*  CABECERA  *
+**************/
+
+.img-banner {
+  background-image: url("../img/doctor-tablet2.jpg");
+  background-color: #cccccc;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logo {
+  float: left;
+  margin-left: 1em;
+  margin-top: 1em;
+  width: 480px;
+  height: auto;
+  cursor: pointer;
+}
+
+.contenedor {
+  min-height: 550px;
+  border: 1px solid red;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/**************
+*  NAVEGADOR  *
+***************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***********
+*  FOOTER  *
+************/
+
+/* footer {
+  display: block;
+  width: 100%;
+  height: 100px;
+  background-color: #004DBC;
+}
+
+.footer-frase {
+  width: 85%;
+  float: left;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
+  color: white;
+  font-family: monserat;
+}
+
+.footer-logos {
+  display: block;
+  width: 15%;
+  float: right;
+}
+
+.footer-logos a img {
+  width: 30px;
+  margin-top: 35px;
+}
+
+.footer-logos a {
+  text-decoration: none;
+} */
+
+/************
+*  FUENTES  *
+*************/
+
+@font-face {
+  font-family: monserat;
+  src: url(../fonts/Montserrat-Regular.ttf);
+}
