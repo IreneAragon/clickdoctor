@@ -32,11 +32,11 @@ require '../clases/claseDB.php';
                 <div class="form-group">
                     <label for="selectEspecialista">Elija especialista</label>
                     <select class="form-control" id="selectEspecialista">
-                        <option>1</option>
+                        <!-- <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
-                        <option>5</option>
+                        <option>5</option> -->
                     </select>
                 </div>
             </div>
@@ -81,7 +81,13 @@ require '../clases/claseDB.php';
 
 </div>
 
-
+<script type="text/javascript">
+    // let selectHtml = '<option>1</option>
+    // <option>2</option>
+    // <option>3</option>';
+    //
+    // $('#selectEspecialista').html(selectHtml);
+</script>
 
 
 

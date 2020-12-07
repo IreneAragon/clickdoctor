@@ -26,7 +26,7 @@
 		<!-- Estilos y librerías necesarias para utilizar multiple select -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-	    
+
 		<!-- Estilos propios de css -->
         <link rel="stylesheet" type="text/css" href="css/styleHome.css">
     </head>
@@ -34,9 +34,9 @@
         <!-- Starts content -->
         <div class="container col-12 col-lg-6">
             <!-- Logo Click Doctor -->
-			<!-- <a href="index.php">
+			<a href="index.php">
 				<img src="img/logo2.png" alt="Click Doctor logo" class="align-items-center sizeLogo mt-5 mt-lg-2">
-			</a> -->
+			</a>
             <br><br>
             <!-- Formulario de Registro -->
 			<!-- TODO: arreglar, pantalla 991px formulario demasiado grande -->
