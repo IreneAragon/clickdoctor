@@ -5,8 +5,6 @@ include_once '../include/navPacientes.html';
 require '../clases/claseDB.php';
 ?>
 
-
-
 <div class="container pt-5 text-center">
     <h2 class="mt-5 pt-2">Crea una cita con un profesional</h2>
     <form class="pt-5" method="post">
@@ -32,11 +30,7 @@ require '../clases/claseDB.php';
                 <div class="form-group">
                     <label for="selectEspecialista">Elija especialista</label>
                     <select class="form-control" id="selectEspecialista">
-                        <!-- <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option> -->
+                        <!-- options obtenidas desde función ajax -->
                     </select>
                 </div>
             </div>
@@ -56,11 +50,7 @@ require '../clases/claseDB.php';
                 <div class="form-group">
                     <label for="horaCita">Elija la hora</label>
                     <select class="form-control" id="horaCita">
-                        <!-- <option>09:55</option>
-                        <option>12:20</option>
-                        <option>12:50</option>
-                        <option>13:05</option>
-                        <option>13:20</option> -->
+                        <!-- options obtenidas desde función ajax -->
                     </select>
                 </div>
             </div>
@@ -81,8 +71,9 @@ require '../clases/claseDB.php';
 
 </div>
 
-<script src="../js/obtenerEspecialistas.js" charset="utf-8"></script>
-<script src="../js/obtenerDisponibilidad.js" charset="utf-8"></script>
+<script src="js/obtenerEspecialistas.js" charset="utf-8"></script>
+<script src="js/obtenerDisponibilidad.js" charset="utf-8"></script>
+<script src="js/crearCita.js" charset="utf-8"></script>
 
 
 

@@ -1,4 +1,4 @@
-console.log('entra');
+// console.log('entra');
 // var open = document.getElementById('openNav');
 // console.log(open);
 // var close = document.getElementById('closeNav');
