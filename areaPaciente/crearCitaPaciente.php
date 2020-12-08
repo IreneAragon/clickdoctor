@@ -48,7 +48,7 @@ require '../clases/claseDB.php';
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for="fechaCita">Elija la fecha</label>
-                    <input type="date" name="fechaCita" max="2025-12-31" min="2020-01-01" class="form-control">
+                    <input type="date" name="fechaCita" id="fechaCita" max="2025-12-31" min="2020-01-01" class="form-control">
                 </div>
             </div>
             <!-- 2º col HORA -->
@@ -56,11 +56,11 @@ require '../clases/claseDB.php';
                 <div class="form-group">
                     <label for="horaCita">Elija la hora</label>
                     <select class="form-control" id="horaCita">
-                        <option>09:55</option>
+                        <!-- <option>09:55</option>
                         <option>12:20</option>
                         <option>12:50</option>
                         <option>13:05</option>
-                        <option>13:20</option>
+                        <option>13:20</option> -->
                     </select>
                 </div>
             </div>
@@ -82,6 +82,7 @@ require '../clases/claseDB.php';
 </div>
 
 <script src="../js/obtenerEspecialistas.js" charset="utf-8"></script>
+<script src="../js/obtenerDisponibilidad.js" charset="utf-8"></script>
 
 
 

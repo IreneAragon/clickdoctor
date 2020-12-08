@@ -12,7 +12,7 @@ function traerEspecialistas() {
         data: {"id_especialidad" : idEspecialidad},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
-        let htmlOptions = "";
+        let htmlOptions = '<option value="0">Especialistas</option>';
         if (arrayRespuesta.isEmpty) {
             htmlOptions = '<option value="0">No existe especialista</option>';
         }

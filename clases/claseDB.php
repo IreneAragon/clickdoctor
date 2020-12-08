@@ -21,6 +21,14 @@ require_once 'claseProfesional.php';
 
 class DB {
 
+    const ORDEN_1 = "08:00";
+    const ORDEN_2 = "09:00";
+    const ORDEN_3 = "10:00";
+    const ORDEN_4 = "11:00";
+    const ORDEN_5 = "12:00";
+    const ORDEN_6 = "13:00";
+
+
     /**
      * Conexión a la base de datos
      * @param  [type] $sql
@@ -43,7 +51,7 @@ class DB {
         return $resultado;
     }
 
-     /* INSERTAR USUARIO TIPO PACIENTE */
+    /* INSERTAR USUARIO TIPO PACIENTE */
     public static function insertarPaciente($nombre, $apellidos, $email, $password, $dni,
                                          $f_nacimiento, $genero) {
         try {
@@ -226,6 +234,46 @@ class DB {
         }
         return $especialistas;
     }
+
+    /* OBTENER DISPONIBILIDAD DE UN PROFESIONAL */
+    public static function obtenerDisponibilidad($id_profesional, $fecha) {
+        $aDisponibilidad = array("1" => self::ORDEN_1, "2" => self::ORDEN_2, "3" => self::ORDEN_3, "4" => self::ORDEN_4, "5" => self::ORDEN_5, "6" => self::ORDEN_6);
+
+        try {
+            $consulta = 'SELECT * FROM citas WHERE fecha = "'. $fecha .'" AND id_prof_FK = "'. $id_profesional .'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $citasFechaProfesional = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($citasFechaProfesional as $cita) {
+                unset($aDisponibilidad[$cita['orden']]);
+            }
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $aDisponibilidad;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
