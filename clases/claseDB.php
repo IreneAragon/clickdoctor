@@ -210,8 +210,28 @@ class DB {
             die("Error: " . $e->getMessage());
         }
         return $tablaEspecialidades;
-        
+
     }
+
+    /* OBTENER LOS PROFESIONALES QUE PRACTICAN UNA ESPECIALIDAD */
+    public static function obtenerEspecialista($id) {
+        try {
+            $consulta = 'SELECT practica.id_prof, profesionales.nombre, profesionales.apellidos FROM practica
+                         INNER JOIN profesionales ON profesionales.id_profesional = practica.id_prof
+                         WHERE id_esp = "'. $id .'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $especialistas = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $especialistas;
+    }
+
+
+
+
+
+
 
 
 

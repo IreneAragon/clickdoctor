@@ -98,27 +98,49 @@ require 'clases/claseDB.php';
 *   PRUEBAS MOSTRAR NOMBRE ESPECIALIDADES EN SELECT FORMULARIO  *
 *                          OK                                   *
 *****************************************************************/
-
-$especialidades = DB::especialidades();
-// var_dump('espe: ');
-var_dump($especialidades);
-
-
+// $especialidades = DB::especialidades();
+// var_dump($especialidades);
+/*
 ?>
 <br><br>
 <form action="#" method="post">
     <label for="selectEspecialidad">Elija una especialidad</label>
     <select id="selectEspecialidad">
         <option value="0">Seleccione:</option>
-
         <?php
-
-        foreach ($especialidades as $especialidad) {
-            echo '<option value="'.$especialidad['id_especialidad'].'">'.$especialidad['nombre'].'</option>';
-        }
-
+            foreach ($especialidades as $especialidad) {
+                echo '<option value="'.$especialidad['id_especialidad'].'">'.$especialidad['nombre'].'</option>';
+            }
         ?>
+    </select>
+</form>
+*/
 
+
+
+
+/**************************************************************
+*                                                             *
+*   PRUEBAS OBTENER PROFESIONAL SEGÚN ID DE LA ESPECIALIDAD   *
+*                                                             *
+***************************************************************/
+
+$idEspecialidad = 1;
+$especialistas = DB::obtenerEspecialista($idEspecialidad);
+
+// var_dump($especialistas);
+
+?>
+<br><br>
+<form action="#" method="post">
+    <label for="selectEspecialista">Elija un profesional</label>
+    <select id="selectEspecialista">
+        <option value="0">Seleccione:</option>
+        <?php
+            foreach ($especialistas as $especialista) {
+                echo '<option value="'.$especialista['id_prof'].'">'.$especialista['nombre'].' '.$especialista['apellidos'].'</option>';
+            }
+        ?>
     </select>
 </form>
 
@@ -166,15 +188,6 @@ var_dump($especialidades);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+/*
 <!--  -->
+*/

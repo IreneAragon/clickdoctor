@@ -9,7 +9,7 @@ require '../clases/claseDB.php';
 
 <div class="container pt-5 text-center">
     <h2 class="mt-5 pt-2">Crea una cita con un profesional</h2>
-    <form class="pt-5" action="ejecutarCrearCitaPaciente.php" method="post">
+    <form class="pt-5" method="post">
         <!-- 1º row -->
         <div class="row pt-3">
             <!-- 1º col ESPECIALIDAD -->
@@ -81,13 +81,7 @@ require '../clases/claseDB.php';
 
 </div>
 
-<script type="text/javascript">
-    // let selectHtml = '<option>1</option>
-    // <option>2</option>
-    // <option>3</option>';
-    //
-    // $('#selectEspecialista').html(selectHtml);
-</script>
+<script src="../js/obtenerEspecialistas.js" charset="utf-8"></script>
 
 
 
