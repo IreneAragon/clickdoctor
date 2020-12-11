@@ -332,9 +332,9 @@ class DB {
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
-        return $idUsuario;
-    }
 
+        return $idUsuario['id_paciente'];
+    }
 
 
 

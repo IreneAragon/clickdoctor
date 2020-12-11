@@ -1,12 +1,12 @@
-var idPaciente = 1; /* TODO: traer id paciente real por session */
-window.onload = listarCitas(idPaciente);
-window.onload = listarHistorialCitas(idPaciente);
 
-function listarCitas(idPaciente) {
+window.onload = listarCitas();
+window.onload = listarHistorialCitas();
+
+function listarCitas() {
     $.ajax({
         url: "back/listarCitasPaciente.php",
         type: "post",
-        data: {"id_paciente" : idPaciente, "filtro": 'proximas'},
+        data: {"filtro": 'proximas'},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
         let htmlTr = "";
@@ -31,11 +31,11 @@ function listarCitas(idPaciente) {
     });
 }
 
-function listarHistorialCitas(idPaciente) {
+function listarHistorialCitas() {
     $.ajax({
         url: "back/listarCitasPaciente.php",
         type: "post",
-        data: {"id_paciente" : idPaciente, "filtro": 'pasadas'},
+        data: {"filtro": 'pasadas'},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
         let htmlTr = "";

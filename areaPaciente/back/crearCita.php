@@ -2,10 +2,11 @@
 <?php
 
 require '../../clases/claseDB.php';
+session_start();
+$id_paciente =  $_SESSION['idUsuario'];
 
 $id_especialidad = filter_input(INPUT_POST, "id_especialidad", FILTER_DEFAULT);
 $id_profesional = filter_input(INPUT_POST, "id_profesional", FILTER_DEFAULT);
-$id_paciente = filter_input(INPUT_POST, "id_paciente", FILTER_DEFAULT);
 $fecha_cita = filter_input(INPUT_POST, "fecha_cita", FILTER_DEFAULT);
 $hora_cita = filter_input(INPUT_POST, "hora_cita", FILTER_DEFAULT);
 

@@ -1,5 +1,5 @@
 <?php
-include_once '../include/cabeceraUsuarios.php';
+include_once '../include/cabeceraUsuarios.html';
 include_once '../include/navPacientes.html';
 ?>
 

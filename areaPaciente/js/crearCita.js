@@ -22,7 +22,6 @@ function crearCitaPaciente() {
     let idProfesional = profesional.value;
     let fechaCita = fecha.value;
     let horaCita = orden.value;
-    let idPaciente = 1; /* TODO recoger ID por session en login */
     let msgError = "";
     let divError = document.getElementById("errorCita");
     let horaSeleccionada = orden.options[orden.selectedIndex].text;
@@ -57,7 +56,6 @@ function crearCitaPaciente() {
             type: "post",
             data: {"id_especialidad" : idEspecialidad,
                    "id_profesional" : idProfesional,
-                   "id_paciente" : idPaciente,
                    "fecha_cita" : fechaCita,
                    "hora_cita" : horaCita},
         }).done(function(respuesta) {
