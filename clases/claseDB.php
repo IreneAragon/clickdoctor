@@ -277,13 +277,16 @@ class DB {
         return $aDisponibilidad;
     }
 
-    /* OBTENER LA TABLA CITAS */
-    public static function listarCitasPaciente($idPaciente) {
+    /* OBTENER LA TABLA CITAS 'proximas' o 'pasadas' */
+    public static function listarCitasPaciente($idPaciente, $filtro = 'proximas') {
         try {
+
+            $where = ($filtro === 'proximas') ? '" AND citas.fecha >= CURDATE() ORDER BY citas.fecha ASC' : '" AND citas.fecha < CURDATE() ORDER BY citas.fecha DESC';
+
             $consulta = 'SELECT citas.*, profesionales.nombre, profesionales.apellidos, especialidades.nombre as nombre_esp FROM citas
                          INNER JOIN profesionales ON profesionales.id_profesional = citas.id_prof_FK
                          INNER JOIN especialidades ON especialidades.id_especialidad = citas.id_especialidad
-                         WHERE id_pac_FK = "'. $idPaciente .'" ORDER BY citas.fecha ASC';
+                         WHERE id_pac_FK = "'. $idPaciente .$where;
             $resultado = self::ejecutaConsulta ($consulta);
             $listadoCitasPaciente = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
@@ -318,7 +321,19 @@ class DB {
         }
         return $listadoCitasPaciente;
     }
-
+    /* Obtener ID a través de email */
+    public static function getIdUsuario($email) {
+        try {
+            $consulta = 'SELECT id_paciente FROM pacientes WHERE email = "'. $email .'"
+                         UNION
+                         SELECT id_profesional FROM profesionales WHERE email = "'. $email .'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $idUsuario = $resultado->fetch();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $idUsuario;
+    }
 
 
 

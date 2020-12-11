@@ -1,5 +1,5 @@
 <?php
-include_once '../include/cabeceraUsuarios.html';
+include_once '../include/cabeceraUsuarios.php';
 include_once '../include/navPacientes.html';
 ?>
 
@@ -40,7 +40,7 @@ include_once '../include/navPacientes.html';
         </div> <!-- /row2 -->
 
         <!-- 3º row contiene listado de citas pasadas -->
-        <div class="row">
+        <div id="historialCitas" class="row">
             <div class="col">
                 <h2 class="pt-4">Historial de citas</h2>
                 <table class="table table-sm table-hover">
@@ -52,8 +52,8 @@ include_once '../include/navPacientes.html';
                             <th scope="col">Hora</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="listaHistorialCitas">
+                        <!-- <tr>
                             <td>Dr Periquito Palotes</td>
                             <td>Medicina General</td>
                             <td>10-10-2020</td>
@@ -64,7 +64,7 @@ include_once '../include/navPacientes.html';
                             <td>Medicina General</td>
                             <td>10-10-2020</td>
                             <td>09:56</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>

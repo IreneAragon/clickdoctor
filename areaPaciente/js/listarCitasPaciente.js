@@ -1,18 +1,16 @@
-window.onload = listarCitas();
+var idPaciente = 1; /* TODO: traer id paciente real por session */
+window.onload = listarCitas(idPaciente);
+window.onload = listarHistorialCitas(idPaciente);
 
-
-function listarCitas() {
-    let idPaciente = 1; /* TODO: traer id paciente real por session */
+function listarCitas(idPaciente) {
     $.ajax({
         url: "back/listarCitasPaciente.php",
         type: "post",
-        data: {"id_paciente" : idPaciente},
+        data: {"id_paciente" : idPaciente, "filtro": 'proximas'},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
-        // console.log(arrayRespuesta.citas);
         let htmlTr = "";
         arrayRespuesta.citas.forEach((cita, i) => {
-            // formatearFechaDDMMYYY(cita.fecha);
             htmlTr += "<tr>"+
                         "<td>"+ cita.nombre +" "+ cita.apellidos +"</td>"+
                         "<td>"+ cita.nombre_esp +"</td>"+
@@ -23,15 +21,38 @@ function listarCitas() {
                     "</tr>";
         });
 
-        console.log(arrayRespuesta.citas.length);
-
         if (arrayRespuesta.citas.length === 0) {
             $('#tablaProxCitas').hide();
             $('#msgNoCitas').show();
-
         }
 
         $('#listaCitasPaciente').html(htmlTr);
 
     });
+}
+
+function listarHistorialCitas(idPaciente) {
+    $.ajax({
+        url: "back/listarCitasPaciente.php",
+        type: "post",
+        data: {"id_paciente" : idPaciente, "filtro": 'pasadas'},
+    }).done(function(respuesta) {
+        let arrayRespuesta = $.parseJSON(respuesta);
+        let htmlTr = "";
+        arrayRespuesta.citas.forEach((cita, i) => {
+            htmlTr += "<tr>"+
+                        "<td>"+ cita.nombre +" "+ cita.apellidos +"</td>"+
+                        "<td>"+ cita.nombre_esp +"</td>"+
+                        "<td>"+ formatearFechaDDMMYYY(cita.fecha) +"</td>"+
+                        "<td>"+ cita.hora +"</td>"+
+                    "</tr>";
+        });
+
+        if (arrayRespuesta.citas.length === 0) {
+            $('#historialCitas').hide();
+        } else {
+            $('#listaHistorialCitas').html(htmlTr);
+        }
+    });
+
 }
