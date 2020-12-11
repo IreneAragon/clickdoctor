@@ -64,11 +64,11 @@ class DB {
                 if (isset($consulta)) {
                     $resultado = $consulta->query($sql);
                     // TODO: investigar como devolver si se ha insertado o si ha dado error
-                    if ($resultado->execute()) {
-                         return true;
-                     } else {
-                         return false;
-                     }
+                    // if ($resultado->execute()) {
+                    //      return true;
+                    //  } else {
+                    //      return false;
+                    //  }
                 }
             } catch (PDOException $e) {
                 die("Error: " . $e->getMessage());
@@ -277,7 +277,47 @@ class DB {
         return $aDisponibilidad;
     }
 
-    
+    /* OBTENER LA TABLA CITAS */
+    public static function listarCitasPaciente($idPaciente) {
+        try {
+            $consulta = 'SELECT citas.*, profesionales.nombre, profesionales.apellidos, especialidades.nombre as nombre_esp FROM citas
+                         INNER JOIN profesionales ON profesionales.id_profesional = citas.id_prof_FK
+                         INNER JOIN especialidades ON especialidades.id_especialidad = citas.id_especialidad
+                         WHERE id_pac_FK = "'. $idPaciente .'" ORDER BY citas.fecha ASC';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $listadoCitasPaciente = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($listadoCitasPaciente as $k => $cita) {
+                switch ($cita['orden']) {
+                    case '1':
+                        $hora = self::ORDEN_1;
+                        break;
+                    case '2':
+                        $hora = self::ORDEN_2;
+                        break;
+                    case '3':
+                        $hora = self::ORDEN_3;
+                        break;
+                    case '4':
+                        $hora = self::ORDEN_4;
+                        break;
+                    case '5':
+                        $hora = self::ORDEN_5;
+                        break;
+                    case '6':
+                        $hora = self::ORDEN_6;
+                        break;
+                    default:
+                        $hora = "";
+                        break;
+                }
+                $listadoCitasPaciente[$k]['hora'] = $hora;
+            }
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $listadoCitasPaciente;
+    }
 
 
 

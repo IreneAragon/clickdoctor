@@ -16,7 +16,7 @@ include_once '../include/navPacientes.html';
         <div class="row">
             <div class="col">
                 <h2 class="pt-4">Próximas citas</h2>
-                <table class="table table-sm table-hover">
+                <table class="table table-sm table-hover" id="tablaProxCitas">
                     <thead>
                         <tr>
                             <th scope="col">Profesional</th>
@@ -27,25 +27,15 @@ include_once '../include/navPacientes.html';
                             <th scope="col">Cancelar</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Dr Periquito Palotes</td>
-                            <td>Medicina General</td>
-                            <td>10-10-2021</td>
-                            <td>09:56</td>
-                            <td><button type="button" class="btn btn-warning btn-sm mt-0 px-3" data-toggle="modal" data-target="#editarCita"><i class="fas fa-pen" aria-hidden="true"></i></button></td>
-                            <td><button type="button" class="btn btn-danger btn-sm mt-0 px-3" data-toggle="modal" data-target="#cancelarCita"><i class="fas fa-trash" aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td>Dr Periquito Palotes</td>
-                            <td>Medicina General</td>
-                            <td>10-10-2021</td>
-                            <td>09:56</td>
-                            <td><button type="button" class="btn btn-warning btn-sm mt-0 px-3"><i class="fas fa-pen" aria-hidden="true"></i></button></td>
-                            <td><button type="button" class="btn btn-danger btn-sm mt-0 px-3"><i class="fas fa-trash" aria-hidden="true"></i></button></td>
-                        </tr>
+                    <tbody id="listaCitasPaciente">
+                        <!-- tr obtenidas por ajax -->
                     </tbody>
                 </table>
+
+                <div id="msgNoCitas" class="alert alert-primary" role="alert">
+                    No tiene citas programadas.
+                </div>
+
             </div>
         </div> <!-- /row2 -->
 
@@ -117,7 +107,8 @@ include_once '../include/navPacientes.html';
     </div> <!-- /container -->
 </div> <!-- /main -->
 
-
+<script src="js/listarCitasPaciente.js" charset="utf-8"></script>
+<script src="../js/utils.js" charset="utf-8"></script>
 <?php
 include_once '../include/footer.html';
 ?>

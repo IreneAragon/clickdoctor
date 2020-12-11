@@ -12,8 +12,8 @@ $hora_cita = filter_input(INPUT_POST, "hora_cita", FILTER_DEFAULT);
 // $crearCitaPaciente = DB::insertarCita($id_especialidad, $id_profesional, $id_paciente, $fecha_cita, $hora_cita);
 
 
-$consulta = 'INSERT INTO citas (fecha, orden, id_prof_FK, id_pac_FK)
-             VALUES ("'. $fecha_cita .'", "'. $hora_cita .'", "'. $id_profesional .'", "'. $id_paciente .'")';
+$consulta = 'INSERT INTO citas (fecha, orden, id_especialidad, id_prof_FK, id_pac_FK)
+             VALUES ("'. $fecha_cita .'", "'. $hora_cita .'", "'. $id_especialidad .'", "'. $id_profesional .'", "'. $id_paciente .'")';
 
 $crearCitaPaciente = DB::insertar($consulta);
 
