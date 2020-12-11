@@ -9,6 +9,12 @@ var profesional = document.getElementById("selectEspecialista");
 var fecha = document.getElementById("fechaCita");
 var orden = document.getElementById("horaCita");
 
+function esFechaFutura(fecha, hora) {
+    let ahora = new Date();
+    let fechaHora = new Date(fecha + ' ' + hora);
+
+    return (fechaHora > ahora);
+}
 
 function crearCitaPaciente() {
     /* Recoger valores del formulario Crear Cita */
@@ -19,6 +25,7 @@ function crearCitaPaciente() {
     let idPaciente = 1; /* TODO recoger ID por session en login */
     let msgError = "";
     let divError = document.getElementById("errorCita");
+    let horaSeleccionada = orden.options[orden.selectedIndex].text;
 
     if (idEspecialidad === '0') {
         msgError += "Debe seleccionar una especialidad.<br>";
@@ -31,6 +38,9 @@ function crearCitaPaciente() {
     }
     if (horaCita === '0') {
         msgError += "Debe seleccionar una hora.";
+    }
+    if (!esFechaFutura(fechaCita, horaSeleccionada)){
+        msgError += "Debe seleccionar fecha y hora posterior a este momento.";
     }
 
     if (msgError === '') {
