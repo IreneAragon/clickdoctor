@@ -15,7 +15,7 @@ require '../clases/claseDB.php';
                 <div class="form-group">
                     <label for="selectEspecialidad">Elija una especialidad</label>
                     <select class="form-control" id="selectEspecialidad">
-                        <option value="0">Seleccione:</option>
+                        <option value="0">Seleccione</option>
                         <?php
                             $especialidades = DB::especialidades();
                             foreach ($especialidades as $especialidad) {
@@ -30,6 +30,7 @@ require '../clases/claseDB.php';
                 <div class="form-group">
                     <label for="selectEspecialista">Elija especialista</label>
                     <select class="form-control" id="selectEspecialista">
+                        <option value="0">Primero seleccione una especialidad</option>
                         <!-- options obtenidas desde función ajax -->
                     </select>
                 </div>
@@ -50,6 +51,7 @@ require '../clases/claseDB.php';
                 <div class="form-group">
                     <label for="horaCita">Elija la hora</label>
                     <select class="form-control" id="horaCita">
+                        <option value="0">Primero seleccione una fecha</option>
                         <!-- options obtenidas desde función ajax -->
                     </select>
                 </div>
@@ -67,6 +69,11 @@ require '../clases/claseDB.php';
     <!-- Se muestra cuando la cita ha sido creada -->
     <div id="citaCreada" class="alert alert-success mt-5" role="alert">
         Su cita ha sido creada con éxito, <a href="citasPaciente.php" class="alert-link">puede verla haciendo click aquí</a>.
+    </div>
+
+    <!-- Muestra los errores al crear una cita -->
+    <div id="errorCita" class="alert alert-danger mt-5" role="alert">
+
     </div>
 
 </div>

@@ -119,6 +119,6 @@ footer {
     margin-top: 50px;
 }
 
-#citaCreada {
+#citaCreada, #errorCita {
     display: none;
 }

@@ -21,6 +21,10 @@ require_once 'claseProfesional.php';
 
 class DB {
 
+    const DB_DNS  = "mysql:host=localhost;dbname=CLICK_DOCTOR";
+    const DB_USER = "admincd";
+    const DB_PASS = "clickdoc2021";
+    const DB_OPT  =  array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4");
     const ORDEN_1 = "08:00";
     const ORDEN_2 = "09:00";
     const ORDEN_3 = "10:00";
@@ -29,25 +33,46 @@ class DB {
     const ORDEN_6 = "13:00";
 
 
+
     /**
      * Conexión a la base de datos
      * @param  [type] $sql
      * @return [type]
      */
     protected static function ejecutaConsulta($sql) {
-        $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4");
-        $dsn = "mysql:host=localhost;dbname=CLICK_DOCTOR";
-        $usuario = 'admincd';
-        $contrasena = 'clickdoc2021';
+        // $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4");
+        // $dsn = "mysql:host=localhost;dbname=CLICK_DOCTOR";
+        // $usuario = 'admincd';
+        // $contrasena = 'clickdoc2021';
         try {
-            $consulta = new PDO($dsn, $usuario, $contrasena, $opc);
+            $consulta = new PDO(self::DB_DNS, self::DB_USER, self::DB_PASS, self::DB_OPT);
             $resultado = null;
                 if (isset($consulta)) {
                     $resultado = $consulta->query($sql);
+
                 }
             } catch (PDOException $e) {
                 die("Error: " . $e->getMessage());
         }
+        return $resultado;
+    }
+
+    public static function insertar($sql) {
+        try {
+            $consulta = new PDO(self::DB_DNS, self::DB_USER, self::DB_PASS, self::DB_OPT);
+            $resultado = null;
+                if (isset($consulta)) {
+                    $resultado = $consulta->query($sql);
+                    // TODO: investigar como devolver si se ha insertado o si ha dado error
+                    if ($resultado->execute()) {
+                         return true;
+                     } else {
+                         return false;
+                     }
+                }
+            } catch (PDOException $e) {
+                die("Error: " . $e->getMessage());
+            }
         return $resultado;
     }
 
@@ -252,8 +277,7 @@ class DB {
         return $aDisponibilidad;
     }
 
-
-
+    
 
 
 
