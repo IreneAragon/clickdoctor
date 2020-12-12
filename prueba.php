@@ -124,7 +124,7 @@ require 'clases/claseDB.php';
 *   PRUEBAS OBTENER PROFESIONAL SEGÚN ID DE LA ESPECIALIDAD   *
 *                                                             *
 ***************************************************************/
-
+/*
 $idEspecialidad = 1;
 $especialistas = DB::obtenerEspecialista($idEspecialidad);
 
@@ -143,9 +143,18 @@ $especialistas = DB::obtenerEspecialista($idEspecialidad);
         ?>
     </select>
 </form>
+*/
 
 
+/*************************************
+*                                    *
+*   PRUEBAS CONOCER GENERO USUARIO   *
+*               OK                   *
+*************************************/
 
+// $email = 'profesional_test@mail.com';
+// $conocerGenero = DB::getGeneroUsuario($email);
+// var_dump($conocerGenero);
 
 
 

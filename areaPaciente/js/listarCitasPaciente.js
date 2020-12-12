@@ -3,6 +3,10 @@ window.onload = listarCitas();
 window.onload = listarHistorialCitas();
 
 function listarCitas() {
+
+    /* Conocer el género del profesional */
+
+
     $.ajax({
         url: "back/listarCitasPaciente.php",
         type: "post",
@@ -10,7 +14,18 @@ function listarCitas() {
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
         let htmlTr = "";
+
         arrayRespuesta.citas.forEach((cita, i) => {
+
+            // console.log('test',cita.id_prof_FK);
+            // let id_prof = cita.id_prof_FK;
+            // console.log(id_prof);
+            // let genero =
+
+
+
+
+
             htmlTr += "<tr>"+
                         "<td>"+ cita.nombre +" "+ cita.apellidos +"</td>"+
                         "<td>"+ cita.nombre_esp +"</td>"+

@@ -65,10 +65,13 @@ if (!empty($_POST)) {
                     $mensajeError .= "Su usuario no está activo, espere a que un administrador active su perfil.";
                     include_once("index.php");
                 } else {
-
+                    // Obtener el id y el género del usuario
                     $idUsuario = DB::getIdUsuario($email);
+                    $generoUsuario = DB::getGeneroUsuario($email);
+                    // Iniciar sesión y guardar en ésta el id y el género del usuario logueado
                     session_start();
                     $_SESSION['idUsuario'] = $idUsuario;
+                    $_SESSION['generoUsuario'] = $generoUsuario;
                     // Si el usuario está activo, se le redirige a su página privada en función del tipo de usuario
                     if ($esPaciente) {
                         header('Location: areaPaciente/areaPaciente.php');
@@ -89,10 +92,3 @@ if (!empty($_POST)) {
         }
     }
 }
-
-// Si existe algún mensaje de error lo mostramos
-// if(isset($mensajeError)){
-    // echo nl2br($mensajeError);
-    // header('Location: index.php'); // no para la ejecución a no ser que ponga return
-    // return;
-// }

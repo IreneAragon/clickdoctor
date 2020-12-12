@@ -321,7 +321,8 @@ class DB {
         }
         return $listadoCitasPaciente;
     }
-    /* Obtener ID a través de email */
+
+    /* Obtener ID del usuario a través de email */
     public static function getIdUsuario($email) {
         try {
             $consulta = 'SELECT id_paciente FROM pacientes WHERE email = "'. $email .'"
@@ -336,7 +337,20 @@ class DB {
         return $idUsuario['id_paciente'];
     }
 
+    /* Obtener el género del profesional */
+    public static function getGeneroUsuario($email) {
+        try {
+            $consulta = 'SELECT genero FROM pacientes WHERE email = "'. $email .'"
+                         UNION
+                         SELECT genero FROM profesionales WHERE email = "'. $email .'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $generoUsuario = $resultado->fetch();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
 
+    return $generoUsuario['genero'];
+}
 
 
 
