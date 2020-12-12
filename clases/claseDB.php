@@ -283,7 +283,7 @@ class DB {
 
             $where = ($filtro === 'proximas') ? '" AND citas.fecha >= CURDATE() ORDER BY citas.fecha ASC' : '" AND citas.fecha < CURDATE() ORDER BY citas.fecha DESC';
 
-            $consulta = 'SELECT citas.*, profesionales.nombre, profesionales.apellidos, especialidades.nombre as nombre_esp FROM citas
+            $consulta = 'SELECT citas.*, profesionales.nombre, profesionales.apellidos, profesionales.genero, especialidades.nombre as nombre_esp FROM citas
                          INNER JOIN profesionales ON profesionales.id_profesional = citas.id_prof_FK
                          INNER JOIN especialidades ON especialidades.id_especialidad = citas.id_especialidad
                          WHERE id_pac_FK = "'. $idPaciente .$where;
@@ -352,8 +352,7 @@ class DB {
     return $generoUsuario['genero'];
 }
 
-
-
+    
 
 
 

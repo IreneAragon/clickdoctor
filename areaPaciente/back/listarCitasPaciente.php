@@ -5,7 +5,6 @@ session_start();
 $id_paciente =  $_SESSION['idUsuario'];
 $filtro = filter_input(INPUT_POST, "filtro", FILTER_DEFAULT);
 
-
 $listadoCitas = DB::listarCitasPaciente($id_paciente, $filtro);
 
 

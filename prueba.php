@@ -146,19 +146,6 @@ $especialistas = DB::obtenerEspecialista($idEspecialidad);
 */
 
 
-/*************************************
-*                                    *
-*   PRUEBAS CONOCER GENERO USUARIO   *
-*               OK                   *
-*************************************/
-
-// $email = 'profesional_test@mail.com';
-// $conocerGenero = DB::getGeneroUsuario($email);
-// var_dump($conocerGenero);
-
-
-
-
 
 
 
