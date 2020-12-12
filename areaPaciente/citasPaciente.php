@@ -99,11 +99,15 @@ include_once '../include/navPacientes.html';
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">¡no!</button>
-                        <button type="button" class="btn btn-success">Sí, cancelar</button>
+                        <button type="button" id="btnConfirmaBorrar" data-idcita="" class="btn btn-success">Sí, cancelar</button>
                     </div>
                 </div>
             </div>
         </div> <!-- /modal cancelar cita -->
+        <!-- Se muestra cuando la cita ha sido borrada -->
+        <div id="msgBorradoCita" class="alert alert-success mt-5" role="alert">
+            Su cita ha sido borrada con éxito.
+        </div>
     </div> <!-- /container -->
 </div> <!-- /main -->
 

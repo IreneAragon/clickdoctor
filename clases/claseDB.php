@@ -349,11 +349,21 @@ class DB {
             die("Error: " . $e->getMessage());
         }
 
-    return $generoUsuario['genero'];
-}
+        return $generoUsuario['genero'];
+    }
 
-    
-
+    /* Eliminar una cita */
+    public static function borrarCita($id_cita) {
+        try {
+            $consulta = 'DELETE FROM citas WHERE id_cita = "'. $id_cita .'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha borrado la cita devuelve true
+        return ($count === 1) ? true : false;
+    }
 
 
 
