@@ -70,6 +70,12 @@ include_once '../include/navPacientes.html';
             </div>
         </div> <!-- /row3 -->
 
+
+
+
+
+
+
         <!-- Modal editar cita -->
         <div class="modal fade" id="editarCita" tabindex="-1" role="dialog" aria-labelledby="editarCitaLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -77,8 +83,15 @@ include_once '../include/navPacientes.html';
                     <div class="modal-header">
                         <h5 class="modal-title" id="editarCitaLabel">Editar cita</h5>
                     </div>
-                    <div class="modal-body">
-                        <h1>contenido</h1>
+                    <div id="modalEditBody" class="modal-body">
+                        <!-- TODO:
+                                - mortrar el mismo formulario de crear cita
+                                    - tabla con id tablaProxCitas
+                                - con los valores editables
+                                - cuando click "guardar cambios" llame función alter table
+                                - cuando cambios se guarden: cerrar modal  y mostrar mensaje OK
+                        -->
+                        <!-- <h1>contenido</h1> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -87,6 +100,12 @@ include_once '../include/navPacientes.html';
                 </div>
             </div>
         </div> <!-- /modal editar cita -->
+
+
+
+
+
+
         <!-- Modal cancelar cita -->
         <div class="modal fade" id="cancelarCita" tabindex="-1" role="dialog" aria-labelledby="cancelarCitaLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

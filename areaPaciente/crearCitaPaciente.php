@@ -7,7 +7,7 @@ require '../clases/claseDB.php';
 
 <div class="container pt-5 text-center">
     <h2 class="mt-5 pt-2">Crea una cita con un profesional</h2>
-    <form class="pt-5" method="post">
+    <form id="tablaCrearCita" class="pt-5" method="post">
         <!-- 1º row -->
         <div class="row pt-3">
             <!-- 1º col ESPECIALIDAD -->
