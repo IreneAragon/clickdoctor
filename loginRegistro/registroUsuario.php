@@ -4,7 +4,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require 'clases/claseDB.php';
+require '../clases/claseDB.php';
 
 // Recibir datos a través de $_POST
 if (!empty($_POST)) {

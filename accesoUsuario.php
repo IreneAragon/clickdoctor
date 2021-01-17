@@ -77,12 +77,12 @@ if (!empty($_POST)) {
                         header('Location: areaPaciente/areaPaciente.php');
                         die();
                     } else if ($esProfesional) {
-                        header('Location: areaProfesional.php');
+                        header('Location: areaProfesional/areaProfesional.php');
                         die();
                     }
                 }
             } else {
-                header('Location: areaAdministrador.php');
+                header('Location: areaAdministrador/areaAdministrador.php');
                 die();
             }
         } else {

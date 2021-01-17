@@ -64,7 +64,7 @@
 										<button id="entrar" name="entrar" class="btn btn-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Entrar</button>
 										<p>
 											¿No tienes cuenta?
-											<a href="registro.php">Regístrate</a>
+											<a href="loginRegistro/registro.php">Regístrate</a>
 										</p>
 									</div>
 								</div>

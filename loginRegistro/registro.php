@@ -3,7 +3,7 @@
 	ini_set('display_errors', 1);
 
 	// require_once 'registroUsuario.php'
-	require_once 'clases/claseDB.php';
+	require_once '../clases/claseDB.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,28 +14,28 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Ayuda a mejor posicionamiento SEO -->
 		<meta name="Description" content="Click Doctor, página de registro. ">
-		<link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
+		<link rel="icon" href="../img/favicon.png" sizes="16x16" type="image/png">
         <title>CLICK DOCTOR</title>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 		<!-- JQuery -->
-		<script src="MDBootstrap/js/jquery.min.js"></script>
+		<script src="../MDBootstrap/js/jquery.min.js"></script>
         <!-- Bootstrap y Material Design Bootstrap CSS -->
-        <link href="MDBootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="MDBootstrap/css/mdb.min.css" rel="stylesheet">
+        <link href="../MDBootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../MDBootstrap/css/mdb.min.css" rel="stylesheet">
 		<!-- Estilos y librerías necesarias para utilizar multiple select -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
 		<!-- Estilos propios de css -->
-        <link rel="stylesheet" type="text/css" href="css/styleHome.css">
+        <link rel="stylesheet" type="text/css" href="../css/styleHome.css">
     </head>
     <body>
         <!-- Starts content -->
         <div class="container col-12 col-lg-6">
             <!-- Logo Click Doctor -->
-			<a href="index.php">
-				<img src="img/logo2.png" alt="Click Doctor logo" class="align-items-center sizeLogo mt-5 mt-lg-2">
+			<a href="../index.php">
+				<img src="../img/logo2.png" alt="Click Doctor logo" class="align-items-center sizeLogo mt-5 mt-lg-2">
 			</a>
             <br><br>
             <!-- Formulario de Registro -->
@@ -145,9 +145,9 @@
 				<hr>
                 <!-- Terms of service -->
                 <p> Haciendo click en <em>Registrar</em> acepta nuestros
-                    <a href="index.php" target="_blank">términos y condiciones del servicio</a>
+                    <a href="../index.php" target="_blank">términos y condiciones del servicio</a>
                     y reconoce que ha leído nuestra
-                    <a href="index.php" target="_blank">política de privacidad</a>
+                    <a href="../index.php" target="_blank">política de privacidad</a>
                 </p>
             </form>
             <!-- Default form register -->
@@ -164,11 +164,12 @@
 
 
 		<!-- Script muestra o no los inputs correspondientes según el tipo de paciente -->
-        <script src="js/habilitarInput.js"></script>
+		<!-- TODO llevar la función del multi select a un fichero .js externo -->
+        <script src="../js/habilitarInput.js"></script>
 		<script>
 			$(document).ready(function(){
 				$(".mul-select").select2({
-						placeholder: "Elija una o varias especialidades", //placeholder
+						placeholder: "Elija una o varias especialidades",
 						tags: true,
 						tokenSeparators: ['/',',',';'," "]
 					});
