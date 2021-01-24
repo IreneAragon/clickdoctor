@@ -43,7 +43,9 @@ require '../clases/claseDB.php';
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for="fechaCita">Elija la fecha</label>
-                    <input type="date" name="fechaCita" id="fechaCita" max="2025-12-31" min="2020-01-01" class="form-control">
+                    <!-- <input type="date" name="fechaCita" id="fechaCita" max="2025-12-31" min="2020-01-01" class="form-control"> -->
+                    <input type="text" name="fechaCita" id="fechaCita" class="campo form-control">
+
                 </div>
             </div>
             <!-- 2º col HORA -->
@@ -82,7 +84,41 @@ require '../clases/claseDB.php';
 <script src="js/obtenerDisponibilidad.js" charset="utf-8"></script>
 <script src="js/crearCita.js" charset="utf-8"></script>
 
+<!-- <script>
+    // TODO cambiar el icono para moverse entre meses
+    //funcion que bloquea sábados y domingo
+    function noExcursion(date){
+        var day = date.getDay();
+        // var string = jQuery.datepicker.formatDate('dd/mm/yy', date);
+        // Días que se bloquean, sábado-6 y domingo-0
+        return [(day != 0 && day != 6), ''];
+    };
+var fecha = document.getElementById("fechaCita");
+let fechaCita = fecha.value;
+console.log('fechaCita',fechaCita);
+    //Crear el datepicker
+    $("#fechaCita").datepicker({
+        beforeShowDay: noExcursion,
+        firstDay: 1,
+        closeText: 'Cerrar',
+        prevText: '< Ant',
+        nextText: 'Sig >',
+        currentText: 'Hoy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+        dayNamesMin: ['D','L','M','X','J','V','S'],
+        weekHeader: 'Sm',
+        dateFormat: 'dd/mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        showAnim: "fadeIn"
+    });
 
+</script> -->
 
 <?php
 include_once '../include/footer.html';

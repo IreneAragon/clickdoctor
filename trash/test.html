@@ -1,96 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>testing</title>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css"> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script> -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>testing</title>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css"> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- JQuery-ui -->
+        <!-- Importar estas tres cosas pal datepicker que he cambiado estilos a pelo porque soy así de inteliyent -->
+        <script type="text/javascript" src="../jquery-ui/jquery-ui.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../jquery-ui/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="../jquery-ui/jquery-ui.structure.css">
 
+    </head>
+    <body>
 
-
-    <!-- JQuery -->
-    <!-- Importar estas tres cosas pal datepicker que he cambiado estilos a pelo porque soy así de inteliyent -->
-    <script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.structure.css">
-
-
-
-</head>
-<body>
-    <!-- campo input para el calendario..... -->
-    <!-- <div class="fechaSur" id="fechaSur">
-
-    </div> -->
+        <input type="text" name="fecha" id="selectDate" class="campo" />
 
 
-    <input type="text" name="fecha" id="fechaSur" class="campo" />
+        <script>
+            // TODO cambiar el icono para moverse entre meses 
+            //funcion que bloquea sábados y domingo
+            function noExcursion(date){
+                var day = date.getDay();
+                var string = jQuery.datepicker.formatDate('dd/mm/yy', date);
+                // Días que se bloquean, sábado-6 y domingo-0
+                return [(day != 0 && day != 6), ''];
+            };
 
+            //Crear el datepicker
+            $("#selectDate").datepicker({
+                beforeShowDay: noExcursion,
+                firstDay: 1,
+                closeText: 'Cerrar',
+                prevText: '< Ant',
+                nextText: 'Sig >',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                dayNamesMin: ['D','L','M','X','J','V','S'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                showAnim: "fadeIn"
+            });
 
-<!-- TODO cambiar el icono para moverse entre meses -->
-    <script>
-
-    //funcion que bloquea todos lo dias expecto los que queremos habilitar para la seleccion
-    function noExcursion(date){
-    var day = date.getDay();
-
-    var string = jQuery.datepicker.formatDate('dd/mm/yy', date);
-    // aqui indicamos el numero correspondiente a los dias que ha de bloquearse (el 0 es Domingo, 1 Lunes, etc...) en el ejemplo bloqueo todos menos los lunes y jueves.
-    return [(day != 0 && day != 6), ''];
-    };
-
-
-    /* deshabilitar festivos */
-    // var dates = ["04/01/2021", "11/01/2021"];
-    // function DisableDates(date) {
-    //     var string = jQuery.datepicker.formatDate('dd/mm/yy', date);
-    //     return [dates.indexOf(string) == -1];
-    // }
-
-    // $(function() {
-    //      $("#fechaSur").datepicker({
-    //          beforeShowDay: DisableDates
-    //      });
-    // });
-
-
-
-
-
-
-
-    //Crear el datepicker
-    $("#fechaSur").datepicker({
-        beforeShowDay: noExcursion,
-        firstDay: 1,
-        closeText: 'Cerrar',
-        prevText: '< Ant',
-        nextText: 'Sig >',
-        currentText: 'Hoy',
-        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-        dayNamesMin: ['D','L','M','X','J','V','S'],
-        weekHeader: 'Sm',
-        dateFormat: 'dd/mm/yy',
-        firstDay: 1,
-        isRTL: false,
-        showMonthAfterYear: false,
-        yearSuffix: '',
-        showAnim: "fadeIn"
-    });
-
-
-
-
-
-
-    </script>
-</body>
+        </script>
+    </body>
 </html>
