@@ -86,12 +86,70 @@ include_once '../include/navPacientes.html';
                     <div id="modalEditBody" class="modal-body">
                         <!-- TODO:
                                 - mortrar el mismo formulario de crear cita
-                                    - tabla con id tablaProxCitas
+                                    - xxtabla con id tablaProxCitasxx
                                 - con los valores editables
                                 - cuando click "guardar cambios" llame función alter table
                                 - cuando cambios se guarden: cerrar modal  y mostrar mensaje OK
                         -->
                         <!-- <h1>contenido</h1> -->
+
+                        <!-- FORMULARIO EDITAR CITA -->
+                        <form id="tablaEditCita" class="pt-5" method="post">
+                            <!-- 1º row -->
+                            <div class="row pt-3">
+                                <!-- 1º col ESPECIALIDAD -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="editEspecialista">Especialista</label>
+                                        <p id="editEspecialista"></p>
+                                        <!-- <input type="text" id="editEspecialidad" name="editEspecialidad" value=""> -->
+                                        <!-- <select class="form-control" id="editEspecialidad"> -->
+                                            <!-- <option value="0">Seleccione</option> -->
+                                            <?php
+                                                // $especialidades = DB::especialidades();
+                                                // foreach ($especialidades as $especialidad) {
+                                                //     echo '<option value="'.$especialidad['id_especialidad'].'">'.$especialidad['nombre'].'</option>';
+                                                // }
+                                            ?>
+                                        <!-- </select> -->
+                                    </div>
+                                </div>
+                                <!-- 2º col ESPECIALISTA -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="editEspecialidad">Especialidad</label>
+                                        <p id="editEspecialidad"></p>
+                                        <!-- <select class="form-control" id="editEspecialidad"> -->
+                                            <!-- <option value="0">Primero seleccione una especialidad</option> -->
+                                            <!-- options obtenidas desde función ajax -->
+                                        <!-- </select> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /1º row -->
+                            <!-- 2º row -->
+                            <div class="row pt-3">
+                                <!-- 1º col FECHA -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="fechaCita">Elija la fecha</label>
+                                        <!-- <input type="date" name="fechaCita" id="fechaCita" max="2025-12-31" min="2020-01-01" class="form-control"> -->
+                                        <input type="text" name="editFecha" id="editFecha" class="campo form-control">
+
+                                    </div>
+                                </div>
+                                <!-- 2º col HORA -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="horaCita">Elija la hora</label>
+                                        <select class="form-control" id="editHora">
+                                            <option value="0">Primero seleccione una fecha</option>
+                                            <!-- options obtenidas desde función ajax -->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> <!-- /2º row -->
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -132,6 +190,9 @@ include_once '../include/navPacientes.html';
 
 <script src="js/listarCitasPaciente.js" charset="utf-8"></script>
 <script src="../js/utils.js" charset="utf-8"></script>
+<!-- <script src="js/obtenerEspecialistas.js" charset="utf-8"></script> -->
+<!-- <script src="js/obtenerDisponibilidad.js" charset="utf-8"></script> -->
+<script src="js/datepicker.js" charset="utf-8"></script>
 <?php
 include_once '../include/footer.html';
 ?>

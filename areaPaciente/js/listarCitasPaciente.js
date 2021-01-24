@@ -1,11 +1,11 @@
-
+console.log('entra');
 window.onload = listarCitas();
 window.onload = listarHistorialCitas();
 // window.onload = formularioEditarCita();
 
 
 
-// btnEditarCita.addEventListener("click", formularioEditarCita);
+
 
 var btnBorrarCita = document.getElementById('btnConfirmaBorrar');
 btnBorrarCita.addEventListener("click", borrarCita);
@@ -24,11 +24,11 @@ function listarCitas() {
         arrayRespuesta.citas.forEach((cita, i) => {
             let genero = (cita.genero === "mujer") ? "Dra. " : "Dr. " ;
             htmlTr += "<tr>"+
-                        "<td>"+ genero + cita.nombre +" "+ cita.apellidos +"</td>"+
-                        "<td>"+ cita.nombre_esp +"</td>"+
-                        "<td>"+ formatearFechaDDMMYYY(cita.fecha) +"</td>"+
-                        "<td>"+ cita.hora +"</td>"+
-                        "<td><button type='button' onclick='modalEditarCita("+cita.id_cita+")' id='btnEditarCita' class='btn btn-warning btn-sm mt-0 px-3' data-toggle='modal' data-target='#editarCita'><i class='fas fa-pen' aria-hidden='true'></i></button></td>"+
+                        "<td id='tdNombreProf("+cita.id_cita+")'>"+ genero + cita.nombre +" "+ cita.apellidos +"</td>"+
+                        "<td id='tdEspecialidad("+cita.id_cita+")'>"+ cita.nombre_esp +"</td>"+
+                        "<td id='tdFechaCita("+cita.id_cita+")'>"+ formatearFechaDDMMYYY(cita.fecha) +"</td>"+
+                        "<td id='tdHoraCita("+cita.id_cita+")'>"+ cita.hora +"</td>"+
+                        "<td><button type='button' onclick='modalEditarCita("+cita.id_cita+")' id='btnEditarCita("+cita.id_cita+")' class='btn btn-warning btn-sm mt-0 px-3 testing("+cita.id_cita+")' data-toggle='modal' data-target='#editarCita'><i class='fas fa-pen' aria-hidden='true'></i></button></td>"+
                         "<td><button type='button' onclick='modalBorrarCita("+cita.id_cita+")' class='btn btn-danger btn-sm mt-0 px-3' data-toggle='modal' data-target='#cancelarCita'><i class='fas fa-trash' aria-hidden='true'></i></button></td>"+
                     "</tr>";
         });
@@ -68,15 +68,12 @@ function listarHistorialCitas() {
 }
 
 /* BORRAR */
-
 /* Asignar al botón de borrado el ID de la cita a eliminar */
 function modalBorrarCita(idCita) {
     btnBorrarCita.setAttribute('data-idcita',idCita);
 }
-
 function borrarCita() {
     let idCita = btnBorrarCita.getAttribute('data-idcita');
-
     $.ajax({
         url: "back/borrarCitaPaciente.php",
         type: "post",
@@ -94,25 +91,42 @@ function borrarCita() {
     });
 }
 
-
-
-
 /* EDITAR */
-
-var btnEditarCita = document.getElementById('btnEditarCita');
-// console.log(btnEditarCita);
-
-/* Asignar al botón de borrado el ID de la cita a eliminar */
+/* Asignar al botón de edición el ID de la cita a editar */
 function modalEditarCita(idCita) {
+
+    var btnEditarCita = document.getElementById('btnEditarCita('+idCita+')');
     btnEditarCita.setAttribute('data-idcita',idCita);
+    let idCitaEditar = btnEditarCita.getAttribute('data-idcita');
+    console.log('xxxxxx',idCitaEditar);
+
+    // Obtiene los datos de la cita para cargarlos en el formulario editable
+    let tdProfesional = document.getElementById('tdNombreProf('+idCita+')');
+    let tdEspecialidad = document.getElementById('tdEspecialidad('+idCita+')');
+    let tdFecha = document.getElementById('tdFechaCita('+idCita+')');
+    let tdHora = document.getElementById('tdHoraCita('+idCita+')');
+
+    let tdProfText = tdProfesional.innerHTML;
+    let tdEspText = tdEspecialidad.innerHTML;
+    let tdFechaText = tdFecha.innerHTML;
+    let tdHoraText = tdHora.innerHTML;
+
+    // Pinta los datos de la cita a modificar
+    $('#editEspecialista').html(tdProfText);
+    $('#editEspecialidad').html(tdEspText);
+    $("#editFecha").datepicker("setDate", tdFechaText);
+    $('#editHora').html(tdHoraText);
+
+
+       // btnEditarCita.addEventListener("click", formularioEditarCita);
 }
 
 function formularioEditarCita() {
 
-    let idCita = btnEditarCita.getAttribute('data-idcita');
 
 
-    
+
+
     // let tdProfesional = document.getElementById ( "tdProf" );
     // let tdText = tdProfesional.innerHTML;
 
