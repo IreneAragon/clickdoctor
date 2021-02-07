@@ -367,7 +367,18 @@ class DB {
 
 
 
+    public static function editarCitaPaciente($id_cita, $fechaDB, $hora_cita) {
+        try {
+            $consulta = 'UPDATE citas SET fecha = "'.$fechaDB.'", orden ='.$hora_cita .' WHERE id_cita ='.$id_cita;
+            $resultado = self::ejecutaConsulta ($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado la cita devuelve true
+        return ($count === 1) ? true : false;
 
+    }
 
 
 

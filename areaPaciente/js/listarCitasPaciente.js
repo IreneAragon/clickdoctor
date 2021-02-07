@@ -4,6 +4,8 @@ window.onload = listarHistorialCitas();
 
 var btnBorrarCita = document.getElementById('btnConfirmaBorrar');
 btnBorrarCita.addEventListener("click", borrarCita);
+var btnGuardarCitaEditada = document.getElementById("btnGuardarCitaEditada");
+btnGuardarCitaEditada.addEventListener("click", modificarCita);
 
 
 /* Listar las próximas citas del paciente */
@@ -23,7 +25,7 @@ function listarCitas() {
                         "<td id='tdEspecialidad("+cita.id_cita+")'>"+ cita.nombre_esp +"</td>"+
                         "<td id='tdFechaCita("+cita.id_cita+")'>"+ formatearFechaDDMMYYY(cita.fecha) +"</td>"+
                         "<td id='tdHoraCita("+cita.id_cita+")'>"+ cita.hora +"</td>"+
-                        "<td><button type='button' onclick='modalEditarCita("+cita.id_cita+","+cita.id_prof_FK+")' id='btnEditarCita("+cita.id_cita+")' class='btn btn-warning btn-sm mt-0 px-3 testing("+cita.id_cita+")' data-toggle='modal' data-target='#editarCita'><i class='fas fa-pen' aria-hidden='true'></i></button></td>"+
+                        "<td><button type='button' onclick='modalEditarCita("+cita.id_cita+","+cita.id_prof_FK+", "+ cita.id_especialidad +")' id='btnEditarCita("+cita.id_cita+")' class='btn btn-warning btn-sm mt-0 px-3 testing("+cita.id_cita+")' data-toggle='modal' data-target='#editarCita'><i class='fas fa-pen' aria-hidden='true'></i></button></td>"+
                         "<td><button type='button' onclick='modalBorrarCita("+cita.id_cita+")' class='btn btn-danger btn-sm mt-0 px-3' data-toggle='modal' data-target='#cancelarCita'><i class='fas fa-trash' aria-hidden='true'></i></button></td>"+
                     "</tr>";
         });
@@ -88,7 +90,7 @@ function borrarCita() {
 
 /* EDITAR */
 /* Asignar al botón de edición el ID de la cita a editar */
-function modalEditarCita(idCita, idProf) {
+function modalEditarCita(idCita, idProf, idEsp) {
 
     var btnEditarCita = document.getElementById('btnEditarCita('+idCita+')');
     btnEditarCita.setAttribute('data-idcita',idCita);
@@ -107,6 +109,22 @@ function modalEditarCita(idCita, idProf) {
     // Pinta los datos de la cita a modificar
     $('#editEspecialista').html(tdProfText);
     $('#editEspecialidad').html(tdEspText);
+
+
+    // $('#idsCita').setAttribute('data-valores',{idProf : idProf, idEsp : idEsp});
+    var idsCita = document.getElementById('idsCita');
+    idsCita.setAttribute('data-valores', JSON.stringify({'idProf' : idProf, 'idEsp' : idEsp, 'idCita' : idCita}));
+
+    // var json = {"firstname":"Jesper","surname":"Aaberg","phone":["555-0100","555-0120"]};
+    //
+    //
+    // idsCita.setAttribute("data-valores", JSON.stringify(json));
+
+
+
+
+
+
     $("#editFecha").datepicker("setDate", tdFechaText);
 
     traerDisponibilidad(idProf, tdFechaText);
@@ -115,8 +133,10 @@ function modalEditarCita(idCita, idProf) {
 
 function traerDisponibilidad(idEspecialista, fecha) {
 
+    // Cambiar el formato de la fecha recibida para que la acepte la consulta a la BD
     fecha = fecha.split("-");
     let fechayyyymmdd =    fecha[2]+'-'+ fecha[1] +'-'+  fecha[0];
+
     $.ajax({
         url: "back/obtenerDisponibilidad.php",
         type: "post",
@@ -135,6 +155,53 @@ function traerDisponibilidad(idEspecialista, fecha) {
         $('#editHora').html(htmlOptions);
     });
 }
+
+function modificarCita() {
+
+    // Obtener los datos de la cita
+    let idsCita = document.getElementById('idsCita').value;
+    let valores = document.getElementById('idsCita').getAttribute('data-valores');
+    let jsonValores = JSON.parse(valores);
+
+    // Valores
+    let idEsp =  jsonValores.idEsp;
+    let idProf =  jsonValores.idProf;
+    let idCita =  jsonValores.idCita;
+    let fecha = document.getElementById('editFecha').value
+    fecha = fecha.split("-");
+    let fechayyyymmdd =    fecha[2]+'-'+ fecha[1] +'-'+  fecha[0];
+    let hora = document.getElementById('editHora').value
+
+    /*Validaciones*/
+    let msgError = "";
+
+    if (msgError === '') {
+
+        $.ajax({
+            url: "back/editarCitaPaciente.php",
+            type: "post",
+            data: {"idCita" : idCita,
+                   "idEsp" : idEsp,
+                   "idProf" : idProf,
+                   "fecha" : fechayyyymmdd,
+                   "hora" : hora},
+        }).done(function(respuesta) {
+            let arrayRespuesta = $.parseJSON(respuesta);
+            if (arrayRespuesta.success) {
+
+                console.log('EXITO');
+
+                // Muestra una alerta de éxito cuando la cita haya sido creada
+                // $("#citaCreada").show("fast");
+            }
+        });
+    }
+
+}
+
+
+
+
 
 
 
