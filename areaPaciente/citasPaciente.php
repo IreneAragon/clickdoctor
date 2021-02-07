@@ -94,7 +94,7 @@ include_once '../include/navPacientes.html';
                         <!-- <h1>contenido</h1> -->
 
                         <!-- FORMULARIO EDITAR CITA -->
-                        <form id="tablaEditCita" class="pt-5" method="post">
+                        <form id="tablaEditCita" class="" method="post">
                             <!-- 1º row -->
                             <div class="row pt-3">
                                 <!-- 1º col ESPECIALIDAD -->
@@ -192,6 +192,7 @@ include_once '../include/navPacientes.html';
 <script src="../js/utils.js" charset="utf-8"></script>
 <!-- <script src="js/obtenerEspecialistas.js" charset="utf-8"></script> -->
 <!-- <script src="js/obtenerDisponibilidad.js" charset="utf-8"></script> -->
+<!-- <script src="js/editarCita.js" charset="utf-8"></script> -->
 <script src="js/datepicker.js" charset="utf-8"></script>
 <?php
 include_once '../include/footer.html';

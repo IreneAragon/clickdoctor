@@ -5,6 +5,10 @@ selectorEspecialista.addEventListener("change", traerDisponibilidad);
 var selectorFecha = document.getElementById("fechaCita");
 selectorFecha.addEventListener("change", traerDisponibilidad);
 
+
+
+
+
 function traerDisponibilidad() {
 
     let idEspecialista = selectorEspecialista.value;
