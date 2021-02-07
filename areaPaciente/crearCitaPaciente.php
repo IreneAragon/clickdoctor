@@ -44,7 +44,7 @@ require '../clases/claseDB.php';
                 <div class="form-group">
                     <label for="fechaCita">Elija la fecha</label>
                     <!-- <input type="date" name="fechaCita" id="fechaCita" max="2025-12-31" min="2020-01-01" class="form-control"> -->
-                    <input type="text" name="fechaCita" id="fechaCita" class="campo form-control">
+                    <input type="text" name="fechaCita" id="fechaCita" class="campo form-control" placeholder="Haga click para elegir la fecha">
 
                 </div>
             </div>

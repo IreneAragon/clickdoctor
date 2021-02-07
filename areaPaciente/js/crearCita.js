@@ -12,7 +12,6 @@ var orden = document.getElementById("horaCita");
 function esFechaFutura(fecha, hora) {
     fecha = fecha.split("-");
     let fechayyyymmdd =    fecha[2]+'-'+ fecha[1] +'-'+  fecha[0];
-    // console.log('fechayyyymmdd',fechayyyymmdd);
     let ahora = new Date();
     let fechaHora = new Date(fechayyyymmdd + ' ' + hora);
     return (fechaHora > ahora);
