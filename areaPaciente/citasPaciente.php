@@ -36,6 +36,8 @@ include_once '../include/navPacientes.html';
                     No tiene citas programadas.
                 </div>
 
+
+
             </div>
         </div> <!-- /row2 -->
 
@@ -150,6 +152,13 @@ include_once '../include/navPacientes.html';
                                 </div>
                             </div> <!-- /2º row -->
                         </form>
+                        <!-- Se muestra cuando la cita ha sido creada -->
+                        <div id="citaModificada" class="alert alert-success mt-2" role="alert">
+                            Su cita ha sido modificada con éxito.
+                        </div>
+                        <!-- Muestra los errores al crear una cita -->
+                        <div id="errorCita" class="alert alert-danger mt-2" role="alert">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

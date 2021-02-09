@@ -92,6 +92,10 @@ function borrarCita() {
 /* Asignar al botón de edición el ID de la cita a editar */
 function modalEditarCita(idCita, idProf, idEsp) {
 
+    if ($("#errorCita").show()) {
+        $("#errorCita").hide()
+    }
+
     var btnEditarCita = document.getElementById('btnEditarCita('+idCita+')');
     btnEditarCita.setAttribute('data-idcita',idCita);
     let idCitaEditar = btnEditarCita.getAttribute('data-idcita');
@@ -106,26 +110,20 @@ function modalEditarCita(idCita, idProf, idEsp) {
     let tdFechaText = tdFecha.innerHTML;
     let tdHoraText = tdHora.innerHTML;
 
+    let divExito = document.getElementById("citaModificada");
+    divExito.style.display = 'none';
+
     // Pinta los datos de la cita a modificar
     $('#editEspecialista').html(tdProfText);
     $('#editEspecialidad').html(tdEspText);
+    
 
-
-    // $('#idsCita').setAttribute('data-valores',{idProf : idProf, idEsp : idEsp});
     var idsCita = document.getElementById('idsCita');
     idsCita.setAttribute('data-valores', JSON.stringify({'idProf' : idProf, 'idEsp' : idEsp, 'idCita' : idCita}));
 
-    // var json = {"firstname":"Jesper","surname":"Aaberg","phone":["555-0100","555-0120"]};
-    //
-    //
-    // idsCita.setAttribute("data-valores", JSON.stringify(json));
-
-
-
-
-
 
     $("#editFecha").datepicker("setDate", tdFechaText);
+
 
     traerDisponibilidad(idProf, tdFechaText);
 
@@ -173,7 +171,29 @@ function modificarCita() {
     let hora = document.getElementById('editHora').value
 
     /*Validaciones*/
-    let msgError = "";
+    let divError = document.getElementById("errorCita");
+    let divExito = document.getElementById("citaModificada");
+    let regexFecha = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
+    let msgError = '';
+
+    if (fechayyyymmdd === 'undefined-undefined-') {
+        msgError += "Debe seleccionar una fecha.<br>";
+    }
+
+    if (!regexFecha.test(fechayyyymmdd)) {
+        msgError += "Formato de fecha incorrecto.<br>";
+    }
+
+    if (hora === '0') {
+        msgError += "Debe seleccionar una hora.";
+    }
+
+    if (msgError === '') {
+        divError.style.display = 'none';
+    } else {
+        divError.innerHTML = msgError;
+        divError.style.display = 'block';
+    }
 
     if (msgError === '') {
 
@@ -189,12 +209,12 @@ function modificarCita() {
             let arrayRespuesta = $.parseJSON(respuesta);
             if (arrayRespuesta.success) {
 
-                console.log('EXITO');
+                divExito.style.display = 'block';
+                listarCitas();
 
-                // Muestra una alerta de éxito cuando la cita haya sido creada
-                // $("#citaCreada").show("fast");
             }
         });
+
     }
 
 }
