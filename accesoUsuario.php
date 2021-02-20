@@ -3,6 +3,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+if(!isset($_SESSION)) {
+  session_start();
+}
+
 require 'clases/claseDB.php';
 
 // Recibir datos a través de $_POST
@@ -69,9 +73,9 @@ if (!empty($_POST)) {
                     $idUsuario = DB::getIdUsuario($email);
                     $generoUsuario = DB::getGeneroUsuario($email);
                     // Iniciar sesión y guardar en ésta el id y el género del usuario logueado
-                    session_start();
                     $_SESSION['idUsuario'] = $idUsuario;
                     $_SESSION['generoUsuario'] = $generoUsuario;
+                    $_SESSION['email'] = $email;
                     // Si el usuario está activo, se le redirige a su página privada en función del tipo de usuario
                     if ($esPaciente) {
                         header('Location: areaPaciente/areaPaciente.php');

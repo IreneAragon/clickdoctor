@@ -1,5 +1,4 @@
 <?php
-
 require_once 'claseAdministrador.php';
 require_once 'claseCita.php';
 require_once 'claseCorreo.php';
