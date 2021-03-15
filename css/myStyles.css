@@ -146,15 +146,15 @@ footer {
 /********************************
             PERFIL
 *********************************/
-/*
+
 .avatar {
   vertical-align: middle;
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  IMPORTANTE - esto es lo que hace que no se chafe la img
+  /* IMPORTANTE - esto es lo que hace que no se chafe la img */
   object-fit: cover;
-} */
+}
 
 .avatarNav {
   vertical-align: middle;
@@ -166,10 +166,10 @@ footer {
   cursor: pointer;
 }
 
-/* .pointer {
+.pointer {
     cursor: pointer;
 }
 
-#image {
+.fileInput {
     display: none;
-} */
+}

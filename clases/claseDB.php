@@ -365,7 +365,7 @@ class DB {
     }
 
 
-
+    /* Edita la cita del paciente */
     public static function editarCitaPaciente($id_cita, $fechaDB, $hora_cita) {
         try {
             $consulta = 'UPDATE citas SET fecha = "'.$fechaDB.'", orden ='.$hora_cita .' WHERE id_cita ='.$id_cita;
@@ -379,15 +379,99 @@ class DB {
 
     }
 
+    /* Modifica los datos del usuario desde el perfil, incluída la contraseña */
+    public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $hashPass, $idUsuario) {
+        try {
+            $consulta = 'UPDATE pacientes SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'", password ="'.$hashPass.'" WHERE id_paciente ="'.$idUsuario.'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado el perfil correctamente devuelve true
+        return ($count === 1) ? true : false;
+
+    }
+
+    /* Modifica los datos del usuario desde el perfil, SIN la contraseña */
+    public static function modificarDatosUsuarioNoPass($name, $lastname, $email, $fNac, $idUsuario) {
+        try {
+            $consulta = 'UPDATE pacientes SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'" WHERE id_paciente ="'.$idUsuario.'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado el perfil correctamente devuelve true
+        return ($count === 1) ? true : false;
+    }
+
+    public static function datosPaciente($idPaciente) {
+        try {
+            $consulta = 'SELECT * FROM pacientes WHERE id_paciente = "'.$idPaciente.'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $datosPaciente = $resultado->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $datosPaciente;
+    }
+
+    public static function guardarSrc($srcImg, $email) {
+        try {
+            $consulta = 'UPDATE pacientes SET srcImg = "'.$srcImg.'" WHERE email = "'.$email.'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado la cita devuelve true
+        return ($count === 1) ? true : false;
+
+    }
+
+    public static function obtenerSrc($email) {
+        try {
+            $consulta = 'SELECT srcImg FROM pacientes WHERE email = "'.$email.'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $srcImg = $resultado->fetch();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $srcImg;
+    }
 
 
+/*
+
+function guardarSrc($srcImg, $email, $conexion) {
+  try {
+      $consulta = $conexion->prepare('UPDATE profesionales SET srcImg = :srcImg WHERE email = :email');
+      $consulta->bindParam(":srcImg", $srcImg);
+      $consulta->bindParam(":email", $email);
+
+      $consulta->execute();
+
+  } catch (PDOException $e) {
+      return $e->getCode()."- ".$e->getMessage();
+  }
+}
 
 
+function obtenerSrc($email, $conexion) {
+  try {
+      $consulta = $conexion->prepare("SELECT srcImg FROM profesionales WHERE email = :email");
+      $consulta->bindParam(":email", $email);
+      $consulta->execute();
+      $srcImagenPerfil = $consulta->fetch();
 
 
-
-
-
+  } catch (PDOException $e) {
+      $error = "#".$e->getCode().": ".$e->getMessage();
+  }
+  return $srcImagenPerfil['srcImg'];
+}
+ */
 
 
 

@@ -1,6 +1,6 @@
 <?php
 include_once '../include/cabeceraUsuarios.html';
-include_once '../include/navPacientes.html';
+include_once '../include/navPacientes.php';
 
 require '../clases/claseDB.php';
 ?>
