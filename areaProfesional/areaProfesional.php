@@ -1,7 +1,7 @@
 <?php
 include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';
-var_dump($_SESSION);
+// var_dump($_SESSION);
 ?>
 
 <!-- TODO:

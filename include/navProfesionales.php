@@ -28,7 +28,7 @@ require '../clases/claseDB.php';
             <!-- <a id="closeNav" class="closebtn">×</a> -->
             <a href="citasPaciente.php">Citas</a>
             <a href="mensajesPaciente.php">Mensajes</a>
-            <a href="historialPaciente.php">Historial</a>
+            <a href="historial.php">Historiales</a>
             <!-- TODO: pagina salir real, que cierre sesión y no debe entrar si vuelve atrás en navegador -->
             <a href="../index.php">Salir</a>
         </div>
