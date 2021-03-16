@@ -1,12 +1,56 @@
 <?php
 
 /*
-
-<?php if (isset($_POST['infNombre'])): ?>
-    <p>Informe clínico de paciente <?=$_POST['infNombre'].' '.$_POST['infApellidos']?></p>
-<?php endif; ?>
+TODO:
+    - Cargar automáticamente la ESPECIALIDAD del profesional
+        foreach
 
  */
+
+// Inicia sesión solo si no lo está ya
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+require_once '../../clases/claseDB.php';
+
+$idProf = $_SESSION['idUsuario'];
+$datosProfesional = DB::datosProfesional($idProf);
+$idEspProf =   DB::idEspecialidadPracticaProf($idProf);
+// var_dump('esp----',$idEspProf);die();
+
+$nombreProf = $datosProfesional['nombre'];
+$apellidosProf = $datosProfesional['apellidos'];
+$nombreApellidosProf = $nombreProf.' '.$apellidosProf;
+$genero = $datosProfesional['genero'];
+$centro = $datosProfesional['ejerce_en'];
+$nCol = $datosProfesional['n_colegiado'];
+
+if ($genero === 'mujer' ) {
+    $nombreCompletoProf = 'Dra. '.$nombreApellidosProf;
+} else {
+    $nombreCompletoProf = 'Dr. '.$nombreApellidosProf;
+}
+
+$cadenaEspecialidadesProfesional = "";
+foreach ($idEspProf as $key => $idEsp) {
+    $idEspecialidad =  $idEsp['id_esp'];
+    $nombreEspecialidad = DB::nombreEspecialidad($idEspecialidad);
+    // $cadenaEspecialidadesProfesional = $nombreEspecialidad['nombre'].', ';
+
+    $cadenaEspecialidadesProfesional .= $nombreEspecialidad['nombre'].', ';
+
+
+    // echo $cadenaEspecialidadesProfesional;
+}
+$cadenaEspecialidadesProfesional = rtrim($cadenaEspecialidadesProfesional, ', ');
+
+
+
+ // Formatear fecha de nacimiento
+ $fNac = trim(filter_input(INPUT_POST, "infFnac", FILTER_DEFAULT));
+ $exp = explode('-', $fNac);
+ $fNacDDMMYYY = $exp[2].'-'.$exp[1].'-'.$exp[0];
 
  ?>
 
@@ -14,9 +58,8 @@
 <html lang="es" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Generar PDF con PHP</title>
+        <title>Informe Clínico PDF</title>
         <style type="text/css">
-
             .container {
                 margin: 50px 50px;
             }
@@ -42,7 +85,6 @@
                 background-color: #ededed;
                 margin-top: 10px;
                 border-radius: 5px;
-
             }
             table {
                 width: 100%;
@@ -56,7 +98,6 @@
             table thead tr th, table tbody tr td {
                 padding-left: 50px;
                 padding-right: 50px;
-
             }
             .cabecera {
                 width: 60%;
@@ -65,7 +106,6 @@
                 text-align: center;
                 border-radius: 5px;
                 line-height: 10px;
-
             }
             .cabecera h1 {
                 font-size: 32px;
@@ -80,28 +120,25 @@
                 margin-top: 15px;
                 border-radius: 5px;
                 padding-left: 30px;
-
             }
             .firmaContainer h4 {
                 margin-left: 30px;
                 line-height: 30px;
             }
-            .firmaContainer p {
-                /* margin-left: 30px; */
-            }
-            /* .firma{
-                color: red;
-            } */
         </style>
     </head>
     <body>
         <div class="container">
+            <!-- Logo de Click Doctor -->
             <img src="../../img/logo2.png" alt="">
+
+            <!-- Cabecera y fecha -->
             <div class="cabecera">
                 <h1>INFORME CLÍNICO</h1>
                 <h4>16 de marzo de 2021</h4>
             </div>
 
+            <!-- Tabla con los datos del paciente y el profesional -->
             <div class="tableContainer">
                 <table>
                     <thead>
@@ -112,71 +149,61 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td><strong>Paciente:</strong> Aragón Gómez, Irene</td>
-                        <td><strong>Nombre:</strong> Dr. Nacho Martín</td>
+                        <td><strong>Paciente:</strong> <?=$_POST['infApellidos'].', '.$_POST['infNombre']?></td>
+                        <td><strong>Nombre:</strong> <?=$nombreCompletoProf?></td>
                       </tr>
                       <tr>
-                        <td><strong>DNI:</strong> 74875562M</td>
-                        <td><strong>Especialidad:</strong> Medicina general</td>
+                        <td><strong>DNI:</strong> <?=$_POST['infDni']?></td>
+                        <td><strong>Especialidad:</strong> <?=$cadenaEspecialidadesProfesional?></td>
                       </tr>
                       <tr>
-                        <td><strong>Fecha de nacimiento:</strong> 23/06/1988</td>
-                        <td><strong>Centro:</strong> Hospital Quirón</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Domicilio:</strong> Av de los Guindos, Málaga</td>
-                        <td><strong>Dirección:</strong> Av Imperio Argentina, Málaga</td>
+                        <td><strong>Fecha de nacimiento:</strong> <?=$fNacDDMMYYY?></td>
+                        <td><strong>Centro:</strong> <?=$centro?></td>
                       </tr>
                     </tbody>
                 </table>
             </div>
 
+            <!-- Datos del informe -->
             <div class="informeContainer">
 
                 <h4>MOTIVO DE LA CONSULTA</h4>
-                <p>Lorem ipsum dolor sit amet</p>
+                <p><?=$_POST['infMotivo']?></p>
 
                 <h4>ANTECEDENTES</h4>
-                <p>Nullam non imperdiet mauris</p>
+                <p><?=$_POST['infAntecedentes']?></p>
 
                 <h4>ALERGIAS</h4>
-                <p>Consectetur adipiscing</p>
+                <p><?=$_POST['infAlergias']?></p>
 
                 <h4>ANAMNESIS</h4>
-                <p>
-                    Sed volutpat ipsum vitae arcu elementum, ut vulputate libero rhoncus. Vivamus blandit
-                    vulputate volutpat. Mauris tristique leo vel tellus porta, ut molestie turpis faucibus.
-                    Morbi ornare felis eu laoreet iaculis.
-                </p>
+                <p><?=$_POST['infAnamnesis']?></p>
 
                 <h4>EXPLORACIÓN</h4>
-                <p>Consectetur adipiscing</p>
+                <p><?=$_POST['infExploración']?></p>
 
-                <h4>DIAGNÓSITCO</h4>
-                <p>
-                    Aliquam nec elementum quam, id lacinia nisl. Phasellus at augue rhoncus, mattis magna vel,
-                    mollis sem. Integer sodales eleifend dui, a varius tortor ultrices sed. Curabitur gravida,
-                    ligula at pulvinar pellentesque, ante mi maximus lectus, nec rutrum ipsum magna a nisi.
-                    Sed posuere fringilla lorem in dapibus. Quisque in mattis metus.
-                </p>
+                <h4>DIAGNÓSTICO</h4>
+                <p><?=$_POST['infDiagnostico']?></p>
 
                 <h4>PRESCRIPCIÓN</h4>
-                <p>Ibuprofeno 1gr cada 8 horas</p>
+                <p><?=$_POST['infPrescripcion']?></p>
 
-                <h4>OBSERVACIONES</h4>
-                <p>Consectetur adipiscing</p>
+
+                <?php if (trim($_POST['infObservaciones']) !== ''){ ?>
+                    <h4>OBSERVACIONES</h4>
+                    <p><?=$_POST['infObservaciones']?></p>
+                <?php } ?>
+
 
             </div>
 
+            <!-- Firma del profesional -->
             <div class="firmaContainer">
-                <h4 class="firma">Firma el Dr. Nacho Martín</h4>
-                <p><strong>Nº Colegiado:</strong> 29/29/11047</p>
+                <h4>Firmado: <?=$nombreCompletoProf?></h4>
+                <p><strong>Nº Colegiado:</strong> <?=$nCol?></p>
             </div>
-
-
 
         </div>
-
 
     </body>
 </html>

@@ -19,7 +19,7 @@ require '../clases/claseDB.php';
         <!-- <button class="openbtn light-blue accent-1" onclick="openNav()">☰</button> -->
         <!-- <button class="openbtn light-blue accent-1" id="openNav">☰</button> -->
         <a class="navbar-brand" href="areaProfesional.php">
-            <img src="../img/logoNav.png" height="30" alt="click doctor logo">
+            <img src="../img/logoNav.png" height="20" alt="click doctor logo">
         </a>
         <img class="avatarNav" src="../areaProfesional/perfil/images/default-avatar.png">
         <div id="mySidebar" class="sidebar light-blue accent-1 ">

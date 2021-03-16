@@ -417,6 +417,40 @@ class DB {
         return $datosPaciente;
     }
 
+    public static function datosProfesional($idProfesional) {
+        try {
+            $consulta = 'SELECT * FROM profesionales WHERE id_profesional = "'.$idProfesional.'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $datosProfesional = $resultado->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $datosProfesional;
+    }
+
+    public static function idEspecialidadPracticaProf($idProfesional) {
+        try {
+            $consulta = 'SELECT id_esp FROM practica WHERE id_prof = "'.$idProfesional.'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $idEsp = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $idEsp;
+    }
+
+    public static function nombreEspecialidad($id) {
+        try {
+            $consulta = 'SELECT nombre FROM especialidades WHERE id_especialidad = "'.$id.'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $nombreEspecialidad = $resultado->fetch();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $nombreEspecialidad;
+    }
+
+
     public static function guardarSrc($srcImg, $email) {
         try {
             $consulta = 'UPDATE pacientes SET srcImg = "'.$srcImg.'" WHERE email = "'.$email.'"';
