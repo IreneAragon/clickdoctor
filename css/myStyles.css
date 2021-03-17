@@ -8,6 +8,13 @@ body {
 .inputError {
     background: #F8D7DA;
 }
+.iconoOjo  {
+    font-size: 18px;
+    margin-left: 10px;
+}
+.btnStyle{
+    font-size: 12px!important;
+}
 /*********************************************************
 *                                                        *
 *               CABECERA Y NAVEGADOR                     *
