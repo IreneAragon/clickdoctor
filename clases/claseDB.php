@@ -349,6 +349,34 @@ class DB {
         return $idPaciente['id_paciente'];
     }
 
+    //comprobarDniPacienteExiste($dniPac)******************
+    public static function comprobarDniPacienteExiste($dniPac) {
+        try {
+            $consulta = 'SELECT id_paciente FROM pacientes WHERE dni = "'. $dniPac .'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+
+        return ($count === 1) ? true : false;
+    }
+
+/*
+public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $hashPass, $idUsuario) {
+    try {
+        $consulta = 'UPDATE pacientes SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'", password ="'.$hashPass.'" WHERE id_paciente ="'.$idUsuario.'"';
+        $resultado = self::ejecutaConsulta ($consulta);
+        $count = $resultado->rowCount();
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
+    }
+    // si se ha editado el perfil correctamente devuelve true
+    return ($count === 1) ? true : false;
+
+}
+ */
+
     /* Obtener el género del profesional */
     public static function getGeneroUsuario($email) {
         try {

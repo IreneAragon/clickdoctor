@@ -30,8 +30,8 @@ if (!isset($_SESSION)) {
             <a href="citasPaciente.php" class="hover">Citas</a>
             <a href="mensajesPaciente.php" class="hover">Mensajes</a>
             <a href="#" class="noHover">Informes</a>
-            <a href="historial.php" class="moverTexto hover">Generar informes</a>
-            <a href="historial.php" class="moverTexto hover">Ver informes</a>
+            <a href="crearInforme.php" class="moverTexto hover">Generar informes</a>
+            <a href="verInformes.php" class="moverTexto hover">Ver informes</a>
 
             <!-- TODO: pagina salir real, que cierre sesión y no debe entrar si vuelve atrás en navegador -->
             <a href="../index.php" class="hover">Salir</a>

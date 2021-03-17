@@ -20,15 +20,28 @@ $dateTime = date('dmYHis');
 // Recibir datos a través de $_POST
 if (!empty($_POST)) {
 
-    // $pdfCreado = true;
+    // $dniPacExiste = false;
 
     $dniPac    = trim(filter_input(INPUT_POST, "infDni", FILTER_DEFAULT));
     $nombre    = trim(filter_input(INPUT_POST, "infNombre", FILTER_DEFAULT));
     $apellidos = trim(filter_input(INPUT_POST, "infApellidos", FILTER_DEFAULT));
     $apellidos = str_replace(' ', '_', $apellidos);
     $paciente  = $nombre.'_'.$apellidos;
-    $idPac     = DB::obteneridPacientePorDni($dniPac);
-    $pathConCarpetaId = PDF_PATH.$idPac.'/';
+
+    $comprobarDniPac = DB::comprobarDniPacienteExiste($dniPac);
+
+    if ($comprobarDniPac) {
+        // $dniPacExiste = true;
+        $idPac = DB::obteneridPacientePorDni($dniPac);
+        $pathConCarpetaId = PDF_PATH.$idPac.'/';
+    } else {
+        $msgError = "El DNI del paciente es incorrecto o el usuario no existe";
+        include_once("crearInforme.php");
+        return;
+    }
+
+    // $idPac     = DB::obteneridPacientePorDni($dniPac);
+    // $pathConCarpetaId = PDF_PATH.$idPac.'/';
 
     if (!file_exists($pathConCarpetaId)) {
         mkdir($pathConCarpetaId, 0777, true);
@@ -43,12 +56,12 @@ if (!empty($_POST)) {
 
 
     $msgExito =  "Informe creado correctamente";
-    include_once("historial.php");
+    include_once("crearInforme.php");
     return;
 
 } else {
-    $msgError = "Ocurrió un error, pruebe de nuevo";
-    include_once("historial.php");
+    $msgError .= "Ocurrió un error, pruebe de nuevo";
+    include_once("crearInforme.php");
     return;
 }
 
