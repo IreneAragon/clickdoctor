@@ -336,6 +336,19 @@ class DB {
         return $idUsuario['id_paciente'];
     }
 
+    /* Obtener ID del usuario a través del dni */
+    public static function obteneridPacientePorDni($dniPac) {
+        try {
+            $consulta = 'SELECT id_paciente FROM pacientes WHERE dni = "'. $dniPac .'"';
+            $resultado = self::ejecutaConsulta ($consulta);
+            $idPaciente = $resultado->fetch();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+
+        return $idPaciente['id_paciente'];
+    }
+
     /* Obtener el género del profesional */
     public static function getGeneroUsuario($email) {
         try {

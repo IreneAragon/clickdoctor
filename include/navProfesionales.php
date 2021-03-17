@@ -6,7 +6,9 @@ ini_set('display_errors', '1');
 if (!isset($_SESSION)) {
     session_start();
 }
-require '../clases/claseDB.php';
+// TODO: mensaje para la irene del futuro: si llamas a la claseDB para agregar la img de perfil
+// te va a dejar de funcionar el generador de informes, así que NO LLAMES AQUÍ a la claseDB,
+// inserta el src de la imagen de perfil por SESSION. Ánimo guapa!
 
 ?>
 
@@ -25,12 +27,14 @@ require '../clases/claseDB.php';
         <div id="mySidebar" class="sidebar light-blue accent-1 ">
 
             <a class="closebtn" onclick="closeNav()">×</a>
-            <!-- <a id="closeNav" class="closebtn">×</a> -->
-            <a href="citasPaciente.php">Citas</a>
-            <a href="mensajesPaciente.php">Mensajes</a>
-            <a href="historial.php">Historiales</a>
+            <a href="citasPaciente.php" class="hover">Citas</a>
+            <a href="mensajesPaciente.php" class="hover">Mensajes</a>
+            <a href="#" class="noHover">Informes</a>
+            <a href="historial.php" class="moverTexto hover">Generar informes</a>
+            <a href="historial.php" class="moverTexto hover">Ver informes</a>
+
             <!-- TODO: pagina salir real, que cierre sesión y no debe entrar si vuelve atrás en navegador -->
-            <a href="../index.php">Salir</a>
+            <a href="../index.php" class="hover">Salir</a>
         </div>
     </nav>
 </div>

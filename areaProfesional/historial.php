@@ -14,7 +14,7 @@ include_once '../include/navProfesionales.php';
 
 <body>
     <div class="container mt-5">
-        <form class="mt-5" action="informes/generarInforme.php" method="post">
+        <form class="mt-5" action="generarInforme.php" method="post">
 
             <p class="h4 mb-4 mt-5">Introduce los datos del paciente</p>
             <div class="form-row mb-2">
@@ -101,6 +101,22 @@ include_once '../include/navProfesionales.php';
 
             <input type="submit" id="infSubmit" name="infSubmit" value="Guardar Informe" class="btn btn-info my-4 btn-block">
         </form>
+        <!-- Muestra los mensajes de error o de éxito en caso de haberlos -->
+        <div class="alert-danger mt-5 text-center">
+          <?php
+            if(isset($msgError)){
+              echo $msgError;
+            }
+          ?>
+        </div>
+        <div class="alert-success text-center">
+          <?php
+            if(isset($msgExito)){
+              echo $msgExito;
+            }
+
+          ?>
+        </div>
     </div>
 </body>
 

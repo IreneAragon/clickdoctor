@@ -12,7 +12,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-require_once '../../clases/claseDB.php';
+// require_once '../clases/claseDB.php';
 
 $idProf = $_SESSION['idUsuario'];
 $datosProfesional = DB::datosProfesional($idProf);
@@ -130,7 +130,7 @@ $cadenaEspecialidadesProfesional = rtrim($cadenaEspecialidadesProfesional, ', ')
     <body>
         <div class="container">
             <!-- Logo de Click Doctor -->
-            <img src="../../img/logo2.png" alt="">
+            <img src="../img/logo2.png" alt="">
 
             <!-- Cabecera y fecha -->
             <div class="cabecera">
