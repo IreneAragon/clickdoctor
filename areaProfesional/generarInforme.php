@@ -2,10 +2,13 @@
 // muestra errores php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
-// include_once '../../include/cabeceraProfesionales.html';
-// include_once '../../include/navProfesionales.php';
+// var_dump($nombreInforme);die();
 require_once '../clases/claseDB.php';
+
+// Inicia sesión solo si no lo está ya
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 // Cargar librerías necesarias para generar el PDF
 require 'informes/vendor/autoload.php';
@@ -20,7 +23,7 @@ $dateTime = date('dmYHis');
 // Recibir datos a través de $_POST
 if (!empty($_POST)) {
 
-    // $dniPacExiste = false;
+    $error = false;
 
     $dniPac    = trim(filter_input(INPUT_POST, "infDni", FILTER_DEFAULT));
     $nombre    = trim(filter_input(INPUT_POST, "infNombre", FILTER_DEFAULT));
@@ -35,6 +38,7 @@ if (!empty($_POST)) {
         $idPac = DB::obteneridPacientePorDni($dniPac);
         $pathConCarpetaId = PDF_PATH.$idPac.'/';
     } else {
+        $error = true;
         $msgError = "El DNI del paciente es incorrecto o el usuario no existe";
         include_once("crearInforme.php");
         return;
@@ -54,12 +58,17 @@ if (!empty($_POST)) {
     $html2pdf->writeHTML($html);
     $html2pdf->Output($pathConCarpetaId.$paciente.'_'.$dateTime.'.pdf', 'F');
 
-
+    // Obtener y guardar datos del informe en la DB
+    $nombreInforme = $paciente.'_'.$dateTime.'.pdf';
+    $idProf = $_SESSION['idUsuario'];
+    $grabarInforme = DB::insertarInforme($nombreInforme, $idProf, $idPac);
+    
     $msgExito =  "Informe creado correctamente";
     include_once("crearInforme.php");
     return;
 
 } else {
+    $error = true;
     $msgError .= "Ocurrió un error, pruebe de nuevo";
     include_once("crearInforme.php");
     return;

@@ -6,6 +6,8 @@ ini_set('display_errors', '1');
 if (!isset($_SESSION)) {
     session_start();
 }
+
+
 include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';
 
@@ -56,3 +58,7 @@ include_once '../include/navProfesionales.php';
          </tbody>
      </table>
  </div>
+
+<script src="js/listarInformesProfesional.js" charset="utf-8"></script>
+<?php
+include_once '../include/footer.html';

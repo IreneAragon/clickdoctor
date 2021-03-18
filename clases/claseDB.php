@@ -516,6 +516,49 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $srcImg;
     }
 
+//insertarInforme($nombreInforme, $idProf, $idPac);
+
+    public static function insertarInforme($nombreInforme, $idProf, $idPac){
+            try {
+                $consulta = 'INSERT INTO informes (nombre, id_profesional_FK, id_paciente_FK)
+                             VALUES ("'. $nombreInforme .'", "'. $idProf .'", "'. $idPac .'")';
+                $resultado = self::ejecutaConsulta ($consulta);
+                
+            } catch (PDOException $e) {
+                die("Error: " . $e->getMessage());
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 
