@@ -135,7 +135,6 @@ $cadenaEspecialidadesProfesional = rtrim($cadenaEspecialidadesProfesional, ', ')
             <!-- Cabecera y fecha -->
             <div class="cabecera">
                 <h1>INFORME CLÍNICO</h1>
-
                 <h4><?php echo date('d\-m\-Y'); ?></h4>
             </div>
 

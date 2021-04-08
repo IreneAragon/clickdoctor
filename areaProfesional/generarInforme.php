@@ -62,7 +62,7 @@ if (!empty($_POST)) {
     $nombreInforme = $paciente.'_'.$dateTime.'.pdf';
     $idProf = $_SESSION['idUsuario'];
     $grabarInforme = DB::insertarInforme($nombreInforme, $idProf, $idPac);
-    
+
     $msgExito =  "Informe creado correctamente";
     include_once("crearInforme.php");
     return;
@@ -75,3 +75,4 @@ if (!empty($_POST)) {
 }
 
  ?>
+<script src="js/listarInformesProfesional.js" charset="utf-8"></script>
