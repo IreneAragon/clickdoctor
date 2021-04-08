@@ -6,8 +6,22 @@ ini_set('display_errors', '1');
 // if (!isset($_SESSION)) {
 //     session_start();
 // }
-// include_once '../include/cabeceraProfesionales.html';
-// include_once '../include/navProfesionales.php';
+
+/*
+TODO:
+    - obtener id paciente, que será el num de carpeta
+    - obtener el nombre del fichero que queremos abrir según el id que venga del botón "ver informe"
+      que es pintado en listarInformesProfesional por ajax
+ */
+
+
+// Lo que tiene que ser
+// $folder = 'idPaciente';
+// $file = 'nombre del informe';
+// $filepath = "/Applications/MAMP/htdocs/CLICK_DOCTOR/historiales/".$folder."/".$file.".pdf"; // .pdf????
+
+
+
 
 
     // Store the file name into variable

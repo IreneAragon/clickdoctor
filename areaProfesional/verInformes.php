@@ -7,22 +7,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-
 include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';
 
-
-    // Store the file name into variable
-    // $file = 'Alicia_Alcaide_Jiménez_17032021121903';
-    // $filepath = "/Applications/MAMP/htdocs/CLICK_DOCTOR/historiales/19/Alicia_Alcaide_Jiménez_17032021121903.pdf";
-    // $filepath = $_SERVER['DOCUMENT_ROOT'].'/CLICK_DOCTOR/historiales/19/Alicia_Alcaide_Jiménez_17032021121903';
-    // Header content type
-    // header("Content-type: application/pdf");
-    // Send the file to the browser.
-    // readfile($filepath);
-
-
- ?>
+?>
 
  <div class="container mt-5">
      <h1 class="mt-5">Informes creados por mi</h1>

@@ -119,5 +119,6 @@ include_once '../include/navProfesionales.php';
 </body>
 
 <script src="js/ocultarDiv.js" charset="utf-8"></script>
+<script src="js/listarInformesProfesional.js" charset="utf-8"></script>
  <?php
  include_once '../include/footer.html';
