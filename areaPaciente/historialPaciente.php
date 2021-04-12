@@ -7,7 +7,7 @@ include_once '../include/navPacientes.php';
 <div class="container pt-5">
     <div class="row">
         <div class="col">
-            <h2 class="pt-5">MENSAJES</h2>
+            <h2 class="pt-5">HISTORIAL</h2>
         </div>
     </div>
 </div>

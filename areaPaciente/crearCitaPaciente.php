@@ -2,7 +2,7 @@
 include_once '../include/cabeceraUsuarios.html';
 include_once '../include/navPacientes.php';
 
-require '../clases/claseDB.php';
+// require '../clases/claseDB.php';
 ?>
 
 <div class="container pt-5 text-center">
