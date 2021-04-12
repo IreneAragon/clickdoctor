@@ -55,18 +55,7 @@ include_once '../include/navPacientes.php';
                         </tr>
                     </thead>
                     <tbody id="listaHistorialCitas">
-                        <!-- <tr>
-                            <td>Dr Periquito Palotes</td>
-                            <td>Medicina General</td>
-                            <td>10-10-2020</td>
-                            <td>09:56</td>
-                        </tr>
-                        <tr>
-                            <td>Dr Periquito Palotes</td>
-                            <td>Medicina General</td>
-                            <td>10-10-2020</td>
-                            <td>09:56</td>
-                        </tr> -->
+                        <!-- tr obtenidas por ajax -->
                     </tbody>
                 </table>
             </div>
