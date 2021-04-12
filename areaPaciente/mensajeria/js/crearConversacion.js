@@ -49,12 +49,13 @@ function crearConversacion() {
             if (arrayRespuesta.success) {
                 // Muestra una alerta de éxito cuando la cita haya sido creada
                 $("#converCreada").show("fast");
+                if($("#converCreada").show) {
+                    setTimeout(function() {
+                        $("#converCreada").fadeOut(1500);
+                    },7000);
+                }
             }
         });
-
-
-
-
     }
 
 

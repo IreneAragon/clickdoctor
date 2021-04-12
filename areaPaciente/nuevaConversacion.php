@@ -55,7 +55,7 @@ include_once '../include/navPacientes.php';
 
     <!-- Se muestra cuando la conversación ha sido creada -->
     <div id="converCreada" class="alert alert-success mt-5" role="alert">
-        Su conversación ha sido iniciada con éxito, el profesional le contestará lo antes posible.
+        Su mensaje ha sido enviado con éxito, el profesional le contestará lo antes posible.
     </div>
     <!-- Muestra los errores al crear una conversación -->
     <div id="errorCrearConver" class="alert alert-danger mt-5" role="alert"></div>
