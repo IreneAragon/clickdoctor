@@ -24,24 +24,24 @@ include_once '../include/navProfesionales.php';
              </tr>
          </thead>
          <tbody id="listaProfInformes">
-             <!-- tr obtenidas por ajax -->
-             <form class="" action="abrirInforme.php" method="post">
+             <!-- TODO: tr obtenidas por ajax -->
+             <!-- <form class="" action="abrirInforme.php" method="post"> -->
                  <tr>
                      <td>2021/15/03</td>
                      <td>Irene Aragón Gómez</td>
-                     <td> <button type="submit" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
+                     <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
                 </tr>
                 <tr>
                     <td>2021/15/03</td>
                     <td>Irene Aragón Gómez</td>
-                    <td> <button type="submit" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
+                    <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
                </tr>
                <tr>
                    <td>2021/15/03</td>
                    <td>Irene Aragón Gómez</td>
-                   <td> <button type="submit" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
+                   <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
               </tr>
-             </form>
+             <!-- </form> -->
 
          </tbody>
      </table>
