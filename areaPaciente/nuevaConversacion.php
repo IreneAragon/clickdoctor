@@ -7,9 +7,6 @@ include_once '../include/navPacientes.php';
 <div class="mt-5 container">
     <div class="mt-5">
         <h1>Crea una conversación nueva con un profesional</h1>
-
-        <!-- <form id="formCrearConver"  class="mt-5" method="post"> -->
-
             <div class="form-row mb-2">
                 <div class="col-sm-6 col-12">
                     <!-- Especialidad -->
@@ -59,8 +56,6 @@ include_once '../include/navPacientes.php';
     </div>
     <!-- Muestra los errores al crear una conversación -->
     <div id="errorCrearConver" class="alert alert-danger mt-5" role="alert"></div>
-
-
 
 </div>
 
