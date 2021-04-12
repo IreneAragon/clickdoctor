@@ -83,7 +83,7 @@ class DB {
                                          f_nacimiento, genero)
                          VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $password .'",
                                  "'. $dni .'", "'. $f_nacimiento .'", "'. $genero .'")';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
 
 
         } catch (PDOException $e) {
@@ -99,7 +99,7 @@ class DB {
                                              genero, n_colegiado, ejerce_en)
                       VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $contrasena .'",
                               "'. $dni .'", "'. $fNacimiento .'", "'. $genero .'", "'. $nColegiado .'", "'. $ejerce .'")';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
 
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -110,7 +110,7 @@ class DB {
     public static function existePaciente($email) {
         try {
             $consulta = 'SELECT nombre FROM pacientes WHERE email = "'. $email .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
 
             if ($resultado->rowCount() > 0) {
                 return true;
@@ -128,7 +128,7 @@ class DB {
     public static function existeProfesional($email) {
         try {
             $consulta = 'SELECT nombre FROM profesionales WHERE email = "'. $email .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
 
             if ($resultado->rowCount() > 0) {
                 return true;
@@ -145,7 +145,7 @@ class DB {
     public static function existeAdmin($email) {
         try {
             $consulta = 'SELECT nombre FROM administrador WHERE email = "'. $email .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
 
             if ($resultado->rowCount() > 0) {
                 return true;
@@ -166,7 +166,7 @@ class DB {
                          SELECT rol FROM pacientes WHERE email = "'. $email .'"
                          UNION
                          SELECT rol FROM profesionales WHERE email = "'. $email .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $tipoUsuario = $resultado->fetch();
 
             if ($resultado->rowCount() > 0) {
@@ -188,7 +188,7 @@ class DB {
                          SELECT email FROM pacientes WHERE email = "'. $email .'"
                          UNION
                          SELECT email FROM profesionales WHERE email = "'. $email .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
 
             if ($resultado->rowCount() > 0) {
                 return true;
@@ -209,7 +209,7 @@ class DB {
                          SELECT password FROM pacientes WHERE email = "'. $email .'"
                          UNION
                          SELECT password FROM profesionales WHERE email = "'. $email .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $contrasenaUsuario = $resultado->fetch();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -223,7 +223,7 @@ class DB {
             $consulta = 'SELECT estado FROM pacientes WHERE email = "'. $email .'"
                         UNION
                         SELECT estado FROM profesionales WHERE email = "'. $email .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $estadoUsuario = $resultado->fetch();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -236,7 +236,7 @@ class DB {
     public static function especialidades() {
         try {
             $consulta = 'SELECT * FROM especialidades';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $tablaEspecialidades = $resultado->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -251,7 +251,7 @@ class DB {
             $consulta = 'SELECT practica.id_prof, profesionales.nombre, profesionales.apellidos FROM practica
                          INNER JOIN profesionales ON profesionales.id_profesional = practica.id_prof
                          WHERE id_esp = "'. $id .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $especialistas = $resultado->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -265,7 +265,7 @@ class DB {
 
         try {
             $consulta = 'SELECT * FROM citas WHERE fecha = "'. $fecha .'" AND id_prof_FK = "'. $id_profesional .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $citasFechaProfesional = $resultado->fetchAll(PDO::FETCH_ASSOC);
             foreach ($citasFechaProfesional as $cita) {
                 unset($aDisponibilidad[$cita['orden']]);
@@ -286,7 +286,7 @@ class DB {
                          INNER JOIN profesionales ON profesionales.id_profesional = citas.id_prof_FK
                          INNER JOIN especialidades ON especialidades.id_especialidad = citas.id_especialidad
                          WHERE id_pac_FK = "'. $idPaciente .$where;
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $listadoCitasPaciente = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($listadoCitasPaciente as $k => $cita) {
@@ -327,7 +327,7 @@ class DB {
             $consulta = 'SELECT id_paciente FROM pacientes WHERE email = "'. $email .'"
                          UNION
                          SELECT id_profesional FROM profesionales WHERE email = "'. $email .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $idUsuario = $resultado->fetch();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -340,7 +340,7 @@ class DB {
     public static function obteneridPacientePorDni($dniPac) {
         try {
             $consulta = 'SELECT id_paciente FROM pacientes WHERE dni = "'. $dniPac .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $idPaciente = $resultado->fetch();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -353,7 +353,7 @@ class DB {
     public static function comprobarDniPacienteExiste($dniPac) {
         try {
             $consulta = 'SELECT id_paciente FROM pacientes WHERE dni = "'. $dniPac .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $count = $resultado->rowCount();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -366,7 +366,7 @@ class DB {
 public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $hashPass, $idUsuario) {
     try {
         $consulta = 'UPDATE pacientes SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'", password ="'.$hashPass.'" WHERE id_paciente ="'.$idUsuario.'"';
-        $resultado = self::ejecutaConsulta ($consulta);
+        $resultado = self::ejecutaConsulta($consulta);
         $count = $resultado->rowCount();
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
@@ -383,7 +383,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
             $consulta = 'SELECT genero FROM pacientes WHERE email = "'. $email .'"
                          UNION
                          SELECT genero FROM profesionales WHERE email = "'. $email .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $generoUsuario = $resultado->fetch();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -396,7 +396,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function borrarCita($id_cita) {
         try {
             $consulta = 'DELETE FROM citas WHERE id_cita = "'. $id_cita .'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $count = $resultado->rowCount();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -410,7 +410,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function editarCitaPaciente($id_cita, $fechaDB, $hora_cita) {
         try {
             $consulta = 'UPDATE citas SET fecha = "'.$fechaDB.'", orden ='.$hora_cita .' WHERE id_cita ='.$id_cita;
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $count = $resultado->rowCount();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -424,7 +424,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $hashPass, $idUsuario) {
         try {
             $consulta = 'UPDATE pacientes SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'", password ="'.$hashPass.'" WHERE id_paciente ="'.$idUsuario.'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $count = $resultado->rowCount();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -438,7 +438,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function modificarDatosUsuarioNoPass($name, $lastname, $email, $fNac, $idUsuario) {
         try {
             $consulta = 'UPDATE pacientes SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'" WHERE id_paciente ="'.$idUsuario.'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $count = $resultado->rowCount();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -450,7 +450,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function datosPaciente($idPaciente) {
         try {
             $consulta = 'SELECT * FROM pacientes WHERE id_paciente = "'.$idPaciente.'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $datosPaciente = $resultado->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -461,7 +461,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function datosProfesional($idProfesional) {
         try {
             $consulta = 'SELECT * FROM profesionales WHERE id_profesional = "'.$idProfesional.'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $datosProfesional = $resultado->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -472,7 +472,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function idEspecialidadPracticaProf($idProfesional) {
         try {
             $consulta = 'SELECT id_esp FROM practica WHERE id_prof = "'.$idProfesional.'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $idEsp = $resultado->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -483,7 +483,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function nombreEspecialidad($id) {
         try {
             $consulta = 'SELECT nombre FROM especialidades WHERE id_especialidad = "'.$id.'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $nombreEspecialidad = $resultado->fetch();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -495,7 +495,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function guardarSrc($srcImg, $email) {
         try {
             $consulta = 'UPDATE pacientes SET srcImg = "'.$srcImg.'" WHERE email = "'.$email.'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $count = $resultado->rowCount();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -508,7 +508,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function obtenerSrc($email) {
         try {
             $consulta = 'SELECT srcImg FROM pacientes WHERE email = "'.$email.'"';
-            $resultado = self::ejecutaConsulta ($consulta);
+            $resultado = self::ejecutaConsulta($consulta);
             $srcImg = $resultado->fetch();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -522,13 +522,30 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
             try {
                 $consulta = 'INSERT INTO informes (nombre, id_profesional_FK, id_paciente_FK)
                              VALUES ("'. $nombreInforme .'", "'. $idProf .'", "'. $idPac .'")';
-                $resultado = self::ejecutaConsulta ($consulta);
-                
+                $resultado = self::ejecutaConsulta($consulta);
+
             } catch (PDOException $e) {
                 die("Error: " . $e->getMessage());
             }
         }
 
+    public static function crearConversacion($asunto, $texto, $idProf, $idPac) {
+        try {
+            $consulta = 'INSERT INTO correos (asunto, texto, id_prof_FK, id_pac_FK)
+                         VALUES ("'. $asunto .'", "'. $texto .'", "'. $idProf .'", "'. $idPac .'")';
+            $resultado = self::ejecutaConsulta($consulta);
+
+            // TODO: convertir if en ternario
+            if ($resultado) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+    }
 
 
 
@@ -677,7 +694,7 @@ function obtenerSrc($email, $conexion) {
      public static function getNombrePaciente($id) {
          try {
              $consulta = 'SELECT nombre FROM pacientes WHERE id_paciente = "'. $id .'"';
-             $resultado = self::ejecutaConsulta ($consulta);
+             $resultado = self::ejecutaConsulta($consulta);
              $nombrePaciente = $resultado->fetch();
          } catch (PDOException $e) {
              die("Error: " . $e->getMessage());
@@ -690,7 +707,7 @@ function obtenerSrc($email, $conexion) {
              try {
                  $consulta = 'INSERT INTO administrador (email, nombre, apellidos, contrasena)
                               VALUES ("'. $email .'", "'. $nombre .'", "'. $apellidos .'", "'. $contrasena .'")';
-                 $resultado = self::ejecutaConsulta ($consulta);
+                 $resultado = self::ejecutaConsulta($consulta);
                  // var_dump($resultado);
                  // var_dump($consulta);
              } catch (PDOException $e) {

@@ -1,14 +1,12 @@
 
-var selectorEspecialidades = document.getElementById("selectEspecialidad");
-selectorEspecialidades.addEventListener("change", traerEspecialistas);
-// var selectorEspecialidadesMsg = document.getElementById("selectEspecialistaMsg");
-// selectorEspecialidadesMsg.addEventListener("change", traerEspecialistas);
+var selectorEspecialidadesMsg = document.getElementById("selectEspecialidadMsg");
+selectorEspecialidadesMsg.addEventListener("change", traerEspecialistasMsg);
 
+function traerEspecialistasMsg() {
+    let idEspecialidad = selectorEspecialidadesMsg.value;
 
-function traerEspecialistas() {
-    let idEspecialidad = selectorEspecialidades.value;
     $.ajax({
-        url: "back/obtenerEspecialistas.php",
+        url: "mensajeria/back/obtenerEspecialistasMsg.php",
         type: "post",
         data: {"id_especialidad" : idEspecialidad},
     }).done(function(respuesta) {
@@ -21,6 +19,6 @@ function traerEspecialistas() {
             let profesional = arrayRespuesta.datos[i];
             htmlOptions += '<option value="'+profesional['id_prof']+'">'+profesional['nombre']+' '+profesional['apellidos']+'</option>';
         }
-        $('#selectEspecialista').html(htmlOptions);
+        $('#selectEspecialistaMsg').html(htmlOptions);
     });
 }
