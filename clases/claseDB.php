@@ -549,7 +549,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
 
     public static function listarConversacionesPaciente($idPaciente) {
         try {
-            $consulta = 'SELECT * FROM correos WHERE id_pac_FK = "'.$idPaciente.'"';
+            $consulta = 'SELECT * FROM correos WHERE id_pac_FK = "'.$idPaciente.'" ORDER BY id_correo DESC';
             $resultado = self::ejecutaConsulta($consulta);
             $listadoConversaciones = $resultado->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -558,22 +558,19 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $listadoConversaciones;
     }
 
-/*
-
-
-public static function listarConversaciones($id_paciente) {
-    try {
-        $consulta = 'SELECT * FROM pacientes WHERE id_paciente = "'.$idPaciente.'"';
-        $resultado = self::ejecutaConsulta($consulta);
-        $datosPaciente = $resultado->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+    public static function eliminarConversacion($idConver) {
+        try {
+            $consulta = 'DELETE FROM correos WHERE id_correo = "'. $idConver .'"';
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha borrado la conversación devuelve true
+        return ($count === 1) ? true : false;
     }
-    return $datosPaciente;
-}
 
 
- */
 
 
 
