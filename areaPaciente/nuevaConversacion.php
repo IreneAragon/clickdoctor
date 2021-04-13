@@ -51,8 +51,9 @@ include_once '../include/navPacientes.php';
     </div>
 
     <!-- Se muestra cuando la conversación ha sido creada -->
-    <div id="converCreada" class="alert alert-success mt-5" role="alert">
-        Su mensaje ha sido enviado con éxito, el profesional le contestará lo antes posible.
+    <div id="converCreada" class="text-center mb-5">
+        <h5 class="alert alert-success mt-5" role="alert">Su mensaje ha sido enviado con éxito, el profesional le contestará lo antes posible.</h5>
+        <a href="mensajesPaciente.php" class="btn btn-primary mb-5"> Mis mensajes </a>
     </div>
     <!-- Muestra los errores al crear una conversación -->
     <div id="errorCrearConver" class="alert alert-danger mt-5" role="alert"></div>

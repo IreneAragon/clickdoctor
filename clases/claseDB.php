@@ -547,9 +547,10 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         }
     }
 
+    // obtiene los datos de la tabla correos y de la tabla profesionales para poder mostrar el nombre de éstos en la tabla.
     public static function listarConversacionesPaciente($idPaciente) {
         try {
-            $consulta = 'SELECT correos.*, profesionales.* FROM correos
+            $consulta = 'SELECT correos.*, profesionales.nombre, profesionales.apellidos, profesionales.genero FROM correos
                          INNER JOIN profesionales ON profesionales.id_profesional = correos.id_prof_FK WHERE id_pac_FK = "'.$idPaciente.'" ORDER BY id_correo DESC';
             $resultado = self::ejecutaConsulta($consulta);
             $listadoConversaciones = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -571,29 +572,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return ($count === 1) ? true : false;
     }
 
-    // public static function datosCorreosYProfesionales($idPaciente) {
-    //
-    // }
 
-
-
-
-/*
-
-public static function obtenerEspecialista($id) {
-    try {
-        $consulta = 'SELECT practica.id_prof, profesionales.nombre, profesionales.apellidos FROM practica
-                     INNER JOIN profesionales ON profesionales.id_profesional = practica.id_prof
-                     WHERE id_esp = "'. $id .'"';
-        $resultado = self::ejecutaConsulta($consulta);
-        $especialistas = $resultado->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
-    }
-    return $especialistas;
-}
-
- */
 
 
 

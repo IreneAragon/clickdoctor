@@ -19,7 +19,8 @@ function listarConversaciones(){
         let arrayRespuesta = $.parseJSON(respuesta);
         let htmlTr = "";
         let genero = "";
-
+console.log('arrayRespuesta');
+console.log(arrayRespuesta);
         arrayRespuesta.conversaciones.forEach((conversacion, i) => {
 
             let timestamp = conversacion.creado_el;
@@ -39,7 +40,7 @@ function listarConversaciones(){
                         "<td>"+ fechaDDMMYYY +"</td>"+
                         "<td>"+ conversacion.nombre + " " +conversacion.apellidos + "</td>"+
                         "<td>"+ conversacion.asunto +"</td>"+
-                        "<td> <button type='button' data-idConversacion='"+conversacion.id_correo+"' class='btn btn-info btn-sm btnStyle'>Ver <i class='fa fa-eye iconoOjo'></i></button> </td>"+
+                        "<td> <a href='detalleConversacion.php?chat="+conversacion.id_correo+"' data-idConversacion='"+conversacion.id_correo+"' class='btn btn-info btn-sm btnStyle'>Ver <i class='fa fa-eye iconoOjo'></i></a> </td>"+
                         "<td> <button type='button' data-idConversacion='"+conversacion.id_correo+"' onclick='modalEliminarConver("+conversacion.id_correo+")' class='btn btn-danger btn-sm btnStyle' data-toggle='modal' data-target='#eliminarConversacion'>Eliminar <i class='fa fa-trash iconoOjo'></i></button> </td>"+
                       "</tr>";
         });

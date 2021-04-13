@@ -196,3 +196,136 @@ footer {
 .fileInput {
     display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************************************
+*                                                           *
+*                   ESTILOS COMUNES                         *
+*                                                           *
+*************************************************************/
+
+/********************************
+               CHAT
+*********************************/
+
+.chat {
+    background: #e7f5fb;
+    padding: 5px;
+    height: 70vh;
+    overflow: scroll;
+}
+
+/* Estilos para la barra de scroll */
+.chat::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.chat::-webkit-scrollbar:vertical {
+    width: 6px;
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 216, 255, 0.5);
+}
+
+.emisor {
+    margin: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.receptor {
+    margin: 8px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.msg-emisor {
+    background-color: rgba(128, 216, 255, 0.5);
+    justify-content: flex-end;
+    padding: 10px;
+    margin: 0;
+    border-radius: 25px;
+    border-top-right-radius: 0;
+}
+
+.msg-receptor {
+    justify-content: flex-start;
+    background: white;
+    padding: 10px;
+    margin: 0;
+    border-radius: 25px;
+    border-top-left-radius: 0;
+}
+
+.campo-respuesta {
+    /* display: flex; */
+}
+
+input {
+    background-color: white;
+    width: 85%;
+    height: 40px;
+    /* border-radius: 25px; */
+    margin-top: 5px;
+    padding-left: 10px;
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    border-bottom: 2px solid lightblue;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.icon-send {
+    width: 30px;
+    margin-left: 5px;
+    cursor: pointer;
+    /* display: flex; */
+    /* justify-content: flex-end; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
