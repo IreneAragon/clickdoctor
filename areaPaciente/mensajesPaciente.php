@@ -27,7 +27,7 @@ include_once '../include/navPacientes.php';
                         </tr>
                     </thead>
                     <tbody id="listaConversacionesPaciente">
-                        <!-- tr obtenidas por ajax -->
+                        <!-- tr obtenidas por ajax en listarConversacionesPaciente.js -->
                     </tbody>
                 </table>
             </div>
