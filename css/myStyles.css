@@ -237,7 +237,6 @@ footer {
 
 .box-img-nombre {
     display: flex;
-    /* display: flex; */
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -321,9 +320,9 @@ footer {
     margin: 0;
     border-radius: 25px;
     border-top-right-radius: 0;
-
     display: flex;
     align-items: flex-end;
+    width: 90%;
 }
 
 .msg-receptor {
@@ -333,6 +332,7 @@ footer {
     margin: 0;
     border-radius: 25px;
     border-top-left-radius: 0;
+    width: 90%;
 }
 
 .msg-emisor small,
