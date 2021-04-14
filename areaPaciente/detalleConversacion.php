@@ -26,18 +26,20 @@ require_once '../include/navPacientes.php';
         </div>
 
     </div>
-    <div class="chat-asunto">
+    <div class="chat-asunto" id="asunto">
         <h5>Sobre <b>[ASUNTO]</b></h5>
     </div>
 
 
-
+    <div class="chat-previo">
+        <!-- Pinta por ajax el primer mensaje -->
+    </div>
     <!-- CONVERSACION -->
-    <div class="chat">
+    <div class="chat" id="chat">
 
         <!-- EMISOR -->
         <div class="emisor">
-            <div class="msg-emisor">
+            <div class="msg-emisor" id="primer-mensaje">
                 Hola doctor, me duele la cabeza, qué puedo tomar?
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 <small class="ml-3">19:43</small>
@@ -45,11 +47,19 @@ require_once '../include/navPacientes.php';
         </div>
 
         <!-- RECEPTOR -->
-        <div class="receptor">
-            <div class="msg-receptor">
+        <div class="receptor contenedor-receptor">
+            <div class="msg-receptor" id="receptor">
                 Puede tomar paracetamol
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.s
                 <small class="ml-3">19:45</small>
+            </div>
+        </div>
+
+        <!-- EMISOR -->
+        <div class="emisor contenedor-receptor">
+            <div class="msg-emisor" id="emisor">
+                XXXXX
+                <small class="ml-3">19:43</small>
             </div>
         </div>
 
@@ -67,6 +77,6 @@ require_once '../include/navPacientes.php';
 
 
 <!-- <script src="mensajeria/js/agregarMensaje.js" charset="utf-8"></script> -->
-<script src="mensajeria/js/listarMensajes.js" charset="utf-8"></script>
+<!-- <script src="mensajeria/js/listarMensajes.js" charset="utf-8"></script> -->
  <?php
  include_once '../include/footer.html';
