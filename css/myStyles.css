@@ -277,27 +277,25 @@ footer {
     font-size: 1rem;
 }
 
-
-.chat {
+.contenedor-chat{
     background-image: url("../img/bg-chat.jpg");
     background-color: #e7f5fb;
     background-size: cover;
-    /* background: #e7f5fb; */
     padding: 5px;
     height: 70vh;
     overflow: scroll;
 }
 
 /* Estilos para la barra de scroll */
-.chat::-webkit-scrollbar {
+.contenedor-chat::-webkit-scrollbar {
     -webkit-appearance: none;
 }
 
-.chat::-webkit-scrollbar:vertical {
+.contenedor-chat::-webkit-scrollbar:vertical {
     width: 6px;
 }
 
-.chat::-webkit-scrollbar-thumb {
+.contenedor-chat::-webkit-scrollbar-thumb {
     background-color: rgba(128, 216, 255, 0.5);
 }
 
@@ -313,7 +311,7 @@ footer {
     justify-content: flex-start;
 }
 
-.msg-emisor {
+.emisor .msg {
     background-color: rgba(128, 216, 255, 0.7);
     justify-content: flex-end;
     padding: 10px;
@@ -325,7 +323,7 @@ footer {
     width: 90%;
 }
 
-.msg-receptor {
+.receptor .msg {
     justify-content: flex-start;
     background: rgba(231, 231, 231, 0.7);
     padding: 10px;
@@ -335,20 +333,10 @@ footer {
     width: 90%;
 }
 
-.msg-emisor small,
-.msg-receptor small {
+.msg small {
     color: rgb(92, 92, 92);
     font-weight: lighter;
     font-size: 11px;
-}
-
-.campo-respuesta {
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    align-content: stretch; */
 }
 
 .campo-respuesta form {

@@ -21,46 +21,32 @@ function listarMensajes(id_chat) {
         let texto_primer_mensaje = arrayRespuesta.mensajes[0]['primer_texto'];
         let html_primer_mensaje = "";
         html_primer_mensaje += '<div class="emisor">' +
-                                    '<div class="msg-emisor" id="primer-mensaje">' +
+                                    '<div class="msg" id="primer-mensaje">' +
                                         texto_primer_mensaje +
                                         '<small class="ml-3">19:43</small>' +
                                     '</div>'+
                                '</div>';
 
-
-
-console.log(html_primer_mensaje);
-
         arrayRespuesta.mensajes.forEach((mensaje, i) => {
 
             let rol = mensaje.rol;
             let msg = mensaje.texto;
-
-
-
+            let classContenedor = "";
 
             if (rol === '1') {
-                html += '<div class="emisor contenedor-emisor">' +
-                                  '<div class="msg-emisor" id="emisor">' +
-                                      msg +
-                                      '<small class="ml-3">19:43</small>' +
-                                  '</div>' +
-                              '</div>';
-                // $('#emisor').html(msg);
-                $('.chat').html(html);
-            } else if (rol === '2'){
-
-                html += '<div class="receptor contenedor-receptor">'+
-                                    '<div class="msg-receptor" id="receptor">' +
-                                        msg +
-                                        '<small class="ml-3">19:43</small>' +
-                                    '</div>' +
-                                '</div>';
-                // $('#receptor').html(msg);
-                $('.chat').html(html);
+                classContenedor = 'emisor contenedor-emisor';
+            } else {
+                classContenedor = 'receptor contenedor-receptor';
             }
 
+            html += '<div class="'+classContenedor+'">'+
+                        '<div class="msg">' +
+                            msg +
+                            '<small class="ml-3">19:43</small>' +
+                        '</div>' +
+                    '</div>';
 
+            $('.chat').html(html);
 
         });
 // console.log(htmlEmisor);
