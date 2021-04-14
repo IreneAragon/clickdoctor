@@ -1,12 +1,10 @@
 window.onload = listarConversaciones();
-
 var btnEliminarConver = document.getElementById('btnConfirmaEliminar');
 btnEliminarConver.addEventListener("click", eliminarConversacion);
 
 if ($('#msgEliminarConver').show()) {
     $('#msgEliminarConver').hide();
 }
-
 
 /* LISTAR CONVERSACIONES */
 function listarConversaciones(){
@@ -15,14 +13,11 @@ function listarConversaciones(){
         url: "mensajeria/back/listarConversacionesPaciente.php",
         type: "post",
     }).done(function(respuesta) {
-
         let arrayRespuesta = $.parseJSON(respuesta);
         let htmlTr = "";
         let genero = "";
-console.log('arrayRespuesta');
-console.log(arrayRespuesta);
-        arrayRespuesta.conversaciones.forEach((conversacion, i) => {
 
+        arrayRespuesta.conversaciones.forEach((conversacion, i) => {
             let timestamp = conversacion.creado_el;
             let fecha = new Date(timestamp);
             let dia = fecha.getDate();
@@ -44,9 +39,7 @@ console.log(arrayRespuesta);
                         "<td> <button type='button' data-idConversacion='"+conversacion.id_correo+"' onclick='modalEliminarConver("+conversacion.id_correo+")' class='btn btn-danger btn-sm btnStyle' data-toggle='modal' data-target='#eliminarConversacion'>Eliminar <i class='fa fa-trash iconoOjo'></i></button> </td>"+
                       "</tr>";
         });
-
         $('#listaConversacionesPaciente').html(htmlTr);
-
     });
 }
 
@@ -55,7 +48,6 @@ console.log(arrayRespuesta);
 function modalEliminarConver(idConver) {
     btnEliminarConver.setAttribute('data-idConver',idConver);
 }
-
 
 function eliminarConversacion() {
     let idConver = btnEliminarConver.getAttribute('data-idConver');
@@ -75,19 +67,3 @@ function eliminarConversacion() {
         }
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**/

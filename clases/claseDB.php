@@ -572,7 +572,19 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return ($count === 1) ? true : false;
     }
 
+ public static function listarMensajesChat($id_chat) {
 
+     try {
+         $consulta = 'SELECT correos.id_correo, correos.asunto, correos.texto as primer_texto, correos.id_prof_FK, correos.id_pac_FK,  mensajes.* FROM correos
+                      INNER JOIN mensajes ON mensajes.id_correo_FK = correos.id_correo WHERE id_correo = "'.$id_chat.'" ORDER BY mensajes.timestamp ASC';
+         $resultado = self::ejecutaConsulta($consulta);
+         $mensajes = $resultado->fetchAll(PDO::FETCH_ASSOC);
+     } catch (PDOException $e) {
+         die("Error: " . $e->getMessage());
+     }
+     return $mensajes;
+
+ }
 
 
 
