@@ -18,10 +18,16 @@ require_once '../include/navPacientes.php';
 
 
 
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
 
-    <div class="mt-5">
-        <h4>Conversación con [NOMBRE RECEPTOR]</h4>
+    <div class="mt-5 box-header">
+        <div class="box-img-nombre">
+            <img src="../areaProfesional/perfil/images/default-avatar.png" alt="Imagen de perfil del Profesional" class="chat-avatar">
+            <h4>Chat con [NOMBRE RECEPTOR]</h4>
+        </div>
+
+    </div>
+    <div class="chat-asunto">
         <h5>Sobre <b>[ASUNTO]</b></h5>
     </div>
 
@@ -34,106 +40,26 @@ require_once '../include/navPacientes.php';
     <div class="emisor">
         <div class="msg-emisor">
             Hola doctor, me duele la cabeza, qué puedo tomar?
+            <small class="ml-3">19:43</small>
         </div>
+
     </div>
 
     <!-- RECEPTOR -->
     <div class="receptor">
         <div class="msg-receptor">
             Puede tomar paracetamol
-        </div>
-    </div>
-
-    <!-- EMISOR -->
-    <div class="emisor">
-        <div class="msg-emisor">
-            ¿Cada cuánto tiempo?
-        </div>
-    </div>
-
-    <!-- RECEPTOR -->
-    <div class="receptor">
-        <div class="msg-receptor">
-            Uno cada 8 horas
-        </div>
-    </div>
-    <!-- RECEPTOR -->
-    <div class="receptor">
-        <div class="msg-receptor">
-            ¿vale?
-        </div>
-    </div>
-
-    <!-- EMISOR -->
-    <div class="emisor">
-        <div class="msg-emisor">
-            Vale
-        </div>
-    </div>
-    <!-- EMISOR -->
-    <div class="emisor">
-        <div class="msg-emisor">
-            Tengo otra pregunta
-        </div>
-    </div>
-    <!-- EMISOR -->
-    <div class="emisor">
-        <div class="msg-emisor">
-            ¿puedo tomar ibuprofeno?
-        </div>
-    </div>
-
-    <!-- RECEPTOR -->
-    <div class="receptor">
-        <div class="msg-receptor">
-            Solo si el dolor persiste
-        </div>
-    </div>
-    <!-- RECEPTOR -->
-    <div class="receptor">
-        <div class="msg-receptor">
-            No es lo más recomendable
-        </div>
-    </div>
-
-    <!-- EMISOR -->
-    <div class="emisor">
-        <div class="msg-emisor">
-            ¿puedo tomar ibuprofeno?
-        </div>
-    </div>
-    <!-- RECEPTOR -->
-    <div class="receptor">
-        <div class="msg-receptor">
-            Solo si el dolor persiste
-        </div>
-    </div>
-    <!-- EMISOR -->
-    <div class="emisor">
-        <div class="msg-emisor">
-            ¿puedo tomar ibuprofeno?
-        </div>
-    </div>
-
-    <!-- RECEPTOR -->
-    <div class="receptor">
-        <div class="msg-receptor">
-            Solo si el dolor persiste
-        </div>
-    </div>
-    <!-- RECEPTOR -->
-    <div class="receptor">
-        <div class="msg-receptor">
-            No es lo más recomendable
+            <small class="ml-3">19:45</small>
         </div>
     </div>
 
 </div>
 
 <div class="campo-respuesta">
-    <input type="text" name="" value="" placeholder="Escribe tu respuesta...">
-    <!-- <button type="button" name="button" class="btn btn-info">Enviar</button> -->
-    <img src="../img/send.png" alt="Enviar mensaje" class="icon-send">
+    <form class="" action="" method="post">
+        <input type="text" name="" value="" placeholder="Escribe tu respuesta..." class="">
+        <button type="submit" name="button"><img src="../img/send.png" alt="Enviar mensaje" class="icon-send"></button>
+    </form>
 </div>
 
 

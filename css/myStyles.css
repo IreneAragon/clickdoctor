@@ -230,8 +230,60 @@ footer {
                CHAT
 *********************************/
 
+.box-header {
+    /* display: flex;
+    justify-content: space-around; */
+}
+
+.box-img-nombre {
+    display: flex;
+    /* display: flex; */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.box-img-nombre img {
+    display: flex;
+    margin-left: 15px;
+}
+
+.box-img-nombre h4 {
+    display: flex;
+    flex-grow: 1;
+    align-self: center;
+    justify-content: space-around;
+    margin-left: 15px;
+    font-size: 1.4rem;
+
+}
+
+.chat-avatar {
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    /* IMPORTANTE - esto es lo que hace que no se chafe la img */
+    object-fit: cover;
+}
+
+.chat-asunto {
+    display: flex;
+    justify-content: center;
+}
+
+.chat-asunto h5 {
+    font-size: 1rem;
+}
+
+
 .chat {
-    background: #e7f5fb;
+    background-image: url("../img/bg-chat.jpg");
+    background-color: #e7f5fb;
+    background-size: cover;
+    /* background: #e7f5fb; */
     padding: 5px;
     height: 70vh;
     overflow: scroll;
@@ -263,58 +315,121 @@ footer {
 }
 
 .msg-emisor {
-    background-color: rgba(128, 216, 255, 0.5);
+    background-color: rgba(128, 216, 255, 0.7);
     justify-content: flex-end;
     padding: 10px;
     margin: 0;
     border-radius: 25px;
     border-top-right-radius: 0;
+
+    display: flex;
+    align-items: flex-end;
 }
 
 .msg-receptor {
     justify-content: flex-start;
-    background: white;
+    background: rgba(231, 231, 231, 0.7);
     padding: 10px;
     margin: 0;
     border-radius: 25px;
     border-top-left-radius: 0;
 }
 
-.campo-respuesta {
-    /* display: flex; */
+.msg-emisor small,
+.msg-receptor small {
+    color: rgb(92, 92, 92);
+    font-weight: lighter;
+    font-size: 11px;
 }
 
-input {
+.campo-respuesta {
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: stretch; */
+}
+
+.campo-respuesta form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: stretch;
+}
+
+.campo-respuesta input {
     background-color: white;
-    width: 85%;
+    width: 95%;
     height: 40px;
-    /* border-radius: 25px; */
     margin-top: 5px;
-    padding-left: 10px;
-    /* display: flex; */
-    /* justify-content: flex-start; */
+    margin-left: 3px;
+    padding-left: 13px;
     border-bottom: 2px solid lightblue;
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
+    box-shadow: inset 3px 3px 8px -5px #474747;
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
 }
 
 .icon-send {
-    width: 30px;
-    margin-left: 5px;
+    width: 31px;
+    margin: 9px;
+    height: auto;
     cursor: pointer;
-    /* display: flex; */
-    /* justify-content: flex-end; */
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
 }
 
-
-
-
-
-
-
-
-
+/* Eliminar estilos al botón */
+.campo-respuesta button {
+    background: none;
+    border: 0;
+    color: inherit;
+    padding: 0;
+}
+.campo-respuesta button:active {
+    background: none!important;
+    border: none!important;
+    outline: none!important;
+    padding: 0!important;
+}
+.campo-respuesta button:focus {
+    background: none!important;
+    border: none!important;
+    outline: none!important;
+    padding: 0!important;
+}
+.campo-respuesta button:hover {
+    background: none!important;
+    border: none!important;
+    outline: none!important;
+    padding: 0!important;
+}
+.campo-respuesta button:visited {
+    background: none!important;
+    border: none!important;
+    outline: none!important;
+    padding: 0!important;
+}
+.campo-respuesta button:link {
+    background: none!important;
+    border: none!important;
+    outline: none!important;
+    padding: 0!important;
+}
 
 
 
