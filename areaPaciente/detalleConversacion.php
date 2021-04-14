@@ -19,8 +19,8 @@ require_once '../include/navPacientes.php';
 
     <div class="mt-5 box-header">
         <div class="box-img-nombre">
-            <img src="../areaProfesional/perfil/images/default-avatar.png" alt="Imagen de perfil del Profesional" class="chat-avatar">
-            <h4>Chat con [NOMBRE RECEPTOR]</h4>
+            <img src="../areaProfesional/perfil/images/default-avatar.png" id="imgPerfilProf" alt="Imagen de perfil del Profesional" class="chat-avatar">
+            <h4 id="nombreProfesional"></h4>
         </div>
     </div>
 

@@ -13,12 +13,20 @@ function listarMensajes(id_chat) {
         data: {"id_chat": id_chat},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
-        // console.log(arrayRespuesta.mensajes);
+
+        // Datos del profesional
+        let datosProfesional = arrayRespuesta.profesional;
+        let nombreProfesional = datosProfesional.nombre+' '+datosProfesional.apellidos;
+        let srcImgPerfilProfesional = '../areaProfesional/perfil/'+datosProfesional.srcImg;
+        // let srcImg = '../areaProfesional/perfil/'+srcImgPerfilProfesional;
+
+        // Datos del chat
         let htmlEmisor = "";
         let htmlReceptor = "";
         let html = "";
         let asunto = arrayRespuesta.mensajes[0]['asunto'];
         let texto_primer_mensaje = arrayRespuesta.mensajes[0]['primer_texto'];
+
         let html_primer_mensaje = "";
         html_primer_mensaje += '<div class="emisor">' +
                                     '<div class="msg" id="primer-mensaje">' +
@@ -47,20 +55,12 @@ function listarMensajes(id_chat) {
                     '</div>';
 
             $('.chat').html(html);
-
         });
-// console.log(htmlEmisor);
-// console.log(htmlEmisor);
 
-        // Pintar el asunto
+        $('#imgPerfilProf').attr('src', srcImgPerfilProfesional);
+        $('#nombreProfesional').html('Chat con '+nombreProfesional);
         $('#asunto').html('Asunto: '+asunto);
         $('.chat-previo').html(html_primer_mensaje);
-        // $('#primer-mensaje').html(primer_mensaje);
-        // $('.chat').html(htmlReceptor);
-        // $('.chat').html(htmlEmisor);
-
 
     });
-
-
 }

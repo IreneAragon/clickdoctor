@@ -253,10 +253,9 @@ footer {
     display: flex;
     flex-grow: 1;
     align-self: center;
-    justify-content: space-around;
+    justify-content: start;
     margin-left: 15px;
     font-size: 1.4rem;
-
 }
 
 .chat-avatar {
@@ -270,7 +269,8 @@ footer {
 
 .chat-asunto {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    margin: 15px;
 }
 
 .chat-asunto h5 {
@@ -315,22 +315,22 @@ footer {
     background-color: rgba(128, 216, 255, 0.7);
     justify-content: flex-end;
     padding: 10px;
+    padding-left: 15px;
     margin: 0;
     border-radius: 25px;
     border-top-right-radius: 0;
     display: flex;
     align-items: flex-end;
-    width: 90%;
 }
 
 .receptor .msg {
     justify-content: flex-start;
     background: rgba(231, 231, 231, 0.7);
     padding: 10px;
+    padding-left: 15px;
     margin: 0;
     border-radius: 25px;
     border-top-left-radius: 0;
-    width: 90%;
 }
 
 .msg small {
