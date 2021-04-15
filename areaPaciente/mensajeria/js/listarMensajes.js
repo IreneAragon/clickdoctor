@@ -13,33 +13,64 @@ function listarMensajes(id_chat) {
         data: {"id_chat": id_chat},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
+        console.log('arrayRespuesta');
+        console.log(arrayRespuesta);
 
         // Datos del profesional
         let datosProfesional = arrayRespuesta.profesional;
         let nombreProfesional = datosProfesional.nombre+' '+datosProfesional.apellidos;
         let srcImgPerfilProfesional = '../areaProfesional/perfil/'+datosProfesional.srcImg;
-        // let srcImg = '../areaProfesional/perfil/'+srcImgPerfilProfesional;
 
         // Datos del chat
         let htmlEmisor = "";
         let htmlReceptor = "";
         let html = "";
-        let asunto = arrayRespuesta.mensajes[0]['asunto'];
-        let texto_primer_mensaje = arrayRespuesta.mensajes[0]['primer_texto'];
+        let asunto = arrayRespuesta.correo['asunto'];
+        let texto_primer_mensaje = arrayRespuesta.correo['primer_texto'];
+
+        // Construcción de la hora del mensaje
+        let creado_el = arrayRespuesta.correo['creado_el'];
+        let horaMensaje = new Date(creado_el);
+        let hora_primer_mensaje = horaMensaje.getHours();
+        let minuto_primer_mensaje = horaMensaje.getMinutes();
+
+        function addZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        let hora_primer_mensaje_chat = addZero(hora_primer_mensaje)+':'+addZero(minuto_primer_mensaje);
 
         let html_primer_mensaje = "";
         html_primer_mensaje += '<div class="emisor">' +
                                     '<div class="msg" id="primer-mensaje">' +
                                         texto_primer_mensaje +
-                                        '<small class="ml-3">19:43</small>' +
+                                        '<small class="ml-3">'+hora_primer_mensaje_chat+'</small>' +
                                     '</div>'+
                                '</div>';
 
         arrayRespuesta.mensajes.forEach((mensaje, i) => {
 
+            let timestamp = mensaje.timestamp;
+            let horaMensajes = new Date(timestamp);
+            let hora = horaMensajes.getHours();
+            let minutos = horaMensajes.getMinutes();
+
+            function addZero(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+
+            let hora_mensajes_chat = addZero(hora)+':'+addZero(minutos);
+
             let rol = mensaje.rol;
             let msg = mensaje.texto;
             let classContenedor = "";
+
 
             if (rol === '1') {
                 classContenedor = 'emisor contenedor-emisor';
@@ -50,7 +81,7 @@ function listarMensajes(id_chat) {
             html += '<div class="'+classContenedor+'">'+
                         '<div class="msg">' +
                             msg +
-                            '<small class="ml-3">19:43</small>' +
+                            '<small class="ml-3">'+hora_mensajes_chat+'</small>' +
                         '</div>' +
                     '</div>';
 

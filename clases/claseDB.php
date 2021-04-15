@@ -575,7 +575,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function listarMensajesChat($id_chat) {
 
          try {
-             $consulta = 'SELECT correos.id_correo, correos.asunto, correos.texto as primer_texto, correos.id_prof_FK, correos.id_pac_FK,  mensajes.* FROM correos
+             $consulta = 'SELECT correos.id_correo, correos.id_prof_FK, correos.id_pac_FK,  mensajes.* FROM correos
                           INNER JOIN mensajes ON mensajes.id_correo_FK = correos.id_correo WHERE id_correo = "'.$id_chat.'" ORDER BY mensajes.timestamp ASC';
              $resultado = self::ejecutaConsulta($consulta);
              $mensajes = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -585,6 +585,21 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
          return $mensajes;
 
     }
+
+    public static function obtenerDatosCorreo($id_chat) {
+
+         try {
+             $consulta = 'SELECT correos.asunto, correos.creado_el, correos.texto as primer_texto FROM correos WHERE id_correo = "'.$id_chat.'"';
+             $resultado = self::ejecutaConsulta($consulta);
+             $correo = $resultado->fetch(PDO::FETCH_ASSOC);
+         } catch (PDOException $e) {
+             die("Error: " . $e->getMessage());
+         }
+         return $correo;
+
+    }
+
+
 
     public static function obtenerDatosProfesionalChat($id_chat){
         try {
