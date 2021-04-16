@@ -326,6 +326,7 @@ footer {
     border-radius: 25px;
     display: flex;
     align-items: flex-end;
+    max-width: 90%;
 }
 
 .emisor .msg {
@@ -426,6 +427,9 @@ footer {
     padding: 0!important;
 }
 
+.contenedor-pico {
+    position: relative;
+}
 
 .pico {
     position: absolute;
@@ -437,9 +441,26 @@ footer {
     height: 13px;
 }
 
-.contenedor-pico {
-    position: relative;
+.pico-receptor {
+    position: absolute;
+    top: -6px;
+    right: 100%;
+    z-index: 100;
+    display: block;
+    width: 8px;
+    height: 13px;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
