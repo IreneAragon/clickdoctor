@@ -231,8 +231,14 @@ footer {
 *********************************/
 
 .box-header {
-    /* display: flex;
-    justify-content: space-around; */
+    /* background-color: white; */
+    background: rgba(222, 243, 250, 0.7);
+    box-shadow: 3px 3px 8px -5px #474747;
+    padding: 1rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    border-radius: 25px;
+
 }
 
 .box-img-nombre {
@@ -260,8 +266,8 @@ footer {
 
 .chat-avatar {
     vertical-align: middle;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     /* IMPORTANTE - esto es lo que hace que no se chafe la img */
     object-fit: cover;
@@ -270,7 +276,8 @@ footer {
 .chat-asunto {
     display: flex;
     /* justify-content: center; */
-    margin: 15px;
+    margin-left: 15px;
+    margin-top: 15px;
 }
 
 .chat-asunto h5 {
@@ -311,25 +318,25 @@ footer {
     justify-content: flex-start;
 }
 
-.emisor .msg {
-    background-color: rgba(128, 216, 255, 0.7);
-    justify-content: flex-end;
+.msg {
+    box-shadow: 3px 3px 8px -6px #474747;
     padding: 10px;
     padding-left: 15px;
     margin: 0;
     border-radius: 25px;
-    border-top-right-radius: 0;
     display: flex;
     align-items: flex-end;
 }
 
+.emisor .msg {
+    background-color: rgba(128, 216, 255, 0.7);
+    justify-content: flex-end;
+    border-top-right-radius: 0;
+}
+
 .receptor .msg {
+    background: rgba(222, 243, 250, 0.7);
     justify-content: flex-start;
-    background: rgba(231, 231, 231, 0.7);
-    padding: 10px;
-    padding-left: 15px;
-    margin: 0;
-    border-radius: 25px;
     border-top-left-radius: 0;
 }
 
@@ -339,7 +346,7 @@ footer {
     font-size: 11px;
 }
 
-.campo-respuesta form {
+.campo-respuesta {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

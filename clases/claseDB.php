@@ -599,8 +599,6 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
 
     }
 
-
-
     public static function obtenerDatosProfesionalChat($id_chat){
         try {
             $consulta = 'SELECT profesionales.id_profesional, profesionales.nombre, profesionales.apellidos, profesionales.srcImg FROM correos
@@ -612,6 +610,50 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         }
         return $datosProfesional;
     }
+
+    public static function insertarMensajePaciente($id_chat, $nuevoMensaje, $rol){
+        try {
+            $consulta = 'INSERT INTO mensajes (texto, rol, id_correo_FK) VALUES ("'. $nuevoMensaje .'", "'. $rol .'", "'. $id_chat .'")';
+            $resultado = self::ejecutaConsulta($consulta);
+
+            if ($resultado) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

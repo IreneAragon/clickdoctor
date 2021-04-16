@@ -1,7 +1,20 @@
 
-
 var btnEnviarMensaje = document.getElementById('btnEnviarMensaje');
 var id_chat = btnEnviarMensaje.getAttribute('data-chat');
+var inputAgregarMensaje = document.getElementById('inputAgregarMensaje');
+
+btnEnviarMensaje.addEventListener("click", agregarMensaje);
+// El botón "enter" también envía el mensaje
+inputAgregarMensaje.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   // event.preventDefault();
+   document.getElementById("btnEnviarMensaje").click();
+  }
+});
+
+if ($(".errorCita").show()) {
+    $(".errorCita").hide();
+}
 
 window.onload = listarMensajes(id_chat);
 
@@ -13,8 +26,6 @@ function listarMensajes(id_chat) {
         data: {"id_chat": id_chat},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
-        console.log('arrayRespuesta');
-        console.log(arrayRespuesta);
 
         // Datos del profesional
         let datosProfesional = arrayRespuesta.profesional;
@@ -53,24 +64,16 @@ function listarMensajes(id_chat) {
 
         arrayRespuesta.mensajes.forEach((mensaje, i) => {
 
+            // Construir hora de los mensajes
             let timestamp = mensaje.timestamp;
             let horaMensajes = new Date(timestamp);
             let hora = horaMensajes.getHours();
             let minutos = horaMensajes.getMinutes();
-
-            function addZero(i) {
-                if (i < 10) {
-                    i = "0" + i;
-                }
-                return i;
-            }
-
             let hora_mensajes_chat = addZero(hora)+':'+addZero(minutos);
 
             let rol = mensaje.rol;
             let msg = mensaje.texto;
             let classContenedor = "";
-
 
             if (rol === '1') {
                 classContenedor = 'emisor contenedor-emisor';
@@ -95,3 +98,56 @@ function listarMensajes(id_chat) {
 
     });
 }
+
+/* INSERTAR MENSAJES NUEVOS */
+function agregarMensaje(){
+
+    let nuevoMensaje = inputAgregarMensaje.value;
+    let msgError = '';
+
+    $.ajax({
+        url: "mensajeria/back/agregarMensajePaciente.php",
+        type: "post",
+        data: {"nuevoMensaje": nuevoMensaje,
+               "id_chat": id_chat},
+    }).done(function(respuesta) {
+        let arrayRespuesta = $.parseJSON(respuesta);
+
+        if (arrayRespuesta.success) {
+            $("#inputAgregarMensaje").val('');
+            listarMensajes(id_chat);
+        } else {
+            // TODO: FIX IT no muestra mensaje de error
+            msgError = 'FALLO';
+            $('.errorCita').html(msgError);
+            $(".errorCita").show("fast");
+        }
+
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
