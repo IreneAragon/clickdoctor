@@ -52,11 +52,19 @@ function listarMensajes(id_chat) {
             return i;
         }
 
+        let pico = '<span data-testid="tail-out" data-icon="tail-out" class="pico">'+
+                        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 13" width="8" height="13">'+
+                            '<path opacity="0" d="M5.188 1H0v11.193l6.467-8.625C7.526 2.156 6.958 1 5.188 1z"></path>' +
+                            '<path fill="rgba(128, 216, 255, 0.7)" d="M5.188 0H0v11.193l6.467-8.625C7.526 1.156 6.958 0 5.188 0z"></path>'+
+                        '</svg>' +
+                    '</span>';
+
         let hora_primer_mensaje_chat = addZero(hora_primer_mensaje)+':'+addZero(minuto_primer_mensaje);
 
         let html_primer_mensaje = "";
         html_primer_mensaje += '<div class="emisor">' +
-                                    '<div class="msg" id="primer-mensaje">' +
+                                    '<div class="msg contenedor-pico" id="primer-mensaje">' +
+                                        pico +
                                         texto_primer_mensaje +
                                         '<small class="ml-3">'+hora_primer_mensaje_chat+'</small>' +
                                     '</div>'+
@@ -81,8 +89,36 @@ function listarMensajes(id_chat) {
                 classContenedor = 'receptor contenedor-receptor';
             }
 
+
+
+
+
+            let pico = '';
+
+            if (classContenedor === "emisor contenedor-emisor"){
+                // pico = '';
+                pico = '<span data-testid="tail-out" data-icon="tail-out" class="pico">'+
+                                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 13" width="8" height="13">'+
+                                    '<path opacity="0" d="M5.188 1H0v11.193l6.467-8.625C7.526 2.156 6.958 1 5.188 1z"></path>' +
+                                    '<path fill="rgba(128, 216, 255, 0.7)" d="M5.188 0H0v11.193l6.467-8.625C7.526 1.156 6.958 0 5.188 0z"></path>'+
+                                '</svg>' +
+                            '</span>';
+            } else if (classContenedor === "receptor contenedor-receptor") {
+                pico = '';
+                // pico = '<span data-testid="tail-out" data-icon="tail-out" class="_1bUzr">'+
+                //                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 13" width="8" height="13">'+
+                //                     '<path opacity="0" d="M5.188 1H0v11.193l6.467-8.625C7.526 2.156 6.958 1 5.188 1z"></path>' +
+                //                     '<path fill="rgba(128, 216, 255, 0.7)" d="M5.188 0H0v11.193l6.467-8.625C7.526 1.156 6.958 0 5.188 0z"></path>'+
+                //                 '</svg>' +
+                //             '</span>';
+            }
+
+
+
+
             html += '<div class="'+classContenedor+'">'+
-                        '<div class="msg">' +
+                        '<div class="msg contenedor-pico">' +
+                            pico +
                             msg +
                             '<small class="ml-3">'+hora_mensajes_chat+'</small>' +
                         '</div>' +

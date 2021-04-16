@@ -427,10 +427,19 @@ footer {
 }
 
 
+.pico {
+    position: absolute;
+    top: -6px;
+    left: 100%;
+    z-index: 100;
+    display: block;
+    width: 8px;
+    height: 13px;
+}
 
-
-
-
+.contenedor-pico {
+    position: relative;
+}
 
 
 
