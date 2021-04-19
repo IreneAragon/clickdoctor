@@ -23,12 +23,13 @@ $idProf = $_SESSION['idUsuario'];
                  <th scope="col">Fecha</th>
                  <th scope="col">Paciente</th>
                  <th scope="col">Ver</th>
+                 
              </tr>
          </thead>
          <tbody id="listaProfInformes">
              <!-- TODO: tr obtenidas por ajax -->
              <!-- <form class="" action="abrirInforme.php" method="post"> -->
-                 <tr>
+                 <!-- <tr>
                      <td>15-03-2021</td>
                      <td>Irene Aragón Gómez</td>
                      <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
@@ -42,7 +43,7 @@ $idProf = $_SESSION['idUsuario'];
                    <td>15-03-2021</td>
                    <td>Irene Aragón Gómez</td>
                    <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
-              </tr>
+              </tr> -->
              <!-- </form> -->
 
          </tbody>

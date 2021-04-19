@@ -29,10 +29,16 @@ function listarInformes() {
               var nombre = res[0] +' '+ res[1];
             }
 
+            // Construcción del path del fichero a abrir
+            var rootServer = 'CLICK_DOCTOR/historiales/';
+            var folder = informe.id_paciente_FK+'/';
+            var file = informe.nombre;
+            var filePath = rootServer+folder+file;
+
             htmlTr += "<tr>"+
                         "<td id='tdFechaInforme("+informe.id_informe+")'>"+ formatearFechaDDMMYYY(informe.creado_el) +"</td>"+
                         "<td id='tdNombrePaciente("+informe.id_informe+")'>"+ nombre +"</td>"+
-                        "<td><button type='button' onclick='abrirInforme("+informe.id_informe+")' id='btnAbrirInforme("+informe.id_informe+")' class='btn btn-info mt-0 px-3'>Ver <i class='fa fa-eye iconoOjo'></i></button></td>"+
+                        "<td><a href=../../"+filePath+" class='btn btn-info' target='_blank' data-informe='"+informe.id_informe+"'>Ver <i class='fa fa-eye iconoOjo'></i></a></td>"+
                     "</tr>";
         });
 
