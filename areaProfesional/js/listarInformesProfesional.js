@@ -1,55 +1,44 @@
-console.log('entra listarInformesProfesional');
 
-var inputDniPaciente = document.getElementById('infDni');
-let dni_paciente = inputDniPaciente.value;
-// console.log('DNI PACIENTE : ');
-// console.log(dni_paciente);
-// console.log(inputDniPaciente.value);
 /*
-TODO:
-    - Pintar la tabla con
-        - Fecha del informe
-        - Nombre del paciente
-        - Botón con ID de informe que abre el informe en el navegador
-
-    - Datos que necesito
-        - ID del paciente, que es la carpeta del archivo
-        - ID del informe
-        - ID del profesional
- */
+    pattern: cualquier letra, número o símbolo más que acabe en .pdf
+        var patt = /^[a-z0-9_()\-\[\]]+\.pdf$/i;
+*/
+window.onload = listarInformes();
 
 /* Lista los informes creados por el profesional */
 function listarInformes() {
-
-    // let dni_paciente = inputDniPaciente.value;
-    // console.log('DNI PACIENTE : ');
-    // console.log(dni_paciente);
-
     $.ajax({
         url: "back/listarInformesProfesional.php",
         type: "post",
-        data: {"dni_paciente": 'dni_paciente'},
     }).done(function(respuesta) {
+        let arrayRespuesta = $.parseJSON(respuesta);
+        let htmlTr = "";
+        arrayRespuesta.informes.forEach((informe, i) => {
+            // Construcción del nombre del paciente a través del nombre del fichero pdf
+            var nombrePaciente = informe.nombre;
+            var res = nombrePaciente.split("_");
+            /* pattern: cualquier número + que acabe en .pdf */
+            var patt = /^[0-9]+\.pdf$/i;
+            var segApellido = res[2];
 
+            if (segApellido.search(patt) < 0) {
+              // existe segundo apellido
+              var nombre = res[0] +' '+ res[1] +' '+ res[2];
+            } else {
+              // no existe segundo apellito
+              var nombre = res[0] +' '+ res[1];
+            }
 
+            htmlTr += "<tr>"+
+                        "<td id='tdFechaInforme("+informe.id_informe+")'>"+ formatearFechaDDMMYYY(informe.creado_el) +"</td>"+
+                        "<td id='tdNombrePaciente("+informe.id_informe+")'>"+ nombre +"</td>"+
+                        "<td><button type='button' onclick='abrirInforme("+informe.id_informe+")' id='btnAbrirInforme("+informe.id_informe+")' class='btn btn-info mt-0 px-3'>Ver <i class='fa fa-eye iconoOjo'></i></button></td>"+
+                    "</tr>";
+        });
 
-
-
-
-
-
-
+        $('#listaProfInformes').html(htmlTr);
 
     });
-
-
-
-
-
-
-
-
-
 
 
 

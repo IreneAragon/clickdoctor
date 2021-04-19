@@ -11,7 +11,7 @@ include_once '../include/navProfesionales.php';
 require_once '../clases/claseDB.php';
 
 $idProf = $_SESSION['idUsuario'];
-// $especialidades = DB::nombreEspecialidadesPracticaProf($idProf);
+
 
 
 /*
@@ -20,8 +20,8 @@ xx Por sesion coger id-prof,
 xx consultar por DB especialidades del prof,
 xx pintar select que le de a elegir la especialidad
 xx guardar especialidad en DB.
-Pintar en el informe SOLO una especialidad (la seleccionada)
-Mostrar la especialidad en el listado de informes del PACIENTE (fecha - especialidad - btnVer - bntDescarga)
+   Pintar en el informe SOLO una especialidad (la seleccionada)
+   Finalidad: Mostrar la especialidad en el listado de informes del PACIENTE (fecha - especialidad - btnVer - bntDescarga)
 
  */
 
@@ -149,6 +149,6 @@ Mostrar la especialidad en el listado de informes del PACIENTE (fecha - especial
 </body>
 
 <script src="js/ocultarDiv.js" charset="utf-8"></script>
-<script src="js/listarInformesProfesional.js" charset="utf-8"></script>
+<!-- <script src="js/listarInformesProfesional.js" charset="utf-8"></script> -->
  <?php
  include_once '../include/footer.html';

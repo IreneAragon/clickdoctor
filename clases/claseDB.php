@@ -543,8 +543,6 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $srcImg;
     }
 
-//insertarInforme($nombreInforme, $idProf, $idPac);
-
     public static function insertarInforme($nombreInforme, $especialidad, $idProf, $idPac){
             try {
                 $consulta = 'INSERT INTO informes (nombre, especialidad, id_profesional_FK, id_paciente_FK)
@@ -655,9 +653,18 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     }
 
 
+/*  listarInformesProfesional($idProfesional)   */
 
-
-
+    public static function listarInformesProfesional($idProfesional) {
+         try {
+             $consulta = 'SELECT * FROM informes WHERE id_profesional_FK = "'.$idProfesional.'"';
+             $resultado = self::ejecutaConsulta($consulta);
+             $informes = $resultado->fetchAll(PDO::FETCH_ASSOC);
+         } catch (PDOException $e) {
+             die("Error: " . $e->getMessage());
+         }
+         return $informes;
+    }
 
 
 

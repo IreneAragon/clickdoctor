@@ -1,7 +1,9 @@
 <?php
 require '../../clases/claseDB.php';
 
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 $id_paciente =  $_SESSION['idUsuario'];
 $filtro = filter_input(INPUT_POST, "filtro", FILTER_DEFAULT);
 

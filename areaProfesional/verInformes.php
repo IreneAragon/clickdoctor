@@ -10,6 +10,8 @@ if (!isset($_SESSION)) {
 include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';
 
+$idProf = $_SESSION['idUsuario'];
+
 ?>
 
  <div class="container mt-5">
@@ -27,17 +29,17 @@ include_once '../include/navProfesionales.php';
              <!-- TODO: tr obtenidas por ajax -->
              <!-- <form class="" action="abrirInforme.php" method="post"> -->
                  <tr>
-                     <td>2021/15/03</td>
+                     <td>15-03-2021</td>
                      <td>Irene Aragón Gómez</td>
                      <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
                 </tr>
                 <tr>
-                    <td>2021/15/03</td>
+                    <td>15-03-2021</td>
                     <td>Irene Aragón Gómez</td>
                     <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
                </tr>
                <tr>
-                   <td>2021/15/03</td>
+                   <td>15-03-2021</td>
                    <td>Irene Aragón Gómez</td>
                    <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
               </tr>
@@ -45,8 +47,10 @@ include_once '../include/navProfesionales.php';
 
          </tbody>
      </table>
+     <!-- <input type="hidden" id="idProfInforme" name="idProfInforme" value="<?= $idProf ?>"> -->
  </div>
 
 <script src="js/listarInformesProfesional.js" charset="utf-8"></script>
+<script src="../js/utils.js" charset="utf-8"></script>
 <?php
 include_once '../include/footer.html';

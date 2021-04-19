@@ -76,4 +76,4 @@ if (!empty($_POST)) {
 }
 
  ?>
-<script src="js/listarInformesProfesional.js" charset="utf-8"></script>
+<!-- <script src="js/listarInformesProfesional.js" charset="utf-8"></script> -->
