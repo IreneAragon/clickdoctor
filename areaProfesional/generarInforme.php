@@ -30,6 +30,7 @@ if (!empty($_POST)) {
     $apellidos = trim(filter_input(INPUT_POST, "infApellidos", FILTER_DEFAULT));
     $apellidos = str_replace(' ', '_', $apellidos);
     $paciente  = $nombre.'_'.$apellidos;
+    $especialidad = trim(filter_input(INPUT_POST, "selectMiEspecialidad", FILTER_DEFAULT));
 
     $comprobarDniPac = DB::comprobarDniPacienteExiste($dniPac);
 
@@ -61,7 +62,7 @@ if (!empty($_POST)) {
     // Obtener y guardar datos del informe en la DB
     $nombreInforme = $paciente.'_'.$dateTime.'.pdf';
     $idProf = $_SESSION['idUsuario'];
-    $grabarInforme = DB::insertarInforme($nombreInforme, $idProf, $idPac);
+    $grabarInforme = DB::insertarInforme($nombreInforme, $especialidad, $idProf, $idPac);
 
     $msgExito =  "Informe creado correctamente";
     include_once("crearInforme.php");

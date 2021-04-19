@@ -44,7 +44,7 @@ require_once '../include/navPacientes.php';
             <button type="submit" id="btnEnviarMensaje" name="button" data-chat="<?= $idConversacion ?>"><img src="../img/send.png" alt="Enviar mensaje" class="icon-send"></button>
         <!-- </form> -->
     </div>
-    <div class="alert alert-danger mt-5 errorCita" role="alert">
+    <div class="alert alert-danger errorCita text-center" role="alert">
     </div>
 </div>
 

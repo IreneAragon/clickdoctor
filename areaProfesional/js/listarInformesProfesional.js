@@ -2,9 +2,9 @@ console.log('entra listarInformesProfesional');
 
 var inputDniPaciente = document.getElementById('infDni');
 let dni_paciente = inputDniPaciente.value;
-console.log('DNI PACIENTE : ');
-console.log(dni_paciente);
-console.log(inputDniPaciente.value);
+// console.log('DNI PACIENTE : ');
+// console.log(dni_paciente);
+// console.log(inputDniPaciente.value);
 /*
 TODO:
     - Pintar la tabla con

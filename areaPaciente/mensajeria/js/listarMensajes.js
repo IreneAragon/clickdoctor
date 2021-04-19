@@ -132,25 +132,34 @@ function agregarMensaje(){
     let nuevoMensaje = inputAgregarMensaje.value;
     let msgError = '';
 
-    $.ajax({
-        url: "mensajeria/back/agregarMensajePaciente.php",
-        type: "post",
-        data: {"nuevoMensaje": nuevoMensaje,
-               "id_chat": id_chat},
-    }).done(function(respuesta) {
-        let arrayRespuesta = $.parseJSON(respuesta);
+    if (inputAgregarMensaje.value === "") {
+        msgError = 'No puede enviar un mensaje vacío, escriba algo.';
+        $('.errorCita').html(msgError);
+        $(".errorCita").show("fast");
+        setTimeout(function(){ $(".errorCita").fadeOut(); }, 4000);
+    } else {
+        $.ajax({
+            url: "mensajeria/back/agregarMensajePaciente.php",
+            type: "post",
+            data: {"nuevoMensaje": nuevoMensaje,
+                   "id_chat": id_chat},
+        }).done(function(respuesta) {
+            let arrayRespuesta = $.parseJSON(respuesta);
 
-        if (arrayRespuesta.success) {
-            $("#inputAgregarMensaje").val('');
-            listarMensajes(id_chat);
-        } else {
-            // TODO: FIX IT no muestra mensaje de error
-            msgError = 'FALLO';
-            $('.errorCita').html(msgError);
-            $(".errorCita").show("fast");
-        }
+            if (arrayRespuesta.success) {
+                $("#inputAgregarMensaje").val('');
+                listarMensajes(id_chat);
+            } else {
+                // TODO: FIX IT no muestra mensaje de error
+                msgError = 'Ocurrió un error, pruebe de nuevo.';
+                $('.errorCita').html(msgError);
+                $(".errorCita").show("fast");
+                setTimeout(function(){ $(".errorCita").fadeOut(); }, 4000);
+            }
+        });
+    }
 
-    });
+
 
 }
 

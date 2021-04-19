@@ -491,6 +491,33 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $nombreEspecialidad;
     }
 
+    /* Obtiene todas las especialidades que practica un profesional a través del id profesional */
+    public static function nombreEspecialidadesPracticaProf($idProf) {
+        try {
+            $consulta = 'SELECT especialidades.nombre FROM especialidades
+                         INNER JOIN practica ON practica.id_esp = especialidades.id_especialidad
+                         WHERE practica.id_prof = "'.$idProf.'"';
+            $resultado = self::ejecutaConsulta($consulta);
+            $nombreEspecialidades = $resultado->fetchAll();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $nombreEspecialidades;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static function guardarSrc($srcImg, $email) {
         try {
@@ -518,10 +545,10 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
 
 //insertarInforme($nombreInforme, $idProf, $idPac);
 
-    public static function insertarInforme($nombreInforme, $idProf, $idPac){
+    public static function insertarInforme($nombreInforme, $especialidad, $idProf, $idPac){
             try {
-                $consulta = 'INSERT INTO informes (nombre, id_profesional_FK, id_paciente_FK)
-                             VALUES ("'. $nombreInforme .'", "'. $idProf .'", "'. $idPac .'")';
+                $consulta = 'INSERT INTO informes (nombre, especialidad, id_profesional_FK, id_paciente_FK)
+                             VALUES ("'. $nombreInforme .'", "'. $especialidad .'", "'. $idProf .'", "'. $idPac .'")';
                 $resultado = self::ejecutaConsulta($consulta);
 
             } catch (PDOException $e) {

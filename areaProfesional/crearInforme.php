@@ -8,7 +8,22 @@ if (!isset($_SESSION)) {
 }
 include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';
+require_once '../clases/claseDB.php';
 
+$idProf = $_SESSION['idUsuario'];
+// $especialidades = DB::nombreEspecialidadesPracticaProf($idProf);
+
+
+/*
+TODO:
+xx Por sesion coger id-prof,
+xx consultar por DB especialidades del prof,
+xx pintar select que le de a elegir la especialidad
+xx guardar especialidad en DB.
+Pintar en el informe SOLO una especialidad (la seleccionada)
+Mostrar la especialidad en el listado de informes del PACIENTE (fecha - especialidad - btnVer - bntDescarga)
+
+ */
 
  ?>
 
@@ -55,6 +70,21 @@ include_once '../include/navProfesionales.php';
                     <input type="date" id="infFnac" name="infFnac" class="form-control" required>
                 </div>
             </div>
+
+            <p class="h4 mb-4 mt-5">Introduce los datos de la especialidad de la consulta</p>
+            <div class="col-12 form-row">
+                <label for="selectMiEspecialidad">Elija una especialidad</label>
+                <select class="form-control" id="selectMiEspecialidad" name="selectMiEspecialidad">
+                    <option value="0">Seleccione</option>
+                    <?php
+                        $especialidades = DB::nombreEspecialidadesPracticaProf($idProf);
+                        foreach ($especialidades as $especialidad) {
+                            echo '<option value="'.$especialidad['nombre'].'">'.$especialidad['nombre'].'</option>';
+                        }
+                    ?>
+                </select>
+            </div>
+
             <p class="h4 mb-4 mt-5">Introduce los datos de la consulta</p>
             <div class="form-row mb-2">
                 <div class="col-12">

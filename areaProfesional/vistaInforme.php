@@ -17,7 +17,13 @@ if (!isset($_SESSION)) {
 $idProf = $_SESSION['idUsuario'];
 $datosProfesional = DB::datosProfesional($idProf);
 $idEspProf =   DB::idEspecialidadPracticaProf($idProf);
-// var_dump('esp----',$idEspProf);die();
+
+
+/*******************************/
+// TODO: cómo obtengo el idInforme ¿?¿?¿?¿? para sacar el nombre de la especialidad a pintar
+// $especialidadDeLaConsulta = DB::nombreEspecialidad($idInforme);
+/*******************************/
+
 
 $nombreProf = $datosProfesional['nombre'];
 $apellidosProf = $datosProfesional['apellidos'];
