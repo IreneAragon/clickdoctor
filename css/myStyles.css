@@ -126,6 +126,28 @@ En pantallas pequeñas donde el ancho sea menor de 450px cambia el estilo del si
   padding: 16px;
 }
 
+.banner-sm {
+    display:none;
+}
+
+/*
+    En pantallas pequeñas donde el ancho sea menor de 768px se intercambian los banners
+*/
+@media (max-width: 768px) {
+    .banner-lg {
+        display:none;
+    }
+
+    .banner-sm {
+        display:block;
+    }
+}
+
+
+
+
+
+
 /***********************
 *   Gestión de citas   *
 ************************/
