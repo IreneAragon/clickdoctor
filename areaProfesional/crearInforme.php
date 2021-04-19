@@ -12,19 +12,6 @@ require_once '../clases/claseDB.php';
 
 $idProf = $_SESSION['idUsuario'];
 
-
-
-/*
-TODO:
-xx Por sesion coger id-prof,
-xx consultar por DB especialidades del prof,
-xx pintar select que le de a elegir la especialidad
-xx guardar especialidad en DB.
-   Pintar en el informe SOLO una especialidad (la seleccionada)
-   Finalidad: Mostrar la especialidad en el listado de informes del PACIENTE (fecha - especialidad - btnVer - bntDescarga)
-
- */
-
  ?>
 
 <body>
