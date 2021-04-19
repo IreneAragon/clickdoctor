@@ -1,29 +1,12 @@
 <?php
 
-/*
-TODO:
-    - Cargar automáticamente la ESPECIALIDAD del profesional
-        foreach
-
- */
-
 // Inicia sesión solo si no lo está ya
 if (!isset($_SESSION)) {
     session_start();
 }
 
-// require_once '../clases/claseDB.php';
-
 $idProf = $_SESSION['idUsuario'];
 $datosProfesional = DB::datosProfesional($idProf);
-$idEspProf =   DB::idEspecialidadPracticaProf($idProf);
-
-
-/*******************************/
-// TODO: cómo obtengo el idInforme ¿?¿?¿?¿? para sacar el nombre de la especialidad a pintar
-// $especialidadDeLaConsulta = DB::nombreEspecialidad($idInforme);
-/*******************************/
-
 
 $nombreProf = $datosProfesional['nombre'];
 $apellidosProf = $datosProfesional['apellidos'];
@@ -37,21 +20,6 @@ if ($genero === 'mujer' ) {
 } else {
     $nombreCompletoProf = 'Dr. '.$nombreApellidosProf;
 }
-
-$cadenaEspecialidadesProfesional = "";
-foreach ($idEspProf as $key => $idEsp) {
-    $idEspecialidad =  $idEsp['id_esp'];
-    $nombreEspecialidad = DB::nombreEspecialidad($idEspecialidad);
-    // $cadenaEspecialidadesProfesional = $nombreEspecialidad['nombre'].', ';
-
-    $cadenaEspecialidadesProfesional .= $nombreEspecialidad['nombre'].', ';
-
-
-    // echo $cadenaEspecialidadesProfesional;
-}
-$cadenaEspecialidadesProfesional = rtrim($cadenaEspecialidadesProfesional, ', ');
-
-
 
  // Formatear fecha de nacimiento
  $fNac = trim(filter_input(INPUT_POST, "infFnac", FILTER_DEFAULT));
@@ -160,7 +128,7 @@ $cadenaEspecialidadesProfesional = rtrim($cadenaEspecialidadesProfesional, ', ')
                       </tr>
                       <tr>
                         <td><strong>DNI:</strong> <?=$_POST['infDni']?></td>
-                        <td><strong>Especialidad:</strong> <?=$cadenaEspecialidadesProfesional?></td>
+                        <td><strong>Especialidad:</strong> <?=$especialidad?></td>
                       </tr>
                       <tr>
                         <td><strong>Fecha de nacimiento:</strong> <?=$fNacDDMMYYY?></td>

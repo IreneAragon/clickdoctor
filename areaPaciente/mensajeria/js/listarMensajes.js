@@ -7,7 +7,6 @@ btnEnviarMensaje.addEventListener("click", agregarMensaje);
 // El botón "enter" también envía el mensaje
 inputAgregarMensaje.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
-   // event.preventDefault();
    document.getElementById("btnEnviarMensaje").click();
   }
 });
@@ -123,6 +122,10 @@ function listarMensajes(id_chat) {
         $('#asunto').html('Asunto: '+asunto);
         $('.chat-previo').html(html_primer_mensaje);
 
+        // Mantiene el chat abajo del todo, para ver el último mensaje enviado
+        var chat = document.getElementById("box-chat");
+        chat.scrollTop = chat.scrollHeight;
+
     });
 }
 
@@ -149,8 +152,15 @@ function agregarMensaje(){
             if (arrayRespuesta.success) {
                 $("#inputAgregarMensaje").val('');
                 listarMensajes(id_chat);
+
+
+
+
+
+
+
+
             } else {
-                // TODO: FIX IT no muestra mensaje de error
                 msgError = 'Ocurrió un error, pruebe de nuevo.';
                 $('.errorCita').html(msgError);
                 $(".errorCita").show("fast");

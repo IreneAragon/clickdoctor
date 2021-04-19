@@ -29,7 +29,7 @@ require_once '../include/navPacientes.php';
 
 
     <!-- CHAT -->
-    <div class="contenedor-chat">
+    <div id="box-chat" class="contenedor-chat">
         <div class="chat-previo">
             <!-- Pinta por ajax el primer mensaje -->
         </div>
