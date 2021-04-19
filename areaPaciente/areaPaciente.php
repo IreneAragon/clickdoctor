@@ -1,14 +1,21 @@
 <?php
 include_once '../include/cabeceraUsuarios.html';
 include_once '../include/navPacientes.php';
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+require_once '../clases/claseDB.php';
+
+$idPaciente = $_SESSION['idUsuario'];
+$datosPaciente = DB::datosPaciente($idPaciente);
+$nombrePaciente = $datosPaciente['nombre'].' '.$datosPaciente['apellidos'];
+
 ?>
 
-<!-- TODO:
-        - quitar onclick, usar id y js getelementbyID
--->
 <!-- CONTENIDO -->
 <div id="contenidoPrincipal" class="container mt-5">
-    <h2 class="pt-4">Paciente: Nombre Apellido</h2>
+    <h2 class="mt-5"> <?=$nombrePaciente ?></h2>
     <!-- TODO: meter targetitas tipo info covid o cosas sanitarias -->
     <!-- TARJETAS -->
     <div class="row">
