@@ -1,8 +1,8 @@
 
-/*
-    pattern: cualquier letra, número o símbolo más que acabe en .pdf
-        var patt = /^[a-z0-9_()\-\[\]]+\.pdf$/i;
-*/
+if ($('#msgNoInformes').show()) {
+    $('#msgNoInformes').hide();
+}
+
 window.onload = listarInformes();
 
 /* Lista los informes creados por el profesional */
@@ -41,11 +41,21 @@ function listarInformes() {
                         "<td><a href=../../"+filePath+" class='btn btn-info' target='_blank' data-informe='"+informe.id_informe+"'>Ver <i class='fa fa-eye iconoOjo'></i></a></td>"+
                     "</tr>";
         });
-
+        if (arrayRespuesta.informes.length === 0) {
+            $('#tablaProfInformes').hide();
+            $('#msgNoInformes').show();
+        }
         $('#listaProfInformes').html(htmlTr);
-
     });
-
-
-
 }
+
+
+
+
+
+
+
+/*
+    pattern: cualquier letra, número o símbolo más que acabe en .pdf
+        var patt = /^[a-z0-9_()\-\[\]]+\.pdf$/i;
+*/

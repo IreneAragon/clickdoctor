@@ -10,12 +10,14 @@ if (!isset($_SESSION)) {
 include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';
 
-$idProf = $_SESSION['idUsuario'];
-
 ?>
 
  <div class="container mt-5">
      <h1 class="mt-5">Informes creados por mi</h1>
+
+     <div id="msgNoInformes" class="alert alert-primary" role="alert">
+         Aún no ha creado ningún informe.
+     </div>
 
      <table class="table table-sm table-hover" id="tablaProfInformes">
          <thead>
@@ -23,32 +25,12 @@ $idProf = $_SESSION['idUsuario'];
                  <th scope="col">Fecha</th>
                  <th scope="col">Paciente</th>
                  <th scope="col">Ver</th>
-                 
              </tr>
          </thead>
          <tbody id="listaProfInformes">
-             <!-- TODO: tr obtenidas por ajax -->
-             <!-- <form class="" action="abrirInforme.php" method="post"> -->
-                 <!-- <tr>
-                     <td>15-03-2021</td>
-                     <td>Irene Aragón Gómez</td>
-                     <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
-                </tr>
-                <tr>
-                    <td>15-03-2021</td>
-                    <td>Irene Aragón Gómez</td>
-                    <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
-               </tr>
-               <tr>
-                   <td>15-03-2021</td>
-                   <td>Irene Aragón Gómez</td>
-                   <td> <button type="button" class="btn btn-info btn-sm btnStyle">Ver Informe <i class="fa fa-eye iconoOjo"></i></button> </td>
-              </tr> -->
-             <!-- </form> -->
-
+             <!-- tr obtenidas por ajax en listarInformesProfesional.js -->
          </tbody>
      </table>
-     <!-- <input type="hidden" id="idProfInforme" name="idProfInforme" value="<?= $idProf ?>"> -->
  </div>
 
 <script src="js/listarInformesProfesional.js" charset="utf-8"></script>

@@ -666,6 +666,16 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
          return $informes;
     }
 
+    public static function listarInformesPaciente($idPaciente) {
+         try {
+             $consulta = 'SELECT * FROM informes WHERE id_paciente_FK = "'.$idPaciente.'"';
+             $resultado = self::ejecutaConsulta($consulta);
+             $informes = $resultado->fetchAll(PDO::FETCH_ASSOC);
+         } catch (PDOException $e) {
+             die("Error: " . $e->getMessage());
+         }
+         return $informes;
+    }
 
 
 
