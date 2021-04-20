@@ -50,7 +50,7 @@ require_once '../include/navPacientes.php';
 
 
 
-<!-- <script src="mensajeria/js/agregarMensaje.js" charset="utf-8"></script> -->
+
 <script src="mensajeria/js/listarMensajes.js" charset="utf-8"></script>
  <?php
  include_once '../include/footer.html';

@@ -137,7 +137,7 @@ function listarMensajes(id_chat) {
         // Mantiene el chat abajo del todo, para ver el último mensaje enviado
         var chat = document.getElementById("box-chat");
         chat.scrollTop = chat.scrollHeight;
-
+        refrescarMensajes();
     });
 }
 
@@ -179,4 +179,10 @@ function addZero(i) {
         i = "0" + i;
     }
     return i;
+}
+
+function refrescarMensajes() {
+  setTimeout(function(){
+      listarMensajes(id_chat);
+  }, 3000);
 }
