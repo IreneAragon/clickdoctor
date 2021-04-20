@@ -17,7 +17,7 @@ include_once '../include/navProfesionales.php';
 
     <div class="mt-5 box-header">
         <div class="box-img-nombre">
-            <img src="../areaProfesional/perfil/images/default-avatar.png" id="imgPerfilPaciente" alt="Imagen de perfil del Paciente" class="chat-avatar">
+            <img src="" id="imgPerfilPaciente" alt="Imagen de perfil del Paciente" class="chat-avatar">
             <h4 id="nombrePaciente"></h4>
         </div>
         <div class="chat-asunto" id="asuntoProf">
