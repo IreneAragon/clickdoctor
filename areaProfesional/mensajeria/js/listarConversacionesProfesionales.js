@@ -7,7 +7,6 @@ if ($('#msgEliminarConverProf').show()) {
 }
 
 function listarConversaciones() {
-    console.log('pasele');
 
     $.ajax({
         url: "mensajeria/back/listarConversacionesProfesionales.php",
@@ -15,7 +14,6 @@ function listarConversaciones() {
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
         let htmlTr = "";
-        console.log(arrayRespuesta.conversaciones);
         arrayRespuesta.conversaciones.forEach((conversacion, i) => {
 
             let timestamp = conversacion.creado_el;
@@ -36,26 +34,37 @@ function listarConversaciones() {
                         "<td>"+ conversacion.nombre + " " +conversacion.apellidos + "</td>"+
                         "<td>"+ conversacion.asunto +"</td>"+
                         "<td> <a href='detalleConversacion.php?chat="+conversacion.id_correo+"' data-idConversacion='"+conversacion.id_correo+"' class='btn btn-info btn-sm btnStyle'>Ver <i class='fa fa-eye iconoOjo'></i></a> </td>"+
-                        "<td> <button type='button' data-idConversacion='"+conversacion.id_correo+"' onclick='modalEliminarConver("+conversacion.id_correo+")' class='btn btn-danger btn-sm btnStyle' data-toggle='modal' data-target='#eliminarConversacion'>Eliminar <i class='fa fa-trash iconoOjo'></i></button> </td>"+
+                        "<td> <button type='button' data-idConversacion='"+conversacion.id_correo+"' onclick='modalEliminarConver("+conversacion.id_correo+")' class='btn btn-danger btn-sm btnStyle' data-toggle='modal' data-target='#eliminarConversacionProf'>Eliminar <i class='fa fa-trash iconoOjo'></i></button> </td>"+
                       "</tr>";
         });
         $('#listaConversacionesProfesional').html(htmlTr);
     });
 
-
-
-
-
-
 }
 
-
-
-
-
-
-
+/* ELIMINAR CONVERSACIÓN */
+/* Asignar al botón de borrado el ID de la conversación a eliminar */
+function modalEliminarConver(idConver) {
+    btnEliminarConver.setAttribute('data-idConver',idConver);
+}
 
 function eliminarConversacion(){
-    console.log('borrele');
+    let idConver = btnEliminarConver.getAttribute('data-idConver');
+
+    $.ajax({
+        url: "mensajeria/back/eliminarConversacionProfesional.php",
+        type: "post",
+        data: {"idConver": idConver},
+    }).done(function(respuesta) {
+        let arrayRespuesta = $.parseJSON(respuesta);
+        if (arrayRespuesta.borradoOk) {
+            $('#msgEliminarConverProf').show();
+            $('#eliminarConversacionProf').modal('hide');
+            listarConversaciones();
+            $("#msgEliminarConverProf").delay(4000).slideUp(200, function() {
+                $('#msgEliminarConverProf').hide();
+            });
+        }
+    });
+
 }
