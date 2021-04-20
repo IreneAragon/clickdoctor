@@ -571,6 +571,19 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $listadoConversaciones;
     }
 
+    // obtiene los datos de la tabla correos y de la tabla pacientes
+    public static function listarConversacionesProfesional($idProf) {
+        try {
+            $consulta = 'SELECT correos.*, pacientes.nombre, pacientes.apellidos FROM correos
+                         INNER JOIN pacientes ON pacientes.id_paciente = correos.id_pac_FK WHERE id_prof_FK = "'.$idProf.'" ORDER BY id_correo DESC';
+            $resultado = self::ejecutaConsulta($consulta);
+            $listadoConversaciones = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $listadoConversaciones;
+    }
+
     public static function eliminarConversacion($idConver) {
         try {
             $consulta = 'DELETE FROM correos WHERE id_correo = "'. $idConver .'"';

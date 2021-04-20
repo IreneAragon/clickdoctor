@@ -1,4 +1,3 @@
-// console.log('entra');
 
 var btnCrearConverProf = document.getElementById("btnCrearConverProf");
 btnCrearConverProf.addEventListener("click", crearConversacion);
@@ -40,10 +39,8 @@ function crearConversacion() {
         }).done(function(respuesta) {
             let arrayRespuesta = $.parseJSON(respuesta);
             if (arrayRespuesta.success) {
-                // console.log('exito');
                 // Muestra una alerta de éxito cuando la conversación haya sido creada
                 $("#converCreadaProf").show("fast");
-
             }
         });
     }
