@@ -8,7 +8,7 @@ require_once '../../../clases/claseDB.php';
 
 $id_chat = filter_input(INPUT_POST, "id_chat", FILTER_DEFAULT);
 $nuevoMensaje = filter_input(INPUT_POST, "nuevoMensaje", FILTER_DEFAULT);
-$rol = '1';
+$rol = '2';
 
 $insertarMensaje = DB::insertarMensaje($id_chat, $nuevoMensaje, $rol);
 

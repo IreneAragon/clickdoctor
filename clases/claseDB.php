@@ -613,7 +613,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function obtenerDatosCorreo($id_chat) {
 
          try {
-             $consulta = 'SELECT correos.asunto, correos.creado_el, correos.texto as primer_texto FROM correos WHERE id_correo = "'.$id_chat.'"';
+             $consulta = 'SELECT correos.asunto, correos.emisor, correos.creado_el, correos.texto as primer_texto FROM correos WHERE id_correo = "'.$id_chat.'"';
              $resultado = self::ejecutaConsulta($consulta);
              $correo = $resultado->fetch(PDO::FETCH_ASSOC);
          } catch (PDOException $e) {
@@ -647,7 +647,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $datosPaciente;
     }
 
-    public static function insertarMensajePaciente($id_chat, $nuevoMensaje, $rol){
+    public static function insertarMensaje($id_chat, $nuevoMensaje, $rol){
         try {
             $consulta = 'INSERT INTO mensajes (texto, rol, id_correo_FK) VALUES ("'. $nuevoMensaje .'", "'. $rol .'", "'. $id_chat .'")';
             $resultado = self::ejecutaConsulta($consulta);
