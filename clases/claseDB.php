@@ -635,6 +635,18 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $datosProfesional;
     }
 
+    public static function obtenerDatosPacienteChat($id_chat){
+        try {
+            $consulta = 'SELECT pacientes.id_paciente, pacientes.nombre, pacientes.apellidos, pacientes.srcImg FROM correos
+                         INNER JOIN pacientes ON pacientes.id_paciente = correos.id_pac_FK WHERE id_correo = "'.$id_chat.'"';
+            $resultado = self::ejecutaConsulta($consulta);
+            $datosPaciente = $resultado->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $datosPaciente;
+    }
+
     public static function insertarMensajePaciente($id_chat, $nuevoMensaje, $rol){
         try {
             $consulta = 'INSERT INTO mensajes (texto, rol, id_correo_FK) VALUES ("'. $nuevoMensaje .'", "'. $rol .'", "'. $id_chat .'")';

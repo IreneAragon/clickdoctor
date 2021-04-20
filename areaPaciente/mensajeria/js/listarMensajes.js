@@ -152,14 +152,6 @@ function agregarMensaje(){
             if (arrayRespuesta.success) {
                 $("#inputAgregarMensaje").val('');
                 listarMensajes(id_chat);
-
-
-
-
-
-
-
-
             } else {
                 msgError = 'Ocurrió un error, pruebe de nuevo.';
                 $('.errorCita').html(msgError);
