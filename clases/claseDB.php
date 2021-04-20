@@ -505,20 +505,6 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $nombreEspecialidades;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static function guardarSrc($srcImg, $email) {
         try {
             $consulta = 'UPDATE pacientes SET srcImg = "'.$srcImg.'" WHERE email = "'.$email.'"';
@@ -677,7 +663,17 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
          return $informes;
     }
 
+    public static function pacientes() {
+        try {
+            $consulta = 'SELECT * FROM pacientes';
+            $resultado = self::ejecutaConsulta($consulta);
+            $datosPaciente = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $datosPaciente;
 
+    }
 
 
 

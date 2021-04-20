@@ -17,9 +17,6 @@ if (!isset($_SESSION)) {
 <div id="navegador">
     <nav class="navbar light-blue accent-1 mynav fixed-top scrolling-navbar">
         <i class="fas fa-bars openbtn light-blue accent-1" onclick="openNav()"></i>
-        <!-- <i id="openNav" class="fas fa-bars openbtn light-blue accent-1" ></i> -->
-        <!-- <button class="openbtn light-blue accent-1" onclick="openNav()">☰</button> -->
-        <!-- <button class="openbtn light-blue accent-1" id="openNav">☰</button> -->
         <a class="navbar-brand" href="areaProfesional.php">
             <img src="../img/logoNav.png" height="20" alt="click doctor logo">
         </a>
@@ -28,7 +25,7 @@ if (!isset($_SESSION)) {
 
             <a class="closebtn" onclick="closeNav()">×</a>
             <a href="citasPaciente.php" class="hover">Citas</a>
-            <a href="mensajesPaciente.php" class="hover">Mensajes</a>
+            <a href="mensajesProfesionales.php" class="hover">Mensajes</a>
             <a href="#" class="noHover">Informes</a>
             <a href="crearInforme.php" class="moverTexto hover">Generar informes</a>
             <a href="verInformes.php" class="moverTexto hover">Ver informes</a>

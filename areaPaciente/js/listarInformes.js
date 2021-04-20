@@ -23,7 +23,7 @@ function listarInformesPaciente() {
         htmlTr += "<tr>"+
                     "<td>"+ formatearFechaDDMMYYY(informe.creado_el) +"</td>"+
                     "<td>"+ informe.especialidad +"</td>"+
-                    "<td><a href=../../"+filePath+" data-idInforme='"+informe.id_informe+"' class='btn btn-info btn-sm btnStyle waves-effect waves-light'>Ver <i class='fa fa-eye iconoOjo'></i></a></td>"+
+                    "<td><a href=../../"+filePath+" data-idInforme='"+informe.id_informe+"' class='btn btn-info btn-sm btnStyle waves-effect waves-light' target='_blank'>Ver <i class='fa fa-eye iconoOjo'></i></a></td>"+
                   "</tr>";
 
         });

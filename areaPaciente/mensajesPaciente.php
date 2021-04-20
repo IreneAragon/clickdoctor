@@ -11,7 +11,7 @@ include_once '../include/navPacientes.php';
             <a href="nuevaConversacion.php " class="btn btn-primary"> Crear nueva conversación </a>
 
             <div class="container mt-5">
-                <!-- Se muestra cuando la cita ha sido borrada -->
+                <!-- Se muestra cuando la conversación ha sido borrada -->
                 <div id="msgEliminarConver" class="alert alert-success mt-5" role="alert">
                     Su conversación ha sido borrada con éxito.
                 </div>

@@ -1,12 +1,9 @@
 <?php
 include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';
-// var_dump($_SESSION);
+
 ?>
 
-<!-- TODO:
-        - quitar onclick, usar id y js getelementbyID
--->
 <!-- CONTENIDO -->
 <div id="contenidoPrincipal" class="container mt-5">
     <h2 class="pt-4">Paciente: Nombre Apellido</h2>

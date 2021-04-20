@@ -47,9 +47,9 @@ function crearConversacion() {
         }).done(function(respuesta) {
             let arrayRespuesta = $.parseJSON(respuesta);
             if (arrayRespuesta.success) {
-                // Muestra una alerta de éxito cuando la cita haya sido creada
+                // Muestra una alerta de éxito cuando la conversación haya sido creada
                 $("#converCreada").show("fast");
-                
+
             }
         });
     }
