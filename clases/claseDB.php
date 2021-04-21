@@ -276,7 +276,7 @@ class DB {
         return $aDisponibilidad;
     }
 
-    /* OBTENER LA TABLA CITAS 'proximas' o 'pasadas' */
+    /* OBTENER LA TABLA CITAS 'proximas' o 'pasadas' para los pacientes*/
     public static function listarCitasPaciente($idPaciente, $filtro = 'proximas') {
         try {
 
@@ -319,6 +319,51 @@ class DB {
             die("Error: " . $e->getMessage());
         }
         return $listadoCitasPaciente;
+    }
+
+    /* OBTENER LA TABLA CITAS 'proximas' o 'pasadas' para los profesionales*/
+    public static function listarCitasProfesional($idProfesional, $filtro = 'proximas') {
+        try {
+
+            $where = ($filtro === 'proximas') ? '" AND citas.fecha >= CURDATE() ORDER BY citas.fecha ASC' : '" AND citas.fecha < CURDATE() ORDER BY citas.fecha DESC';
+
+            $consulta = 'SELECT citas.*, pacientes.nombre, pacientes.apellidos, pacientes.genero, especialidades.nombre as nombre_esp FROM citas
+                         INNER JOIN pacientes ON pacientes.id_paciente = citas.id_pac_FK
+                         INNER JOIN especialidades ON especialidades.id_especialidad = citas.id_especialidad
+                         WHERE id_prof_FK = "'. $idProfesional .$where;
+            $resultado = self::ejecutaConsulta($consulta);
+            $listadoCitasProfesional = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($listadoCitasProfesional as $k => $cita) {
+                switch ($cita['orden']) {
+                    case '1':
+                        $hora = self::ORDEN_1;
+                        break;
+                    case '2':
+                        $hora = self::ORDEN_2;
+                        break;
+                    case '3':
+                        $hora = self::ORDEN_3;
+                        break;
+                    case '4':
+                        $hora = self::ORDEN_4;
+                        break;
+                    case '5':
+                        $hora = self::ORDEN_5;
+                        break;
+                    case '6':
+                        $hora = self::ORDEN_6;
+                        break;
+                    default:
+                        $hora = "";
+                        break;
+                }
+                $listadoCitasProfesional[$k]['hora'] = $hora;
+            }
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $listadoCitasProfesional;
     }
 
     /* Obtener ID del usuario a través de email */

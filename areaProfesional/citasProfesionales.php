@@ -11,6 +11,7 @@ include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';
 
 ?>
+
 <div class="container mt-5">
 
     <div class="mt-5">
@@ -30,7 +31,7 @@ include_once '../include/navProfesionales.php';
             </tr>
         </thead>
         <tbody id="listaCitasProfesional">
-            <!-- TODO: tr obtenidas por ajax -->
+            <!-- tr obtenidas por ajax -->
         </tbody>
     </table>
 
@@ -93,7 +94,9 @@ include_once '../include/navProfesionales.php';
 
 
 
-
+<script src="js/listarCitasProfesional.js" charset="utf-8"></script>
+<script src="../js/utils.js" charset="utf-8"></script>
+<!-- <script src="js/datepicker.js" charset="utf-8"></script> -->
 
 <?php
 include_once '../include/footer.html';
