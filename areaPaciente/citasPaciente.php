@@ -75,15 +75,6 @@ include_once '../include/navPacientes.php';
                         <h5 class="modal-title" id="editarCitaLabel">Editar cita</h5>
                     </div>
                     <div id="modalEditBody" class="modal-body">
-                        <!-- TODO:
-                                - mortrar el mismo formulario de crear cita
-                                    - xxtabla con id tablaProxCitasxx
-                                - con los valores editables
-                                - cuando click "guardar cambios" llame función alter table
-                                - cuando cambios se guarden: cerrar modal  y mostrar mensaje OK
-                        -->
-                        <!-- <h1>contenido</h1> -->
-
                         <!-- FORMULARIO EDITAR CITA -->
                         <form id="tablaEditCita" class="" method="post">
                             <!-- 1º row -->

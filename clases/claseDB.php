@@ -494,7 +494,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     /* Obtiene todas las especialidades que practica un profesional a través del id profesional */
     public static function nombreEspecialidadesPracticaProf($idProf) {
         try {
-            $consulta = 'SELECT especialidades.nombre FROM especialidades
+            $consulta = 'SELECT especialidades.nombre, especialidades.id_especialidad FROM especialidades
                          INNER JOIN practica ON practica.id_esp = especialidades.id_especialidad
                          WHERE practica.id_prof = "'.$idProf.'"';
             $resultado = self::ejecutaConsulta($consulta);

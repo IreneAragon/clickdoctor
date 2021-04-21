@@ -24,7 +24,7 @@ if (!isset($_SESSION)) {
         <div id="mySidebar" class="sidebar light-blue accent-1 ">
 
             <a class="closebtn" onclick="closeNav()">×</a>
-            <a href="citasPaciente.php" class="hover">Citas</a>
+            <a href="citasProfesionales.php" class="hover">Citas</a>
             <a href="mensajesProfesionales.php" class="hover">Mensajes</a>
             <a href="#" class="noHover">Informes</a>
             <a href="crearInforme.php" class="moverTexto hover">Generar informes</a>

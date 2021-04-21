@@ -1,13 +1,13 @@
 
-var selectorEspecialista = document.getElementById("selectEspecialista");
-var selectorFecha = document.getElementById("fechaCita");
+var especialista = document.getElementById('idProf');
+var selectorFecha = document.getElementById('fechaCitaProf');
+var selectorEspecialidad = document.getElementById('selectCitaEspecialidad');
 
-// a la función traerDisponibilidad() se entra desde crearCita.js, donde se configura el datepicker con onSelect
-
+// a la función traerDisponibilidad() se entra desde crearCitaProfesionales.js, donde se configura el datepicker con onSelect
 
 function traerDisponibilidad() {
 
-    let idEspecialista = selectorEspecialista.value;
+    let idEspecialista = especialista.value;
     let fecha = selectorFecha.value;
     fecha = fecha.split("-");
     let fechayyyymmdd =    fecha[2]+'-'+ fecha[1] +'-'+  fecha[0];
@@ -15,9 +15,11 @@ function traerDisponibilidad() {
     $.ajax({
         url: "back/obtenerDisponibilidad.php",
         type: "post",
-        data: {"id_especialista" : idEspecialista, "fecha" : fechayyyymmdd},
+        data: {"idEspecialista" : idEspecialista,
+               "fechayyyymmdd" : fechayyyymmdd},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
+        console.log(arrayRespuesta);
         let htmlOptions = '<option value="0">Selecciona la hora</option>';
         if (arrayRespuesta.isEmpty) {
             htmlOptions = '<option value="0">No hay citas para este día</option>';
@@ -29,6 +31,6 @@ function traerDisponibilidad() {
             htmlOptions += '<option value="'+key+'">'+arrayRespuesta.datos[key]+'</option>';
         }
 
-        $('#horaCita').html(htmlOptions);
+        $('#horaCitaProf').html(htmlOptions);
     });
 }
