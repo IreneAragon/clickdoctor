@@ -56,6 +56,93 @@ include_once '../include/navProfesionales.php';
         </table>
     </div>
 
+
+
+
+
+    <!-- Modal editar cita -->
+    <div class="modal fade" id="editarCitaProf" tabindex="-1" role="dialog" aria-labelledby="editarCitaProfLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarCitaProfLabel">Editar cita</h5>
+                </div>
+                <div id="modalEditBodyProf" class="modal-body">
+                    <!-- FORMULARIO EDITAR CITA -->
+                    <form id="tablaEditCitaProf" class="" method="post">
+                        <div class="row pt-3">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="editPacienteProf">Paciente</label>
+                                    <p id="editPacienteProf"></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="editEspecialidadProf">Especialidad</label>
+                                    <p id="editEspecialidadProf"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row pt-3">
+
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="editFechaProf">Elija la fecha</label>
+                                    <!-- <input type="date" name="fechaCita" id="fechaCita" max="2025-12-31" min="2020-01-01" class="form-control"> -->
+                                    <input type="text" name="editFechaProf" id="editFechaProf" class="campo form-control">
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="editHoraProf">Elija la hora</label>
+                                    <select class="form-control" name="editHoraProf" id="editHoraProf">
+                                        <option value="0">Primero seleccione una fecha</option>
+                                        <!-- options obtenidas desde función ajax -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Se muestra cuando la cita ha sido creada -->
+                    <div id="citaModificadaProf" class="alert alert-success mt-2" role="alert">
+                        La cita ha sido modificada con éxito.
+                    </div>
+                    <!-- Muestra los errores al crear una cita -->
+                    <div id="errorCitaProf" class="alert alert-danger mt-2" role="alert">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button id="btnGuardarCitaEditadaProf" type="button" class="btn btn-success">Guardar cambios</button>
+                    <input type="hidden" name="idsCitaProf" id="idsCitaProf" value="" data-valores="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /modal editar cita -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Modal cancelar cita -->
     <div class="modal fade" id="cancelarCitaProf" tabindex="-1" role="dialog" aria-labelledby="cancelarCitaProfLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -72,24 +159,11 @@ include_once '../include/navProfesionales.php';
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <!-- Se muestra cuando la cita ha sido borrada -->
     <div id="msgBorradoCitaProf" class="alert alert-success mt-5" role="alert">
         La cita ha sido borrada con éxito.
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
 
