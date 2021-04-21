@@ -51,12 +51,32 @@ include_once '../include/navProfesionales.php';
                 </tr>
             </thead>
             <tbody id="listaHistorialCitasProf">
-                <!-- TODO: tr obtenidas por ajax -->
+                <!-- tr obtenidas por ajax -->
             </tbody>
         </table>
     </div>
 
-
+    <!-- Modal cancelar cita -->
+    <div class="modal fade" id="cancelarCitaProf" tabindex="-1" role="dialog" aria-labelledby="cancelarCitaProfLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cancelarCitaProfLabel">Cancelar cita</h5>
+                </div>
+                <div class="modal-body">
+                    <h3>¿Seguro que deseas cancelar la cita?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">¡no!</button>
+                    <button type="button" id="btnConfirmaBorrarProf" data-idcita="" class="btn btn-success">Sí, cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- Se muestra cuando la cita ha sido borrada -->
+    <div id="msgBorradoCitaProf" class="alert alert-success mt-5" role="alert">
+        La cita ha sido borrada con éxito.
+    </div>
 
 
 

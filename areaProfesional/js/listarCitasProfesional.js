@@ -2,6 +2,11 @@
 window.onload = listarCitas();
 window.onload = listarHistorialCitas();
 $('#msgNoCitasProf').hide();
+$('#msgBorradoCitaProf').hide();
+
+var btnBorrarCita = document.getElementById('btnConfirmaBorrarProf');
+btnBorrarCita.addEventListener("click", borrarCita);
+
 
 function listarCitas() {
     $.ajax({
@@ -51,6 +56,31 @@ function listarHistorialCitas() {
             $('#historialCitasProf').hide();
         } else {
             $('#listaHistorialCitasProf').html(htmlTr);
+        }
+    });
+}
+
+/* BORRAR */
+/* Asignar al botón de borrado el ID de la cita a eliminar */
+function modalBorrarCita(idCita) {
+    btnBorrarCita.setAttribute('data-idcita',idCita);
+}
+function borrarCita() {
+    let idCita = btnBorrarCita.getAttribute('data-idcita');
+    $.ajax({
+        url: "back/borrarCitaProfesionales.php",
+        type: "post",
+        data: {"idCita": idCita},
+    }).done(function(respuesta) {
+        let arrayRespuesta = $.parseJSON(respuesta);
+        console.log(arrayRespuesta);
+        if (arrayRespuesta.borradoOk) {
+            $('#msgBorradoCitaProf').show();
+            $('#cancelarCitaProf').modal('hide');
+            listarCitas();
+            $("#msgBorradoCitaProf").delay(4000).slideUp(200, function() {
+                $('#msgBorradoCitaProf').hide();
+            });
         }
     });
 }
