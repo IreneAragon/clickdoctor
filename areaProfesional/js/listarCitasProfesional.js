@@ -11,11 +11,6 @@ btnBorrarCita.addEventListener("click", borrarCita);
 var btnGuardarCitaEditada = document.getElementById("btnGuardarCitaEditadaProf");
 btnGuardarCitaEditada.addEventListener("click", modificarCita);
 
-
-var idProf =    '';
-var tdFechaText =    '';
-var tdFecha =    '';
-
 function listarCitas() {
     $.ajax({
         url: "back/listarCitasProfesionales.php",
@@ -97,10 +92,6 @@ function borrarCita() {
 /* Asignar al botón de edición el ID de la cita a editar */
 function modalEditarCita(idCita, idProf, idEsp) {
 
-    // if ($("#errorCitaProf").show()) {
-    //     $("#errorCitaProf").hide()
-    // }
-
     var btnEditarCita = document.getElementById('btnEditarCitaProf('+idCita+')');
     btnEditarCita.setAttribute('data-idcita',idCita);
     let idCitaEditar = btnEditarCita.getAttribute('data-idcita');
@@ -108,13 +99,13 @@ function modalEditarCita(idCita, idProf, idEsp) {
     // Obtiene los datos de la cita para cargarlos en el formulario editable
     let tdPaciente = document.getElementById('tdNombrePac('+idCita+')');
     let tdEspecialidad = document.getElementById('tdEspecialidad('+idCita+')');
-     tdFecha = document.getElementById('tdFechaCita('+idCita+')');
+    let tdFecha = document.getElementById('tdFechaCita('+idCita+')');
     let tdHora = document.getElementById('tdHoraCita('+idCita+')');
     let tdPacText = tdPaciente.innerHTML;
     let tdEspText = tdEspecialidad.innerHTML;
-     tdFechaText = tdFecha.innerHTML;
+    let tdFechaText = tdFecha.innerHTML;
     let tdHoraText = tdHora.innerHTML;
-    console.log('tdFechaText',tdFechaText);
+
 
     let divExito = document.getElementById("citaModificadaProf");
     divExito.style.display = 'none';
@@ -123,18 +114,12 @@ function modalEditarCita(idCita, idProf, idEsp) {
     $('#editPacienteProf').html(tdPacText);
     $('#editEspecialidadProf').html(tdEspText);
 
-
     var idsCita = document.getElementById('idsCitaProf');
     idsCita.setAttribute('data-valores', JSON.stringify({'idProf' : idProf, 'idEsp' : idEsp, 'idCita' : idCita}));
 
-    /*******************************/
-    /*******************************/
-    /*******************************/
     $("#editFechaProf").datepicker("setDate", tdFechaText);
 
-
     traerDisponibilidad(idProf, tdFechaText);
-
 }
 
 
@@ -175,7 +160,7 @@ function modificarCita() {
 
     // Valores
     let idEsp =  jsonValores.idEsp;
-     idProf =  jsonValores.idProf;
+    let idProf =  jsonValores.idProf;
     let idCita =  jsonValores.idCita;
     let fecha = document.getElementById('editFechaProf').value
     fecha = fecha.split("-");
@@ -231,21 +216,6 @@ function modificarCita() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Función que bloquea sábados y domingos
  function bloquearFinSemana(date){
      var day = date.getDay();
@@ -265,10 +235,15 @@ $("#editFechaProf").datepicker({
     dayNamesMin: ['D','L','M','X','J','V','S'],
     weekHeader: 'Sm',
     dateFormat: 'dd-mm-yy',
-    // onSelect: '25-01-2021',
     firstDay: 1,
     isRTL: false,
     showMonthAfterYear: false,
     yearSuffix: '',
-    showAnim: "fadeIn"
+    showAnim: "fadeIn",
+    onSelect: function(fecha) {
+        let valores = document.getElementById('idsCitaProf').getAttribute('data-valores');
+        let jsonValores = JSON.parse(valores);
+        let idProf =  jsonValores.idProf;
+        traerDisponibilidad(idProf, fecha);
+    }
 });
