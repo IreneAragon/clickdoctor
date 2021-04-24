@@ -7,7 +7,7 @@ ini_set('display_errors', '1');
 if (!isset($_SESSION)) {
     session_start();
 }
-// var_dump('LA SESIÓ ---- ',$_SESSION);
+
 include_once '../include/cabeceraUsuarios.html';
 include_once '../include/navPacientes.php';
 
