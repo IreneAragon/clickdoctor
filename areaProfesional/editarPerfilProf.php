@@ -53,7 +53,7 @@ $idProfesional = $_SESSION['idUsuario'];
 <div class="container">
     <h4 class="m-4">Modifica tus datos</h4>
     <!-- Formulario de edición -->
-    <form id="formEditarPerfilProf" class="p-4 formBackground" action="#" method="post">
+    <!-- <form id="formEditarPerfilProf" class="p-4 formBackground" action="#" method="post"> -->
       <div class="form-group">
         <!-- NOMBRE APELLIDOS -->
         <div class="row">
@@ -92,17 +92,25 @@ $idProfesional = $_SESSION['idUsuario'];
               <label for="editNcolegiado"><h6>Número de colegiado</h6></label>
               <input type="number" class="form-control" name="editNcolegiado" id="editNcolegiado" placeholder="123456789" title="Modifica tu número de colegiado" value="">
          </div>
-          <div class="col-sm-12 col-md-6">
-              <!-- ESPECIALIDADES -->
+         <div class="col-sm-12 col-md-6">
+             <!-- DNI -->
+             <label for="editDniProf"><h6>DNI</h6></label>
+             <input type="text" class="form-control" name="editDniProf" id="editDniProf" placeholder="12345678N" title="Modifica tu DNI" value="">
+        </div>
+
+        </div>
+      </div>
+      <!-- ESPECIALIDADES -->
+      <div class="form-group">
+          <div class="col-12">
             <label for="editarEspecialidades"><h6>Especialidades</h6></label>
             <select id="selectToEspecialidades" class="mul-select w-100 h-70 form-control mb-5" multiple="true">
                 <!-- options cargadas desde ajax -->
             </select>
           </div>
-        </div>
       </div>
 
-      <div class="form-group mb-5">
+      <div class="form-group mb-5 mt-5">
         <!-- CONTRASEÑA -->
         <div class="row">
           <div class="col-md-6 col-sm-12">
@@ -116,15 +124,16 @@ $idProfesional = $_SESSION['idUsuario'];
         </div>
       </div>
 
-      <div class="modal-footer">
+      <div class="">
         <!-- Botón para enviar consulta -->
         <button type="submit" id="btnGuardarPerfilProf" class="btn btn-info">Guardar Cambios</button>
       </div>
-    </form>
+    <!-- </form> -->
     <input type="hidden" id="idProf" name="idProf" value="<?=$idProfesional?>">
 </div>
 
 <script src="js/obtenerDatosPerfilProfesional.js" charset="utf-8"></script>
+<script src="js/modificarPerfilProfesional.js" charset="utf-8"></script>
 <?php
 include_once '../include/footer.html';
 ?>

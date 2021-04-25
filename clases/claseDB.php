@@ -465,7 +465,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
 
     }
 
-    /* Modifica los datos del usuario desde el perfil, incluída la contraseña */
+    /* Modifica los datos del usuario PACIENTE desde el perfil, incluída la contraseña */
     public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $hashPass, $idUsuario) {
         try {
             $consulta = 'UPDATE pacientes SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'", password ="'.$hashPass.'" WHERE id_paciente ="'.$idUsuario.'"';
@@ -479,7 +479,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
 
     }
 
-    /* Modifica los datos del usuario desde el perfil, SIN la contraseña */
+    /* Modifica los datos del usuario PACIENTE desde el perfil, SIN la contraseña */
     public static function modificarDatosUsuarioNoPass($name, $lastname, $email, $fNac, $idUsuario) {
         try {
             $consulta = 'UPDATE pacientes SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'" WHERE id_paciente ="'.$idUsuario.'"';
@@ -491,6 +491,95 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         // si se ha editado el perfil correctamente devuelve true
         return ($count === 1) ? true : false;
     }
+
+    /* Modifica las especialidades del PROFESIONAL */
+    public static function modificarEspecialidadesProfesional($idEspecialidades, $idUsuario) {
+        try {
+            $especialidadesProfesional = self::idEspecialidadPracticaProf($idUsuario);
+            $aEspecialidades = [];
+            foreach ($especialidadesProfesional as $key => $especialidad) {
+                $aEspecialidades[] = $especialidad["id_esp"];
+            }
+
+            $idEspecialidadEliminadas = array_diff($aEspecialidades, $idEspecialidades);
+            $idEspecialidadAnadidos = array_diff($idEspecialidades, $aEspecialidades);
+
+            if(!empty($idEspecialidadEliminadas)) {
+                foreach ($idEspecialidadEliminadas as $key => $idEspecialidadEliminado) {
+                    $consulta = 'DELETE FROM practica WHERE id_esp = "'. $idEspecialidadEliminado .'" AND id_prof = '.$idUsuario ;
+                    $resultado = self::ejecutaConsulta($consulta);
+                }
+            }
+
+            if(!empty($idEspecialidadAnadidos)) {
+                foreach ($idEspecialidadAnadidos as $key => $idEspecialidadAnadido) {
+                    $consultaInsert = 'INSERT INTO practica (id_esp, id_prof) VALUES ("'. $idEspecialidadAnadido .'", "'. $idUsuario .'")';
+                    $resultado = self::ejecutaConsulta($consultaInsert);
+                }
+            }
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+    }
+
+
+    public static function modificarDatosProfesional($name, $lastname, $email, $fNac, $nColegiado, $hashPass, $idEspecialidad, $idUsuario) {
+        try {
+            $consulta = 'UPDATE profesionales SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'", n_colegiado ="'.$nColegiado.'"';
+            if(!empty($hashPass)) {
+                $consulta .= ', password ="'.$hashPass.'"';
+            }
+            $consulta .= ' WHERE id_profesional ="'.$idUsuario.'"';
+
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado el perfil correctamente devuelve true
+        return ($count === 1) ? true : false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static function datosPaciente($idPaciente) {
         try {

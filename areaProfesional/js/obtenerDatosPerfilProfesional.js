@@ -1,4 +1,5 @@
 
+
 function obtenerListadoEspecialidades(idProf) {
     let selectDatos = [];
     $.ajax({
@@ -25,6 +26,7 @@ function pintarSelector(data) {
 }
 
 function obtenerDatosPerfil(idProf) {
+
     $.ajax({
         url: "back/obtenerPerfilProfesional.php",
         type: "post",
@@ -32,11 +34,13 @@ function obtenerDatosPerfil(idProf) {
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
         let datosPerfil = arrayRespuesta.datos;
+        // console.log(datosPerfil);
         $('#editarNombreProf').val(datosPerfil.nombre);
         $('#editarApellidosProf').val(datosPerfil.apellidos);
         $('#editarEmailProf').val(datosPerfil.email);
         $('#editarFnacProf').val(datosPerfil.f_nacimiento);
         $('#editNcolegiado').val(datosPerfil.n_colegiado);
+        $('#editDniProf').val(datosPerfil.dni);
         $('#img').attr('src', 'perfil/' + datosPerfil.srcImg);
     });
 }
