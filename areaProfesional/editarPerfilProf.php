@@ -10,26 +10,6 @@ $idProfesional = $_SESSION['idUsuario'];
 
 ?>
 
-<!-- TODO: falta input DNI -->
-<div class="container mt-5">
-    <!-- Muestra los mensajes de error o de éxito en caso de haberlos -->
-    <div class="alert-danger mt-5 text-center">
-      <?php
-        if(isset($msgError)){
-          echo $msgError;
-        }
-      ?>
-    </div>
-    <div class="alert-success text-center">
-      <?php
-        if(isset($msgExito)){
-          echo $msgExito;
-        }
-
-      ?>
-    </div>
-</div>
-
 <div class="container d-flex justify-content-center">
     <div class="col-lg-4 col-sm-12 text-center">
         <h4 class="m-4">Modifica tu imagen de perfil</h4>
@@ -52,8 +32,6 @@ $idProfesional = $_SESSION['idUsuario'];
 
 <div class="container">
     <h4 class="m-4">Modifica tus datos</h4>
-    <!-- Formulario de edición -->
-    <!-- <form id="formEditarPerfilProf" class="p-4 formBackground" action="#" method="post"> -->
       <div class="form-group">
         <!-- NOMBRE APELLIDOS -->
         <div class="row">
@@ -68,39 +46,28 @@ $idProfesional = $_SESSION['idUsuario'];
         </div>
       </div>
       <div class="form-group">
-        <!-- EMAIL FECHA DE NACIMIENTO  -->
         <div class="row">
-          <div class="col-sm-12 col-md-8">
-              <!-- EMAIL -->
+          <div class="col-12">
               <label for="editarEmailProf"><h6>Email</h6></label>
               <input type="email" class="form-control" name="editarEmailProf" id="editarEmailProf" placeholder="you@email.com" title="Modifica tu email" value="">
          </div>
-          <div class="col-sm-12 col-md-4">
-              <!-- FECHA DE NACIMIENTO -->
-            <label for="editarFnacProf"><h6>Fecha de Nacimiento</h6></label>
-            <input type="date" class="form-control" name="editarFnacProf" id="editarFnacProf" title="Modifica tu fecha de nacimiento" value="">
-          </div>
         </div>
       </div>
 
-
       <div class="form-group">
-        <!-- N COLEGIADO ESPECIALIDADES  -->
         <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <label for="editarFnacProf"><h6>Fecha de Nacimiento</h6></label>
+              <input type="date" class="form-control" name="editarFnacProf" id="editarFnacProf" title="Modifica tu fecha de nacimiento" value="">
+            </div>
           <div class="col-sm-12 col-md-6">
-              <!-- N COLEGIADO -->
               <label for="editNcolegiado"><h6>Número de colegiado</h6></label>
               <input type="number" class="form-control" name="editNcolegiado" id="editNcolegiado" placeholder="123456789" title="Modifica tu número de colegiado" value="">
          </div>
-         <div class="col-sm-12 col-md-6">
-             <!-- DNI -->
-             <label for="editDniProf"><h6>DNI</h6></label>
-             <input type="text" class="form-control" name="editDniProf" id="editDniProf" placeholder="12345678N" title="Modifica tu DNI" value="">
-        </div>
 
         </div>
       </div>
-      <!-- ESPECIALIDADES -->
+
       <div class="form-group">
           <div class="col-12">
             <label for="editarEspecialidades"><h6>Especialidades</h6></label>
@@ -111,7 +78,6 @@ $idProfesional = $_SESSION['idUsuario'];
       </div>
 
       <div class="form-group mb-5 mt-5">
-        <!-- CONTRASEÑA -->
         <div class="row">
           <div class="col-md-6 col-sm-12">
             <label for="editarPasswordProf"><h6>Cambia tu contraseña</h6></label>
@@ -124,11 +90,15 @@ $idProfesional = $_SESSION['idUsuario'];
         </div>
       </div>
 
-      <div class="">
-        <!-- Botón para enviar consulta -->
+      <div class="container mt-3 mb-5">
+          <!-- Muestra los mensajes de error o de éxito en caso de haberlos -->
+          <div class="alert-danger text-center" id="msgErrorPerfilProf"></div>
+          <div class="alert-success text-center" id="msgExitoPerfilProf"></div>
+      </div>
+
+      <div class="d-flex justify-content-center mb-3">
         <button type="submit" id="btnGuardarPerfilProf" class="btn btn-info">Guardar Cambios</button>
       </div>
-    <!-- </form> -->
     <input type="hidden" id="idProf" name="idProf" value="<?=$idProfesional?>">
 </div>
 
