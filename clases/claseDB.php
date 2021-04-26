@@ -369,17 +369,22 @@ class DB {
     /* Obtener ID del usuario a través de email */
     public static function getIdUsuario($email) {
         try {
-            $consulta = 'SELECT id_paciente FROM pacientes WHERE email = "'. $email .'"
+            $consulta = 'SELECT id_paciente as id_usuario FROM pacientes WHERE email = "'. $email .'"
                          UNION
-                         SELECT id_profesional FROM profesionales WHERE email = "'. $email .'"';
+                         SELECT id_profesional FROM profesionales WHERE email = "'. $email .'"
+                         UNION
+                         SELECT id_administrador FROM administrador WHERE email = "'. $email .'"';
             $resultado = self::ejecutaConsulta($consulta);
+            
             $idUsuario = $resultado->fetch();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
-
-        return $idUsuario['id_paciente'];
+        var_dump('---DbB---',$idUsuario['id_usuario']);
+        return $idUsuario['id_usuario'];
     }
+
+    /* Obtener id admin */
 
     /* Obtener ID del usuario a través del dni */
     public static function obteneridPacientePorDni($dniPac) {
@@ -835,10 +840,43 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     }
 
 
+    public static function borrarEspecialidad($idEsp) {
+        try {
+            $consulta = 'DELETE FROM especialidades WHERE id_especialidad = "'. $idEsp .'"';
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha borrado la especialidad devuelve true
+        return ($count === 1) ? true : false;
+    }
 
+    /* Edita una especialidad */
+    public static function editarEspecialidad($idEsp, $especialidad) {
+        try {
+            $consulta = 'UPDATE especialidades SET nombre = "'.$especialidad.'" WHERE id_especialidad ='.$idEsp;
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado la especialidad devuelve true
+        return ($count === 1) ? true : false;
 
+    }
 
-
+    public static function agregarEspecialidad($nuevaEspecialidad, $idAdmin){
+        try {
+            $consulta = 'INSERT INTO especialidades (nombre, id_administrador_FK)
+                         VALUES ("'. $nuevaEspecialidad .'", "'. $idAdmin .'")';
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return ($count === 1) ? true : false;
+    }
 
 
 

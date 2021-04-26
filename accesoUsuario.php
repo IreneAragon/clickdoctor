@@ -85,7 +85,9 @@ if (!empty($_POST)) {
                         die();
                     }
                 }
-            } else {
+            } else if ($esAdministrador) {
+                $idUsuario = DB::getIdUsuario($email);
+                $_SESSION['idUsuario'] = $idUsuario;
                 header('Location: areaAdministrador/areaAdministrador.php');
                 die();
             }
