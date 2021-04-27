@@ -684,7 +684,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
             $consulta = 'INSERT INTO correos (asunto, texto, id_prof_FK, id_pac_FK)
                          VALUES ("'. $asunto .'", "'. $texto .'", "'. $idProf .'", "'. $idPac .'")';
             $resultado = self::ejecutaConsulta($consulta);
-
+            // var_dump($consulta);die;
             // TODO: convertir if en ternario
             if ($resultado) {
                 return true;
@@ -879,11 +879,56 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     }
 
 
+    public static function listarUsuarios($rol) {
+        try {
+            if ($rol === 'paciente') {
+                $consulta = 'SELECT nombre, apellidos, id_paciente as id_usuario FROM pacientes';
+            } else {
+                $consulta = 'SELECT nombre, apellidos, id_profesional as id_usuario FROM profesionales';
+            }
+            $resultado = self::ejecutaConsulta($consulta);
+            $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $usuarios;
+    }
 
 
 
+    public static function borrarUsuario($id_usuario, $rol) {
+        try {
+            if ($rol === 'paciente') {
+                $consultaCorreos = 'DELETE FROM correos WHERE id_pac_FK = "'. $id_usuario .'"';
+                $resultadoCorreos = self::ejecutaConsulta($consultaCorreos);
 
+                $consultaInforme = 'DELETE FROM informes WHERE id_paciente_FK = "'. $id_usuario .'"';
+                $resultadoInforme = self::ejecutaConsulta($consultaInforme);
 
+                $consultaCitas = 'DELETE FROM citas WHERE id_pac_FK = "'. $id_usuario .'"';
+                $resultadoCitas = self::ejecutaConsulta($consultaCitas);
+
+                $consulta = 'DELETE FROM pacientes WHERE id_paciente = "'. $id_usuario .'"';
+            } else {
+                $consultaCorreos = 'DELETE FROM correos WHERE id_prof_FK = "'. $id_usuario .'"';
+                $resultadoCorreos = self::ejecutaConsulta($consultaCorreos);
+
+                $consultaInforme = 'DELETE FROM informes WHERE id_profesional_FK = "'. $id_usuario .'"';
+                $resultadoInforme = self::ejecutaConsulta($consultaInforme);
+
+                $consultaCitas = 'DELETE FROM citas WHERE id_prof_FK = "'. $id_usuario .'"';
+                $resultadoCitas = self::ejecutaConsulta($consultaCitas);
+
+                $consulta = 'DELETE FROM profesionales WHERE id_profesional = "'. $id_usuario .'"';
+            }
+
+            $resultado = self::ejecutaConsulta($consulta);
+
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $resultado;
+    }
 
 
 
