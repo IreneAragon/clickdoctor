@@ -930,10 +930,45 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $resultado;
     }
 
+/*
+
+insertarNuevoUsuarioPaciente($nombre, $apellidos, $email, $fNacimiento, $nColegiado, $dni, $rol, $genero, $hashPass)
+
+*/
 
 
 
+public static function insertarNuevoUsuarioPaciente($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass){
+    try {
+        $consulta = 'INSERT INTO pacientes (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password)
+                     VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $fNacimiento .'", "'. $dni .'", "'. $rol .'", "'. $genero .'", "'. $hashPass .'")';
+        $resultado = self::ejecutaConsulta($consulta);
+        $count = $resultado->rowCount();
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
+    }
+    return ($count === 1) ? true : false;
+}
+  
 
+// TODO: cómo inserto las especialidades en la tabla practica, si necesito saber primero el ID del paciente, y no lo sé porque lo estoy creando ahora. 
+// ¿¿¿¿ hago una consulta que me traiga el ultimo id y le sumo 1  ????????? 
+//insert into practica idespecialidad, idprof
+//
+//
+// public static function insertarNuevoUsuarioProfesional($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass, $ejerce, $nColegiado){
+//     try {
+//         $consulta = 'INSERT INTO profesionales (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password, ejerce_en, n_colegiado)
+//                      VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $fNacimiento .'", "'. $dni .'", "'. $rol .'", "'. $genero .'", "'. $hashPass .'", "'. $ejerce .'", "'. $nColegiado .'")';
+//         $resultado = self::ejecutaConsulta($consulta);
+
+
+//         $count = $resultado->rowCount();
+//     } catch (PDOException $e) {
+//         die("Error: " . $e->getMessage());
+//     }
+//     return ($count === 1) ? true : false;
+// }
 
 
 

@@ -6,9 +6,9 @@ ini_set('display_errors', '1');
 include_once '../include/cabeceraAdmins.html';
 include_once '../include/navAdministrador.php';
 
-if (!isset($_SESSION)) {
-    session_start();
-}
+// if (!isset($_SESSION)) {
+//     session_start();
+// }
 
 require_once '../clases/claseDB.php';
 
@@ -20,31 +20,31 @@ require_once '../clases/claseDB.php';
     <div class="form-row mb-2">
         <div class="col-12 col-lg-6 mb-2 mb-lg-0">
             <!-- Nombre -->
-            <input type="text" id="NuevoUsuarioNombre" name="NuevoUsuarioNombre" class="form-control" placeholder="Nombre" value="<?php isset($nombre) ? print $nombre : ''; ?>">
+            <input type="text" id="nuevoUsuarioNombre" name="nuevoUsuarioNombre" class="form-control" placeholder="Nombre" value="">
         </div>
         <div class="col-12 col-lg-6">
             <!-- Apellidos -->
-            <input type="text" id="NuevoUsuarioApellidos" name="NuevoUsuarioApellidos" class="form-control" placeholder="Apellidos" value="<?php isset($apellidos) ? print $apellidos : ''; ?>">
+            <input type="text" id="nuevoUsuarioApellidos" name="nuevoUsuarioApellidos" class="form-control" placeholder="Apellidos" value="">
         </div>
     </div>
     <!-- E-mail -->
-    <input type="email" id="NuevoUsuarioEmail" name="NuevoUsuarioEmail" class="form-control mb-2" placeholder="E-mail" value="<?php isset($email) ? print $email : ''; ?>">
+    <input type="email" id="nuevoUsuarioEmail" name="nuevoUsuarioEmail" class="form-control mb-2" placeholder="E-mail" value="">
     <!-- Contraseña -->
-    <input type="password" id="NuevoUsuarioPassword" name="NuevoUsuarioPassword" class="form-control" placeholder="Contraseña" value="<?php isset($contrasena) ? print $contrasena : ''; ?>">
+    <input type="password" id="nuevoUsuarioPassword" name="nuevoUsuarioPassword" class="form-control" placeholder="Contraseña" value="">
     <small class="form-text text-muted mb-2">
         Al menos 6 caracteres, mayúsculas y minúsculas y 1 dígito
     </small>
     <!-- Repetir Contraseña -->
-    <input type="password" id="NuevoUsuarioPasswordRep" name="NuevoUsuarioPasswordRep" class="form-control mb-2" placeholder="Repite la contraseña" value="<?php isset($contrasenaRep) ? print $contrasenaRep : ''; ?>">
+    <input type="password" id="nuevoUsuarioPasswordRep" name="nuevoUsuarioPasswordRep" class="form-control mb-2" placeholder="Repite la contraseña" value="">
     <div class="form-row mb-7">
         <div class="col col-12 col-lg-6">
             <!-- DNI -->
-            <input type="text" id="NuevoUsuarioDni" name="NuevoUsuarioDni" class="form-control" placeholder="DNI" value="<?php isset($dni) ? print $dni : ''; ?>">
+            <input type="text" id="nuevoUsuarioDni" name="nuevoUsuarioDni" class="form-control" placeholder="DNI" value="">
             <small class="form-text text-muted mb-2">(Ej: 12345678N)</small>
         </div>
         <div class="col">
             <!-- Fecha de nacimiento -->
-            <input type="date" id="NuevoUsuarioNacimiento" name="NuevoUsuarioNacimiento" class="form-control" value="<?php isset($fNacimiento) ? print $fNacimiento : ''; ?>">
+            <input type="date" id="nuevoUsuarioNacimiento" name="nuevoUsuarioNacimiento" class="form-control" value="">
             <small class="form-text text-muted mb-2">Fecha de nacimiento</small>
         </div>
     </div>
@@ -54,11 +54,11 @@ require_once '../clases/claseDB.php';
             <!-- Género -->
             <p class="h6 mb-2">Género</p>
             <div class="custom-control custom-radio">
-                <input type="radio" id="NuevoUsuarioMujer" name="gender" value="mujer" class="form-check-input" <?= isset($valueMujer) ?  $valueMujer : ''; ?> >
+                <input type="radio" id="nuevoUsuarioMujer" name="gender" value="mujer" class="form-check-input">
                 <label for="mujer" class="form-check-label mb-1">Mujer</label><br>
-                <input type="radio" id="NuevoUsuarioHombre" name="gender" value="hombre" class="form-check-input" <?= isset($valueHombre) ?  $valueHombre : ''; ?> >
+                <input type="radio" id="nuevoUsuarioHombre" name="gender" value="hombre" class="form-check-input">
                 <label for="hombre" class="form-check-label mb-1">Hombre</label><br>
-                <input type="radio" id="NuevoUsuarioOtro" name="gender" value="otro" class="form-check-input" <?= isset($valueOtro) ?  $valueOtro : ''; ?> >
+                <input type="radio" id="nuevoUsuarioOtro" name="gender" value="otro" class="form-check-input">
                 <label for="otro" class="form-check-label mb-1">Otro</label>
             </div> <br>
         </div>
@@ -66,31 +66,31 @@ require_once '../clases/claseDB.php';
             <!-- Tipo de usuario -->
             <p class="h6 mb-2">Rol</p>
             <div class="custom-control custom-radio">
-                <input type="radio" id="RolNuevoUsuarioPaciente" name="rol" value="paciente" class="form-check-input" <?= isset($valuePaciente) ?  $valuePaciente : ''; ?>>
+                <input type="radio" id="rolNuevoUsuarioPaciente" name="rol" value="paciente" class="form-check-input">
                 <label for="paciente" class="form-check-label mb-1">Paciente</label><br>
-                <input type="radio" id="RolNuevoUsuarioProfesional" name="rol" value="profesional" class="form-check-input" <?= isset($valueProfesional) ?  $valueProfesional : ''; ?>>
+                <input type="radio" id="rolNuevoUsuarioProfesional" name="rol" value="profesional" class="form-check-input">
                 <label for="profesional" class="form-check-label mb-1">Profesional sanitario</label>
             </div>
         </div>
     </div>
 
     <!-- Los siguientes inputs permanecerán inhabilitados mientras el usuario no se identifique como profesional sanitario-->
-    <div id="NuevoUsuarioDatosProfesional">
+    <div id="nuevoUsuarioDatosProfesional">
         <div class="form-row mb-7">
             <div class="col col-12 col-lg-6 mb-2">
                 <!-- Número de colegiado -->
-                <input type="text" id="NuevoUsuarioNcolegiado" name="NuevoUsuarioNcolegiado" class="form-control" placeholder="Número de colegiado" value="<?php isset($nColegiado) ? print $nColegiado : ''; ?>">
+                <input type="text" id="nuevoUsuarioNcolegiado" name="nuevoUsuarioNcolegiado" class="form-control" placeholder="Número de colegiado" value="">
             </div>
             <div class="col">
                 <!-- Lugar de trabajo -->
-                <input type="text" id="NuevoUsuarioEjerce" name="NuevoUsuarioEjerce" class="form-control" placeholder="Lugar de trabajo" value="<?php isset($ejerce) ? print $ejerce : ''; ?>">
+                <input type="text" id="nuevoUsuarioEjerce" name="nuevoUsuarioEjerce" class="form-control" placeholder="Lugar de trabajo" value="">
                 <small class="form-text text-muted mb-2">Nombre de hospital o clínica</small>
             </div>
         </div>
         <div class="form-row">
             <div class="col-xl-12">
                 <!-- Especialidad -->
-                <select class="mul-select w-100 h-100 form-control" multiple="true">
+                <select id="nuevoUsuarioEspecialidades" class="mul-select w-100 h-100 form-control" multiple="true">
                     <!-- Options cargadas desde la base de datos -->
                     <?php
                         $especialidades = DB::especialidades();
@@ -105,29 +105,13 @@ require_once '../clases/claseDB.php';
     </div>
 
     <!-- Botón de registro -->
-    <input type="submit" id="NuevoUsuarioSubmit" name="NuevoUsuarioSubmit" value="GUARDAR" class="btn btn-info my-4 btn-block">
-    <!-- <button class="btn btn-info my-4 btn-block" type="submit">REGISTRAR</button> -->
-    <!-- Muestra los mensajes de error en caso de haberlos -->
-    <div class="mensajeError">
-        <?php
-        // TODO: Arreglar --> aunque haya varios errores solo muestra el primero
-            // if(isset($mensajeError)){
-            //     echo ($mensajeError);
-                // var_dump($mensajeError);
-            // }
-        ?>
-    </div>
-    <hr>
-    <!-- Terms of service -->
-    <!-- <p> Haciendo click en <em>Registrar</em> acepta nuestros
-        <a href="../index.php" target="_blank">términos y condiciones del servicio</a>
-        y reconoce que ha leído nuestra
-        <a href="../index.php" target="_blank">política de privacidad</a>
-    </p> -->
-
-
-
-
+    <input type="submit" id="nuevoUsuarioSubmit" name="nuevoUsuarioSubmit" value="GUARDAR" class="btn btn-info my-4 btn-block">
+    
+    <!-- Muestra los mensajes de error o de éxito en caso de haberlos -->
+    <div class="alert-danger text-center m-3" id="msgErrorNuevoUsuario"></div>
+    <div class="alert-success text-center m-3" id="msgExitoNuevoUsuario"></div>
+    
+   
 </div>
 
                 
@@ -138,7 +122,7 @@ require_once '../clases/claseDB.php';
 
 
 
-<!-- <script src="js/agregarNuevoUsuario.js" charset="utf-8"></script> -->
+<script src="js/agregarNuevoUsuario.js" charset="utf-8"></script>
 <!-- Script muestra o no los inputs correspondientes según el tipo de paciente -->
 		<!-- TODO llevar la función del multi select a un fichero .js externo -->
         <script src="../js/habilitarInputAdmin.js"></script>

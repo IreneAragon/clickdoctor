@@ -1,16 +1,16 @@
 
-var AdminPaciente = document.getElementById('RolNuevoUsuarioPaciente');
-var AdminProfesional = document.getElementById('RolNuevoUsuarioProfesional');
-var AdminDatosProfesional = document.getElementById('NuevoUsuarioDatosProfesional');
-AdminDatosProfesional.style.visibility = "hidden";
+var adminPaciente = document.getElementById('rolNuevoUsuarioPaciente');
+var adminProfesional = document.getElementById('rolNuevoUsuarioProfesional');
+var adminDatosProfesional = document.getElementById('nuevoUsuarioDatosProfesional');
+adminDatosProfesional.style.visibility = "hidden";
 
 function habilitarInput() {
-  if (AdminProfesional.checked) {
-    AdminDatosProfesional.style.visibility = "visible";
+  if (adminProfesional.checked) {
+    adminDatosProfesional.style.visibility = "visible";
   } else {
-    AdminDatosProfesional.style.visibility = "hidden";
+    adminDatosProfesional.style.visibility = "hidden";
   }
 }
 
-AdminPaciente.addEventListener('change', habilitarInput);
-AdminProfesional.addEventListener('change', habilitarInput);
+adminPaciente.addEventListener('change', habilitarInput);
+adminProfesional.addEventListener('change', habilitarInput);
