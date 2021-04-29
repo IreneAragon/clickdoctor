@@ -40,7 +40,7 @@
             <br><br>
             <!-- Formulario de Registro -->
 			<!-- TODO: arreglar, pantalla 991px formulario demasiado grande -->
-            <form class="p-5 formBackground" action="registroUsuario.php" method="post">
+            <!-- <form class="p-5 formBackground" action="" method="post"> -->
                 <p class="h4 mb-4">Crear cuenta</p>
                 <div class="form-row mb-2">
                     <div class="col-12 col-lg-6 mb-2 mb-lg-0">
@@ -113,14 +113,14 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<div class="col-xl-12">
+						<div class="col-xl-12">                                                 
 							<!-- Especialidad -->
-							<select class="mul-select w-100 h-100 form-control" multiple="true">
+							<select id="regEspecialidades" name="regEspecialidades" class="mul-select w-100 h-100 form-control" multiple="true">
 								<!-- Options cargadas desde la base de datos -->
 								<?php
 									$especialidades = DB::especialidades();
 									foreach ($especialidades as $especialidad) {
-										echo '<option value="'.$especialidad['id_especialidad'].'">'.$especialidad['nombre'].'</option>';
+										echo '<option name="regEspecialidadess" value="'.$especialidad['id_especialidad'].'">'.$especialidad['nombre'].'</option>';
 									}
 								?>
 
@@ -128,20 +128,23 @@
 						</div>
 					</div>
 				</div>
-
+                <!-- Muestra los mensajes de error o de éxito en caso de haberlos -->
+                <div class="alert-danger text-center m-3" id="msgErrorReg"></div>
+                <div class="alert-success text-center m-3" id="msgExitoReg"></div>
+    
                 <!-- Botón de registro -->
-				<input type="submit" id="submit" name="submit" value="REGISTRAR" class="btn btn-info my-4 btn-block">
+				<input type="submit" id="submitReg" name="submitReg" value="REGISTRAR" class="btn btn-info my-4 btn-block">
                 <!-- <button class="btn btn-info my-4 btn-block" type="submit">REGISTRAR</button> -->
 				<!-- Muestra los mensajes de error en caso de haberlos -->
-				<div class="mensajeError">
+				<!-- <div class="mensajeError">
 					<?php
 					// TODO: Arreglar --> aunque haya varios errores solo muestra el primero
-						if(isset($mensajeError)){
-							echo ($mensajeError);
-							// var_dump($mensajeError);
-						}
+						// if(isset($mensajeError)){
+						// 	echo ($mensajeError);
+						// 	var_dump($mensajeError);
+						// }
 					?>
-				</div>
+				</div> -->
 				<hr>
                 <!-- Terms of service -->
                 <p> Haciendo click en <em>Registrar</em> acepta nuestros
@@ -149,7 +152,7 @@
                     y reconoce que ha leído nuestra
                     <a href="../index.php" target="_blank">política de privacidad</a>
                 </p>
-            </form>
+            <!-- </form> -->
             <!-- Default form register -->
         </div>
         <!-- Ends content -->
@@ -166,6 +169,8 @@
 		<!-- Script muestra o no los inputs correspondientes según el tipo de paciente -->
 		<!-- TODO llevar la función del multi select a un fichero .js externo -->
         <script src="../js/habilitarInput.js"></script>
+        <script src="js/insertarNuevoUsuario.js" charset="utf-8"></script>
+
 		<script>
 			$(document).ready(function(){
 				$(".mul-select").select2({

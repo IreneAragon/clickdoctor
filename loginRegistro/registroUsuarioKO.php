@@ -26,17 +26,21 @@ if (!empty($_POST)) {
 
 
     // Variables que almacenan los datos del formulario
-    $nombre        = trim(filter_input(INPUT_POST, "regNombre", FILTER_DEFAULT));
-    $apellidos     = trim(filter_input(INPUT_POST, "regApellidos", FILTER_DEFAULT));
-    $email         = trim(filter_input(INPUT_POST, "regEmail", FILTER_DEFAULT));
-    $contrasena    = trim(filter_input(INPUT_POST, "regPassword", FILTER_DEFAULT));
-    $contrasenaRep = trim(filter_input(INPUT_POST, "regPasswordRep", FILTER_DEFAULT));
-    $dni           = trim(filter_input(INPUT_POST, "regDni", FILTER_DEFAULT));
-    $fNacimiento   = trim(filter_input(INPUT_POST, "regNacimiento", FILTER_DEFAULT));
-    $genero        = trim(filter_input(INPUT_POST, "gender", FILTER_DEFAULT));
-    $rol           = trim(filter_input(INPUT_POST, "rol", FILTER_DEFAULT));
-    $nColegiado    = trim(filter_input(INPUT_POST, "regNcolegiado", FILTER_DEFAULT));
-    $ejerce        = trim(filter_input(INPUT_POST, "regEjerce", FILTER_DEFAULT));
+    $nombre           = trim(filter_input(INPUT_POST, "regNombre", FILTER_DEFAULT));
+    $apellidos        = trim(filter_input(INPUT_POST, "regApellidos", FILTER_DEFAULT));
+    $email            = trim(filter_input(INPUT_POST, "regEmail", FILTER_DEFAULT));
+    $contrasena       = trim(filter_input(INPUT_POST, "regPassword", FILTER_DEFAULT));
+    $contrasenaRep    = trim(filter_input(INPUT_POST, "regPasswordRep", FILTER_DEFAULT));
+    $dni              = trim(filter_input(INPUT_POST, "regDni", FILTER_DEFAULT));
+    $fNacimiento      = trim(filter_input(INPUT_POST, "regNacimiento", FILTER_DEFAULT));
+    $genero           = trim(filter_input(INPUT_POST, "gender", FILTER_DEFAULT));
+    $rol              = trim(filter_input(INPUT_POST, "rol", FILTER_DEFAULT));
+    $nColegiado       = trim(filter_input(INPUT_POST, "regNcolegiado", FILTER_DEFAULT));
+    $ejerce           = trim(filter_input(INPUT_POST, "regEjerce", FILTER_DEFAULT));
+    $idEspecialidades = trim(filter_input(INPUT_POST, "regEspecialidadess", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY));
+
+    var_dump('---->',$idEspecialidades);
+
 
     // Variable para almacenar la contraseña con hash
     $hashPass = password_hash($contrasena, PASSWORD_DEFAULT);
@@ -169,8 +173,10 @@ if (!empty($_POST)) {
                                                       $fNacimiento, $genero);
             header('Location: registroOK.php');
         } else {
+            var_dump('--end-->',$idEspecialidades);die;
             $registrarProfesional = DB::insertarProfesional($nombre, $apellidos, $email, $hashPass, $dni,
                                                             $fNacimiento, $genero, $nColegiado, $ejerce);
+            // $guardarEspecialidadesProfesional = DB::insertarEspecialidadNuevoProf($idEspecialidades, $idNuevoProf)
             header('Location: registroOK.php');
         }
     }
