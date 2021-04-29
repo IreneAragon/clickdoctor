@@ -17,7 +17,7 @@ if (!isset($_SESSION)) {
 require_once '../clases/claseDB.php';
 $idProf = $_SESSION['idUsuario'];
 $datosProfesional = DB::datosProfesional($idProf);
-$srcImgPerfil = '../areaPaciente/perfil/'.$datosProfesional['srcImg'];
+$srcImgPerfil = '../areaProfesional/perfil/'.$datosProfesional['srcImg'];
 
 
 

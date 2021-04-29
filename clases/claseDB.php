@@ -652,7 +652,20 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
-        // si se ha editado la cita devuelve true
+        
+        return ($count === 1) ? true : false;
+
+    }
+
+    public static function guardarSrcProf($srcImg, $email) {
+        try {
+            $consulta = 'UPDATE profesionales SET srcImg = "'.$srcImg.'" WHERE email = "'.$email.'"';
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+       
         return ($count === 1) ? true : false;
 
     }
@@ -660,6 +673,17 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
     public static function obtenerSrc($email) {
         try {
             $consulta = 'SELECT srcImg FROM pacientes WHERE email = "'.$email.'"';
+            $resultado = self::ejecutaConsulta($consulta);
+            $srcImg = $resultado->fetch();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $srcImg;
+    }
+
+    public static function obtenerSrcProf($email) {
+        try {
+            $consulta = 'SELECT srcImg FROM profesionales WHERE email = "'.$email.'"';
             $resultado = self::ejecutaConsulta($consulta);
             $srcImg = $resultado->fetch();
         } catch (PDOException $e) {

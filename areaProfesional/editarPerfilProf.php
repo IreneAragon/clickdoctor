@@ -104,6 +104,10 @@ $idProfesional = $_SESSION['idUsuario'];
 
 <script src="js/obtenerDatosPerfilProfesional.js" charset="utf-8"></script>
 <script src="js/modificarPerfilProfesional.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="perfil/js/imgPerfilProf.js"></script>
+<script type="text/javascript" src="../sweetAlert/sweetalert2.all.min.js"></script>
+
 <?php
 include_once '../include/footer.html';
 ?>
