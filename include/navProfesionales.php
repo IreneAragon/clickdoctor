@@ -42,9 +42,7 @@ $srcImgPerfil = '../areaPaciente/perfil/'.$datosProfesional['srcImg'];
             <a href="crearInforme.php" class="moverTexto hover">Generar informes</a>
             <a href="verInformes.php" class="moverTexto hover">Ver informes</a>
             <a href="perfil.php" class="hover">Perfil</a>
-
-            <!-- TODO: pagina salir real, que cierre sesión y no debe entrar si vuelve atrás en navegador -->
-            <a href="../index.php" class="hover">Salir</a>
+            <a href="../cerrarSesion.php" class="hover">Salir</a>
         </div>
     </nav>
 </div>

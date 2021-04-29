@@ -33,8 +33,7 @@ $srcImgPerfil = '../areaPaciente/perfil/'.$datosPaciente['srcImg'];
             <a href="mensajesPaciente.php">Mensajes</a>
             <a href="historialPaciente.php">Historial</a>
             <a href="perfil.php">Perfil</a>
-            <!-- TODO: pagina salir real, que cierre sesión y no debe entrar si vuelve atrás en navegador -->
-            <a href="../index.php">Salir</a>
+            <a href="../cerrarSesion.php">Salir</a>
         </div>
     </nav>
 </div>
