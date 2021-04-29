@@ -16,6 +16,7 @@ if (!empty($_POST)) {
     $contrasenasCoinciden = true;
     $noExisteUsuario      = true;
     $emailValido          = true;
+    $dniValido            = true;
     $nColegiadoValido     = true;
     $esPaciente           = false;
     $esProfesional        = false;
@@ -99,6 +100,15 @@ if (!empty($_POST)) {
         $emailValido        = false;
         $noExistenErrores   = false;
         $mensajeError      .= "Error: introduzca un e-mail válido.\n";
+        include_once("registro.php");
+    }
+
+    /* Validación: el formato del dni es válido */
+    $formatoDni = DB::dniValido($dni);
+    if ($formularioCompleto && !$formatoDni) {
+        $dniValido        = false;
+        $noExistenErrores = false;
+        $mensajeError    .= "Error: introduzca un DNI válido.\n";
         include_once("registro.php");
     }
 

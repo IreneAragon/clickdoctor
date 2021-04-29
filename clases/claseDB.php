@@ -1237,6 +1237,21 @@ function obtenerSrc($email, $conexion) {
         }
     }
 
+        /* FORMATO NÚMERO DNI:
+        - Longitud: 9 caracteres
+        - Debe contrener:
+            - exactamente 8 dígitos y una letra
+        - Ejemplos válidos:
+            - 24659871M
+            - 74876524m
+    */
+    public static function dniValido($dni) {
+        if (preg_match('/^[0-9]{8,8}[A-Za-z]$/', $dni)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 
