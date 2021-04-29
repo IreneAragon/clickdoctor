@@ -1006,9 +1006,62 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return ($count === 1) ? true : false;
     }
 
+    public static function adminModificaPaciente($idUsuario, $nombre, $apellidos, $email, $fNacimiento) {
+        try {
+            $consulta = 'UPDATE pacientes SET nombre = "'.$nombre.'", apellidos = "'.$apellidos.'", email ="'.$email.'", f_nacimiento ="'.$fNacimiento.'" WHERE id_paciente ="'.$idUsuario.'"';
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado el perfil correctamente devuelve true
+        return ($count === 1) ? true : false;
+    }
+
+    public static function adminModificaProfesional($idUsuario, $nombre, $apellidos, $email, $fNacimiento, $n_colegiado) {
+        try {
+            $consulta = 'UPDATE profesionales SET nombre = "'.$nombre.'", apellidos = "'.$apellidos.'", email ="'.$email.'", f_nacimiento ="'.$fNacimiento.'", n_colegiado ="'.$n_colegiado.'" WHERE id_profesional ="'.$idUsuario.'"';
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado el perfil correctamente devuelve true
+        return ($count === 1) ? true : false;
+    }
 
 
 
+
+/*
+adminModificaEspecialidadesProfesional($idUsuario, $idEspecialidades)
+
+
+
+adminModificaPaciente($idUsuario, $nombre, $apellidos, $email, $fNacimiento)
+
+adminModificaProfesional($idUsuario, $nombre, $apellidos, $email, $fNacimiento, $n_colegiado)
+
+    public static function modificarDatosProfesional($name, $lastname, $email, $fNac, $nColegiado, $hashPass, $idEspecialidad, $idUsuario) {
+        try {
+            $consulta = 'UPDATE profesionales SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'", n_colegiado ="'.$nColegiado.'"';
+            if(!empty($hashPass)) {
+                $consulta .= ', password ="'.$hashPass.'"';
+            }
+            $consulta .= ' WHERE id_profesional ="'.$idUsuario.'"';
+
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado el perfil correctamente devuelve true
+        return ($count === 1) ? true : false;
+    }
+
+
+
+*/
 
 
 

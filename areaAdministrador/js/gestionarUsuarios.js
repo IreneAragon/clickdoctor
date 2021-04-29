@@ -39,7 +39,7 @@ function listarUsuarios(rol) {
         arrayRespuesta.usuarios.forEach((usuario, i) => {
             htmlTr += "<tr>"+
                         "<td id='tdIdUsuario("+usuario.id_usuario+")' data-rol="+rol+" data-id="+usuario.id_usuario+">"+ usuario.nombre +" "+ usuario.apellidos + "</td>"+
-                        "<td><button type='button' onclick='modalEditarUsuario("+usuario.id_usuario+")' id='btnEditarUsuario("+usuario.id_usuario+")' class='btn btn-warning btn-sm mt-0 px-3' data-toggle='modal' data-target='#editarUsuario'><i class='fas fa-pen' aria-hidden='true'></i></button></td>"+
+                        "<td><a href='editarUsuario.php?rol="+rol+"&id="+usuario.id_usuario+"' id='btnEditarUsuario("+usuario.id_usuario+")' class='btn btn-warning btn-sm mt-0 px-3'><i class='fas fa-pen' aria-hidden='true'></i></a></td>"+
                         "<td><button type='button' onclick='modalBorrarUsuario("+usuario.id_usuario+")' id='btnModalBorrarUsuario'  data-rol="+rol+" class='btn btn-danger btn-sm mt-0 px-3' data-toggle='modal' data-target='#eliminarUsuario'><i class='fas fa-trash' aria-hidden='true'></i></button></td>"+
                     "</tr>";
         });
