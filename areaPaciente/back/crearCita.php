@@ -2,7 +2,9 @@
 
 require '../../clases/claseDB.php';
 
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 $id_paciente     =  $_SESSION['idUsuario'];
 $id_especialidad = filter_input(INPUT_POST, "id_especialidad", FILTER_DEFAULT);
 $id_profesional  = filter_input(INPUT_POST, "id_profesional", FILTER_DEFAULT);
