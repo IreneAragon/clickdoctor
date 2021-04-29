@@ -1,10 +1,6 @@
-console.log('agregarNuevoUsuario.js');
 
 var btnAgregaUsuario = document.getElementById('nuevoUsuarioSubmit');
 btnAgregaUsuario.addEventListener("click", agregarUsuario);
-
-
-
 
 function agregarUsuario() {
     // datos
@@ -24,10 +20,11 @@ function agregarUsuario() {
     let checkRol = document.querySelector('input[name="rol"]:checked');
     var nColegiado =  document.getElementById("nuevoUsuarioNcolegiado").value;
     var ejerce =  document.getElementById("nuevoUsuarioEjerce").value;
-    var idEspecialidades =  document.getElementById("nuevoUsuarioEspecialidades").value;
+    // var idEspecialidades =  document.getElementById("nuevoUsuarioEspecialidades").value;
+    var idEspecialidades = $('#nuevoUsuarioEspecialidades').val();
     var divError = document.getElementById('msgErrorNuevoUsuario');
     var divExito = document.getElementById('msgExitoNuevoUsuario');
-    
+ 
     // flags 
     let esMujer = false;
     let esHombre = false;
@@ -56,10 +53,7 @@ function agregarUsuario() {
     } else if (otro.checked) {
         esOtro = true;
         genero = "no_binario";
-    } else {
-        
-        console.log('gender mal');
-    }
+    } 
     
     // conocer rol
     if (paciente.checked) {
@@ -68,22 +62,17 @@ function agregarUsuario() {
     } else if (profesional.checked) {
         esProfesional = true;
         rol = "profesional";
-    } else {
-        
-        console.log('rol mal');
     }
 
     /* VALIDACIONES */
     // campos obligatorios
     if (!nombre || !apellidos || !email || !dni || !fNacimiento || checkGenero === null || checkRol === null ) {
         msgError += 'Ningún campo del formulario puede estar vacío<br>';
-        console.log('campos vacios');
     } 
 
    if (esProfesional) {
         if (!nombre || !apellidos || !email || !dni || !fNacimiento || checkGenero === null ||  checkRol === null || !nColegiado || !ejerce || idEspecialidades.length < 1) {
             msgError += 'Ningún campo del formulario puede estar vacío<br>';
-            console.log('campos vacios prof');
         } 
     }
 
@@ -91,7 +80,6 @@ function agregarUsuario() {
     if (email != "") {
         if (!regexEmail.test(email)) {
             msgError += 'Email incorrecto<br>';
-            console.log('mail mal');
         }
     }
 
@@ -100,7 +88,6 @@ function agregarUsuario() {
     if (dni != "") {
         if (!regexDni.test(dni)) {
             msgError += 'DNI incorrecto<br>';
-            console.log('dni mal');
         } 
     }
 
@@ -108,7 +95,6 @@ function agregarUsuario() {
     if (nColegiado != "") {
         if (!regexNCol.test(nColegiado)) {
             msgError += 'Número de colegiado incorrecto<br>';
-            console.log('n col mal');
         } 
     }
 
@@ -116,7 +102,6 @@ function agregarUsuario() {
     if (fNacimiento != "") {
         if (!regexFnacimiento.test(fNacimiento)) {
             msgError += 'Formato de fecha incorrecto<br>';
-            console.log('fecha mal');
         } 
     }
     
@@ -124,32 +109,26 @@ function agregarUsuario() {
     if (password != "") {
         if (!regexPsw.test(password)) {
             msgError += "Formato de contraseña incorrecto, debe contener mayúsuclas, minúsculas y números y tener entre 6 y 16 caracteres.<br>";
-            console.log('passssss mal');
         } 
     }
 
     if (passwordRep != "") {
         if (!regexPsw.test(passwordRep)) {
             msgError += "El formato de la contraseña repetida es incorrecto, debe contener mayúsuclas, minúsculas y números y tener entre 6 y 16 caracteres.<br>";
-            console.log('passsssrep mal');
         } 
     }
-
 
     // si alguno de los campos de la contraseña está vacío
     if ( (!password && passwordRep) || (password && !passwordRep) ) {
         msgError += 'Debes escribir la contraseña en ambos campos<br>';
-        console.log('pass 1 mal');
     } else {
         // comprobar regex 
         if ( (!regexPsw.test(password)) || (!regexPsw.test(passwordRep)) ) {
             msgError += "Formato de contraseña incorrecto, debe contener mayúsuclas, minúsculas y números y tener entre 6 y 16 caracteres.<br>";
-            console.log('pass 2 mal');
         } else {
             //comprobar que coinciden
             if (password != passwordRep) {
                 msgError += 'Las contraseñas no coinciden<br>';
-                console.log('pass 3 mal');
             } 
         }
     }
@@ -157,7 +136,6 @@ function agregarUsuario() {
     // si no hay errores se procede a hacer el ajax que inserta la usuario en la base de datos
     if (msgError ==="") {
         divError.style.display = 'none';
-
         $.ajax({
             url: "back/nuevoUsuarioInsertAdmin.php",
             type: "post",
@@ -174,7 +152,6 @@ function agregarUsuario() {
                    "password" : password,
                    "passwordRep" : passwordRep},
         }).done(function(respuesta) {
-
             msgExito += 'Has agregado un nuevo usuario con éxito'
             if (msgExito === '') {
                 divExito.style.display = 'none';
@@ -191,53 +168,6 @@ function agregarUsuario() {
         divError.style.display = 'block';
         divError.innerHTML = msgError;
     }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let rol = document.querySelector('input[name="rol"]:checked');
-    // console.log('rol',rol);
-   
-    // if (rol === null) {
-    //     console.log('esnull');
-    // } else {
-    //     console.log('no es nul');
-    // }
-
-    // if ( idEspecialidades.length < 1) {
-    //     console.log('menos que uno - vacio');
-    // } else {
-    //     console.log('hay algo selecionado');
-    // }
-
 
 }
 

@@ -894,8 +894,6 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $usuarios;
     }
 
-
-
     public static function borrarUsuario($id_usuario, $rol) {
         try {
             if ($rol === 'paciente') {
@@ -919,6 +917,9 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
                 $consultaCitas = 'DELETE FROM citas WHERE id_prof_FK = "'. $id_usuario .'"';
                 $resultadoCitas = self::ejecutaConsulta($consultaCitas);
 
+                $consultaEspecialidades = 'DELETE FROM practica WHERE id_prof = "'. $id_usuario .'"';
+                $resultadoEsp = self::ejecutaConsulta($consultaEspecialidades);
+
                 $consulta = 'DELETE FROM profesionales WHERE id_profesional = "'. $id_usuario .'"';
             }
 
@@ -930,65 +931,66 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return $resultado;
     }
 
-/*
-
-insertarNuevoUsuarioPaciente($nombre, $apellidos, $email, $fNacimiento, $nColegiado, $dni, $rol, $genero, $hashPass)
-
-*/
-
-
-
-public static function insertarNuevoUsuarioPaciente($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass){
-    try {
-        $consulta = 'INSERT INTO pacientes (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password)
-                     VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $fNacimiento .'", "'. $dni .'", "'. $rol .'", "'. $genero .'", "'. $hashPass .'")';
-        $resultado = self::ejecutaConsulta($consulta);
-        $count = $resultado->rowCount();
-    } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+    public static function insertarNuevoUsuarioPaciente($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass){
+        try {
+            $consulta = 'INSERT INTO pacientes (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password)
+                        VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $fNacimiento .'", "'. $dni .'", "'. $rol .'", "'. $genero .'", "'. $hashPass .'")';
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return ($count === 1) ? true : false;
     }
-    return ($count === 1) ? true : false;
-}
-  
-
-// TODO: cómo inserto las especialidades en la tabla practica, si necesito saber primero el ID del paciente, y no lo sé porque lo estoy creando ahora. 
-// ¿¿¿¿ hago una consulta que me traiga el ultimo id y le sumo 1  ????????? 
-//insert into practica idespecialidad, idprof
-//
-//
-// public static function insertarNuevoUsuarioProfesional($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass, $ejerce, $nColegiado){
-//     try {
-//         $consulta = 'INSERT INTO profesionales (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password, ejerce_en, n_colegiado)
-//                      VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $fNacimiento .'", "'. $dni .'", "'. $rol .'", "'. $genero .'", "'. $hashPass .'", "'. $ejerce .'", "'. $nColegiado .'")';
-//         $resultado = self::ejecutaConsulta($consulta);
-
-
-//         $count = $resultado->rowCount();
-//     } catch (PDOException $e) {
-//         die("Error: " . $e->getMessage());
-//     }
-//     return ($count === 1) ? true : false;
-// }
-
-
-
-
-
-public static function listarUsuariosNoActivados() {
-    try {
-        $consulta = 'SELECT nombre, apellidos, dni, rol, id_profesional as id_usuario FROM profesionales  WHERE estado = 0
-                     UNION
-                     SELECT nombre, apellidos, dni, rol, id_paciente as is_usuario FROM pacientes WHERE estado = 0';
-        $resultado = self::ejecutaConsulta($consulta);
-        $listadoUsuariosNoActivos = $resultado->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+    
+    public static function insertarNuevoUsuarioProfesional($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass, $ejerce, $nColegiado){
+        try {
+            $consulta = 'INSERT INTO profesionales (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password, ejerce_en, n_colegiado)
+                        VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $fNacimiento .'", "'. $dni .'", "'. $rol .'", "'. $genero .'", "'. $hashPass .'", "'. $ejerce .'", "'. $nColegiado .'")';
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return ($count === 1) ? true : false;
     }
-    return $listadoUsuariosNoActivos;
-}
+
+    public static function insertarEspecialidadNuevoProf($idEspecialidades, $idNuevoProf){
+        try {
+            foreach ($idEspecialidades as $key => $idEspecialidad) {
+                $consulta = 'INSERT INTO practica (id_esp, id_prof) VALUES ("'. $idEspecialidad .'", "'. $idNuevoProf .'")';
+                $resultado = self::ejecutaConsulta($consulta);
+            }
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+    }
+
+    public static function ultimoIdProfresional() {
+        try {
+            $consulta = 'SELECT MAX(id_profesional) max_id FROM profesionales';
+            $resultado = self::ejecutaConsulta($consulta);
+            $ultimoId = $resultado->fetch();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $ultimoId;
+    }
+
+    public static function listarUsuariosNoActivados() {
+        try {
+            $consulta = 'SELECT nombre, apellidos, dni, rol, id_profesional as id_usuario FROM profesionales  WHERE estado = 0
+                        UNION
+                        SELECT nombre, apellidos, dni, rol, id_paciente as is_usuario FROM pacientes WHERE estado = 0';
+            $resultado = self::ejecutaConsulta($consulta);
+            $listadoUsuariosNoActivos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        return $listadoUsuariosNoActivos;
+    }
 
     public static function activarUsuario($id, $rol) {
-        
         try {
             if ($rol === 'profesional') {
                 $consulta = 'UPDATE profesionales SET estado = 1 WHERE id_profesional = "'. $id .'"';
@@ -1002,7 +1004,6 @@ public static function listarUsuariosNoActivados() {
         }
         // si se ha editado el estado devuelve true
         return ($count === 1) ? true : false;
-
     }
 
 

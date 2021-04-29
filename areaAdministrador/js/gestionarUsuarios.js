@@ -36,7 +36,6 @@ function listarUsuarios(rol) {
         let arrayRespuesta = $.parseJSON(respuesta);
         console.log(arrayRespuesta);
         let htmlTr = "";
-    
         arrayRespuesta.usuarios.forEach((usuario, i) => {
             htmlTr += "<tr>"+
                         "<td id='tdIdUsuario("+usuario.id_usuario+")' data-rol="+rol+" data-id="+usuario.id_usuario+">"+ usuario.nombre +" "+ usuario.apellidos + "</td>"+
@@ -53,7 +52,6 @@ function listarUsuarios(rol) {
 /* Asignar al botón de borrado el ID del paciente a eliminar */
 function modalBorrarUsuario(id_usuario) {
     btnBorrarUsuario.setAttribute('data-id_usuario',id_usuario);
-    // btnBorrarUsuario.setAttribute('data-rol',rol);
 }
 
 function borrarUsuario() {
