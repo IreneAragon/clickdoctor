@@ -69,7 +69,7 @@ $idProfesional = $_SESSION['idUsuario'];
       </div>
 
       <div class="form-group">
-          <div class="col-12">
+          <div class="col-lg-12 col-sm-6">
             <label for="editarEspecialidades"><h6>Especialidades</h6></label>
             <select id="selectToEspecialidades" class="mul-select w-100 h-70 form-control mb-5" multiple="true">
                 <!-- options cargadas desde ajax -->

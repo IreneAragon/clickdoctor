@@ -88,7 +88,7 @@ require_once '../clases/claseDB.php';
             </div>
         </div>
         <div class="form-row">
-            <div class="col-xl-12">
+            <div class="col-lg-12 col-sm-6">
                 <!-- Especialidad -->
                 <select id="nuevoUsuarioEspecialidades" class="mul-select w-100 h-100 form-control" multiple="true">
                     <!-- Options cargadas desde la base de datos -->
