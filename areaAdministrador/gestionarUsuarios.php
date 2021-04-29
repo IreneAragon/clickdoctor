@@ -35,6 +35,7 @@ if (!isset($_SESSION)) {
             </div>
         </div>
     </div>
+    
     <!-- tabla listar usuarios -->
     <table class="table table-sm table-hover">
         <thead>
@@ -45,12 +46,7 @@ if (!isset($_SESSION)) {
             </tr>
         </thead>
         <tbody id="listaUsuarios">
-            <!-- TODO: tr obtenidas por ajax -->
-            <tr>
-                <td>Nacho Martín</td>
-                <td>btn edit</td>
-                <td>btn delete</td>
-            </tr>
+            <!-- tr obtenidas por ajax -->
         </tbody>
     </table>
 

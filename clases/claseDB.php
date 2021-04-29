@@ -974,6 +974,88 @@ public static function insertarNuevoUsuarioPaciente($nombre, $apellidos, $email,
 
 
 
+public static function listarUsuariosNoActivados() {
+    try {
+        $consulta = 'SELECT nombre, apellidos, dni, rol, id_profesional as id_usuario FROM profesionales  WHERE estado = 0
+                     UNION
+                     SELECT nombre, apellidos, dni, rol, id_paciente as is_usuario FROM pacientes WHERE estado = 0';
+        $resultado = self::ejecutaConsulta($consulta);
+        $listadoUsuariosNoActivos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
+    }
+    return $listadoUsuariosNoActivos;
+}
+
+    public static function activarUsuario($id, $rol) {
+        
+        try {
+            if ($rol === 'profesional') {
+                $consulta = 'UPDATE profesionales SET estado = 1 WHERE id_profesional = "'. $id .'"';
+            } else {
+                $consulta = 'UPDATE pacientes SET estado = 1 WHERE id_paciente = "'. $id .'"';
+            }
+            $resultado = self::ejecutaConsulta($consulta);
+            $count = $resultado->rowCount();
+        } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+        }
+        // si se ha editado el estado devuelve true
+        return ($count === 1) ? true : false;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

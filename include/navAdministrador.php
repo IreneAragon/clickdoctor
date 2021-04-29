@@ -28,9 +28,9 @@ ini_set('display_errors', '1');
             <img class="avatarNav" src="" alt="imagen de perfil" title="Ver perfil">
         </a> -->
         <div id="mySidebar" class="sidebar light-blue accent-1 ">
-
             <a class="closebtn" onclick="closeNav()">×</a>
             <!-- <a id="closeNav" class="closebtn">×</a> -->
+            <a href="areaAdministrador.php" class="hover">Inicio</a>
             <a href="#" class="noHover">Panel de gestión</a>
             <a href="gestionarUsuarios.php" class="moverTexto hover">Usuarios</a>
             <a href="gestionarEspecialidades.php" class="moverTexto hover">Especialidades</a>
