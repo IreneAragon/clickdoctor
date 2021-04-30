@@ -6,12 +6,7 @@ ini_set('display_errors', '1');
 if (!isset($_SESSION)) {
     session_start();
 }
-// TODO: mensaje para la irene del futuro: si llamas a la claseDB para agregar la img de perfil
-// te va a dejar de funcionar el generador de informes, así que NO LLAMES AQUÍ a la claseDB,
-// inserta el src de la imagen de perfil por SESSION. Ánimo guapa!
-// TODO: ACTUALIZACIÓN día 21 de abril, no sé qué me está contando la irene del pasado, he llamado
-// a la clase DB para insertar el srcImg de la foto de perfil y el generador de informer sigue
-// funcionando correctamente. No voy a borrar esta bella conversación por si acaso...
+
 
 
 require_once '../clases/claseDB.php';

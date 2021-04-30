@@ -7,12 +7,7 @@ ini_set('display_errors', '1');
 //     session_start();
 // }
 
-/*
-TODO:
-    - obtener id paciente, que será el num de carpeta
-    - obtener el nombre del fichero que queremos abrir según el id que venga del botón "ver informe"
-      que es pintado en listarInformesProfesional por ajax
- */
+
 
 
 // Lo que tiene que ser

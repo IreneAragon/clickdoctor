@@ -15,7 +15,7 @@ require_once '../clases/claseDB.php';
 ?>
 
 <div class="container mt-5">
-    
+
     <p class="h4 mb-4 mt-5">Crear nuevo usuario</p>
     <div class="form-row mb-2">
         <div class="col-12 col-lg-6 mb-2 mb-lg-0">
@@ -106,15 +106,14 @@ require_once '../clases/claseDB.php';
 
     <!-- Botón de registro -->
     <input type="submit" id="nuevoUsuarioSubmit" name="nuevoUsuarioSubmit" value="GUARDAR" class="btn btn-info my-4 btn-block">
-    
+
     <!-- Muestra los mensajes de error o de éxito en caso de haberlos -->
     <div class="alert-danger text-center m-3" id="msgErrorNuevoUsuario"></div>
     <div class="alert-success text-center m-3" id="msgExitoNuevoUsuario"></div>
-    
-   
+
+
 </div>
 
-                
 
 
 
@@ -122,11 +121,13 @@ require_once '../clases/claseDB.php';
 
 
 
+<script src="../js/habilitarInputAdmin.js"></script>
+<script src="../js/multiselect.js"></script>
 <script src="js/agregarNuevoUsuario.js" charset="utf-8"></script>
 <!-- Script muestra o no los inputs correspondientes según el tipo de paciente -->
-		<!-- TODO llevar la función del multi select a un fichero .js externo -->
-        <script src="../js/habilitarInputAdmin.js"></script>
-		<script>
+		
+
+		<!-- <script>
 			$(document).ready(function(){
 				$(".mul-select").select2({
 						placeholder: "Elige una o varias especialidades",
@@ -134,7 +135,7 @@ require_once '../clases/claseDB.php';
 						tokenSeparators: ['/',',',';'," "]
 					});
 				})
-		</script>
+		</script> -->
 
 <?php
 include_once '../include/footer.html';

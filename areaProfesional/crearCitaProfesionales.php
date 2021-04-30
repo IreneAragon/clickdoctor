@@ -56,7 +56,7 @@ require_once '../clases/claseDB.php';
                 <label for="horaCitaProf">Elije el turno</label>
                 <select class="form-control" id="horaCitaProf">
                     <option value="0">Primero selecciona una fecha</option>
-                    <!-- TODO: options obtenidas desde función ajax -->
+                    <!-- options obtenidas desde función ajax -->
                 </select>
             </div>
         </div>

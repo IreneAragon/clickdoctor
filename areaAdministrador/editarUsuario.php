@@ -6,13 +6,7 @@ include_once '../include/navAdministrador.php';
 $rol = $_GET['rol'];
 $id = $_GET['id'];
 
-/*
 
-TODO: 
-    // - crear formulario
-    // - rellenar con valores
-    - btn modifica valor 
-*/
 ?>
 
 <div class="container mt-5">
@@ -75,7 +69,7 @@ TODO:
     <input type="hidden" id="idUsuario" name="idUsuario" value="<?=$id?>">
     <input type="hidden" id="rolUsuario" name="rolUsuario" value="<?=$rol?>">
 
-  
+
 </div>
 
 
@@ -84,12 +78,11 @@ TODO:
 
 
 
-
+<script src="../js/multiselect.js"></script>
 <script src="js/obtenerDatosPerfilUsuario.js" charset="utf-8"></script>
 <script src="js/modificarPerfilUsuario.js" charset="utf-8"></script>
-<!-- TODO llevar la función del multi select a un fichero .js externo -->
 
-		<script>
+		<!-- <script>
 			$(document).ready(function(){
 				$(".mul-select").select2({
 						placeholder: "Elige una o varias especialidades",
@@ -97,7 +90,7 @@ TODO:
 						tokenSeparators: ['/',',',';'," "]
 					});
 				})
-		</script>
+		</script> -->
 <?php
 include_once '../include/footer.html';
 ?>

@@ -8,16 +8,6 @@ require_once 'claseMensaje.php';
 require_once 'clasePaciente.php';
 require_once 'claseProfesional.php';
 
-/* TODO: rellenar con todas las funciones que contiene la clase
-    Clase DB
-        - Conexión a la base de datos y ejecución de la consulta
-        - Insertar paciente
-        - Insertar profesional
-        -
-        -
-        -
-*/
-
 class DB {
 
     const DB_DNS  = "mysql:host=localhost;dbname=CLICK_DOCTOR";
@@ -62,12 +52,7 @@ class DB {
             $resultado = null;
                 if (isset($consulta)) {
                     $resultado = $consulta->query($sql);
-                    // TODO: investigar como devolver si se ha insertado o si ha dado error
-                    // if ($resultado->execute()) {
-                    //      return true;
-                    //  } else {
-                    //      return false;
-                    //  }
+
                 }
             } catch (PDOException $e) {
                 die("Error: " . $e->getMessage());
@@ -375,7 +360,7 @@ class DB {
                          UNION
                          SELECT id_administrador FROM administrador WHERE email = "'. $email .'"';
             $resultado = self::ejecutaConsulta($consulta);
-            
+
             $idUsuario = $resultado->fetch();
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
@@ -652,7 +637,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
-        
+
         return ($count === 1) ? true : false;
 
     }
@@ -665,7 +650,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
-       
+
         return ($count === 1) ? true : false;
 
     }
@@ -708,8 +693,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
             $consulta = 'INSERT INTO correos (asunto, texto, id_prof_FK, id_pac_FK)
                          VALUES ("'. $asunto .'", "'. $texto .'", "'. $idProf .'", "'. $idPac .'")';
             $resultado = self::ejecutaConsulta($consulta);
-            // var_dump($consulta);die;
-            // TODO: convertir if en ternario
+
             if ($resultado) {
                 return true;
             } else {
@@ -966,7 +950,7 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         }
         return ($count === 1) ? true : false;
     }
-    
+
     public static function insertarNuevoUsuarioProfesional($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass, $ejerce, $nColegiado){
         try {
             $consulta = 'INSERT INTO profesionales (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password, ejerce_en, n_colegiado)
@@ -1153,41 +1137,6 @@ adminModificaProfesional($idUsuario, $nombre, $apellidos, $email, $fNacimiento, 
 
 
 
-/*
-
-function guardarSrc($srcImg, $email, $conexion) {
-  try {
-      $consulta = $conexion->prepare('UPDATE profesionales SET srcImg = :srcImg WHERE email = :email');
-      $consulta->bindParam(":srcImg", $srcImg);
-      $consulta->bindParam(":email", $email);
-
-      $consulta->execute();
-
-  } catch (PDOException $e) {
-      return $e->getCode()."- ".$e->getMessage();
-  }
-}
-
-
-function obtenerSrc($email, $conexion) {
-  try {
-      $consulta = $conexion->prepare("SELECT srcImg FROM profesionales WHERE email = :email");
-      $consulta->bindParam(":email", $email);
-      $consulta->execute();
-      $srcImagenPerfil = $consulta->fetch();
-
-
-  } catch (PDOException $e) {
-      $error = "#".$e->getCode().": ".$e->getMessage();
-  }
-  return $srcImagenPerfil['srcImg'];
-}
- */
-
-
-
-
-
 
 
 
@@ -1281,39 +1230,6 @@ function obtenerSrc($email, $conexion) {
 
 
 
-    // CONSULTA DE PRUEBA, TÓ OK. TODO: borrar
-     public static function getNombrePaciente($id) {
-         try {
-             $consulta = 'SELECT nombre FROM pacientes WHERE id_paciente = "'. $id .'"';
-             $resultado = self::ejecutaConsulta($consulta);
-             $nombrePaciente = $resultado->fetch();
-         } catch (PDOException $e) {
-             die("Error: " . $e->getMessage());
-         }
-         return $nombrePaciente;
-     }
-
-     // CONSULTA DE PRUEBA, TÓ OK. TODO: borrar
-     public static function insertarAdmin($email, $nombre, $apellidos, $contrasena){
-             try {
-                 $consulta = 'INSERT INTO administrador (email, nombre, apellidos, contrasena)
-                              VALUES ("'. $email .'", "'. $nombre .'", "'. $apellidos .'", "'. $contrasena .'")';
-                 $resultado = self::ejecutaConsulta($consulta);
-                 // var_dump($resultado);
-                 // var_dump($consulta);
-             } catch (PDOException $e) {
-                 die("Error: " . $e->getMessage());
-             }
-         }
-
-
-         /*
-         variable concatenada correctamente para insetar en la BD
-             1 variable:
-                 "'. $var .'"
-             varias:
-                 "'. $var .'", "'. $var .'", "'. $var .'"
-          */
 
 
 

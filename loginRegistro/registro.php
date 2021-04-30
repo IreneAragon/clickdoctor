@@ -137,7 +137,7 @@
 				<!-- Muestra los mensajes de error en caso de haberlos -->
 				<!-- <div class="mensajeError">
 					<?php
-					// TODO: Arreglar --> aunque haya varios errores solo muestra el primero
+
 						// if(isset($mensajeError)){
 						// 	echo ($mensajeError);
 						// 	var_dump($mensajeError);
@@ -168,11 +168,12 @@
 
 
 		<!-- Script muestra o no los inputs correspondientes según el tipo de paciente -->
-		<!-- TODO llevar la función del multi select a un fichero .js externo -->
+
+		<script src="../js/multiselect.js"></script>
         <script src="../js/habilitarInput.js"></script>
         <script src="js/insertarNuevoUsuario.js" charset="utf-8"></script>
 
-		<script>
+		<!-- <script>
 			$(document).ready(function(){
 				$(".mul-select").select2({
 						placeholder: "Elija una o varias especialidades",
@@ -180,7 +181,7 @@
 						tokenSeparators: ['/',',',';'," "]
 					});
 				})
-		</script>
+		</script> -->
 
 
     </body>
