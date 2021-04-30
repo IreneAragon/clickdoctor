@@ -22,12 +22,12 @@ include_once '../include/navProfesionales.php';
     <table class="table table-sm table-hover" id="tablaProxCitasProf">
         <thead>
             <tr>
-                <th scope="col">Paciente</th>
-                <th scope="col">Especialidad</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Hora</th>
-                <th scope="col">Modificar</th>
-                <th scope="col">Cancelar</th>
+                <th class="min-w" scope="col">Paciente</th>
+                <th class="min-w" scope="col">Especialidad</th>
+                <th class="min-w" scope="col">Fecha</th>
+                <th class="min-w" scope="col">Hora</th>
+                <th class="min-w" scope="col">Modificar</th>
+                <th class="min-w" scope="col">Cancelar</th>
             </tr>
         </thead>
         <tbody id="listaCitasProfesional">
@@ -44,10 +44,10 @@ include_once '../include/navProfesionales.php';
         <table class="table table-sm table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Paciente</th>
-                    <th scope="col">Especialidad</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Hora</th>
+                    <th class="min-w" scope="col">Paciente</th>
+                    <th class="min-w" scope="col">Especialidad</th>
+                    <th class="min-w" scope="col">Fecha</th>
+                    <th class="min-w" scope="col">Hora</th>
                 </tr>
             </thead>
             <tbody id="listaHistorialCitasProf">

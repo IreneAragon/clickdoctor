@@ -15,9 +15,9 @@ include_once '../include/navPacientes.php';
                 <table class="table table-sm table-hover" id="tablaInformesPaciente">
                     <thead>
                         <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Especialidad</th>
-                            <th scope="col">Ver</th>
+                            <th class="min-w" scope="col">Fecha</th>
+                            <th class="min-w" scope="col">Especialidad</th>
+                            <th class="min-w" scope="col">Ver</th>
                         </tr>
                     </thead>
                     <tbody id="listaInformesPaciente">

@@ -22,9 +22,9 @@ include_once '../include/navProfesionales.php';
      <table class="table table-sm table-hover" id="tablaProfInformes">
          <thead>
              <tr>
-                 <th scope="col">Fecha</th>
-                 <th scope="col">Paciente</th>
-                 <th scope="col">Ver</th>
+                 <th class="min-w" scope="col">Fecha</th>
+                 <th class="min-w" scope="col">Paciente</th>
+                 <th class="min-w" scope="col">Ver</th>
              </tr>
          </thead>
          <tbody id="listaProfInformes">

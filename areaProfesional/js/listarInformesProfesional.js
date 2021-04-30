@@ -38,7 +38,7 @@ function listarInformes() {
             htmlTr += "<tr>"+
                         "<td id='tdFechaInforme("+informe.id_informe+")'>"+ formatearFechaDDMMYYY(informe.creado_el) +"</td>"+
                         "<td id='tdNombrePaciente("+informe.id_informe+")'>"+ nombre +"</td>"+
-                        "<td><a href=../../"+filePath+" class='btn btn-info' target='_blank' data-informe='"+informe.id_informe+"'>Ver <i class='fa fa-eye iconoOjo'></i></a></td>"+
+                        "<td><a href=../../"+filePath+" class='btn btn-info btnStyle' target='_blank' data-informe='"+informe.id_informe+"'>Ver <i class='fa fa-eye iconoOjo'></i></a></td>"+
                     "</tr>";
         });
         if (arrayRespuesta.informes.length === 0) {

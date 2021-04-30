@@ -43,15 +43,15 @@ if (!isset($_SESSION)) {
                 </div>
                 <div id="modalEditBody" class="modal-body">
                     <form id="tablaEditEspecialidad" class="" method="post">
-                        
-                        <div class="col-sm-12 col-md-6">
+
+                        <div class="col-12">
                             <div class="form-group">
                                 <label for="editNombreEsp">Nombre</label>
                                 <input type="text" id="editNombreEsp" class="form-control">
                                 <!-- <p id="editNombreEsp"></p> -->
                             </div>
                         </div>
-                        
+
                     </form>
                     <!-- Se muestra cuando la especialidad ha sido modificada -->
                     <div id="especialidadModificada" class="alert alert-success mt-2" role="alert">
@@ -68,7 +68,7 @@ if (!isset($_SESSION)) {
             </div>
         </div>
     </div>
-        
+
     <!-- Modal eliminar especialidad -->
     <div class="modal fade" id="eliminarEspecialidad" tabindex="-1" role="dialog" aria-labelledby="eliminarEspecialidadLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -88,7 +88,7 @@ if (!isset($_SESSION)) {
     </div> <!-- /modal cancelar cita -->
     <!-- Se muestra cuando la cita ha sido borrada -->
     <div id="msgBorradoEsp" class="alert alert-success mt-5" role="alert">
-        La especialidad se ha eliminado con éxito. 
+        La especialidad se ha eliminado con éxito.
     </div>
 
     <!-- Modal agregar nueva especialidad -->

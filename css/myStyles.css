@@ -1,6 +1,12 @@
 /**************
 *  GENERALES  *
 **************/
+
+.min-w {
+    min-width: 100px;
+}
+
+
 body {
     background-color: rgb(250, 250, 250);
     /* min-height: 2000px!important; */
@@ -14,7 +20,15 @@ body {
 }
 .btnStyle{
     font-size: 12px!important;
+    min-width: 140px!important;
+    margin: 0px!important;
 }
+
+.no-margin {
+    margin: 0px!important;
+}
+
+
 .btn {
     /* margin: 0px!important; */
 }
@@ -82,7 +96,7 @@ En pantallas pequeñas donde el ancho sea menor de 450px cambia el estilo del si
 */
 @media (max-width: 450px) {
     .sidebar {
-        max-width: 150px;
+        max-width: 180px;
         z-index: 9999;
     }
     .sidebar a {

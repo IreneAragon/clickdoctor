@@ -28,11 +28,11 @@ include_once '../include/navProfesionales.php';
                 <table class="table table-sm table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Paciente</th>
-                            <th scope="col">Asunto</th>
-                            <th scope="col">Abrir</th>
-                            <th scope="col">Eliminar</th>
+                            <th class="min-w" scope="col">Fecha</th>
+                            <th class="min-w" scope="col">Paciente</th>
+                            <th class="min-w" scope="col">Asunto</th>
+                            <th class="min-w" scope="col">Abrir</th>
+                            <th class="min-w" scope="col">Eliminar</th>
                         </tr>
                     </thead>
                     <tbody id="listaConversacionesProfesional">

@@ -10,7 +10,7 @@ include_once '../include/navPacientes.php';
 
             <a href="nuevaConversacion.php " class="btn btn-primary"> Crear nueva conversación </a>
 
-            <div class="container mt-5">
+            <div class="container mt-5 table-responsive">
                 <!-- Se muestra cuando la conversación ha sido borrada -->
                 <div id="msgEliminarConver" class="alert alert-success mt-5" role="alert">
                     Su conversación ha sido borrada con éxito.
@@ -19,11 +19,11 @@ include_once '../include/navPacientes.php';
                 <table class="table table-sm table-hover" id="x">
                     <thead>
                         <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Profesional</th>
-                            <th scope="col">Asunto</th>
-                            <th scope="col">Abrir</th>
-                            <th scope="col">Eliminar</th>
+                            <th class="min-w" scope="col">Fecha</th>
+                            <th class="min-w" scope="col">Profesional</th>
+                            <th class="min-w" scope="col">Asunto</th>
+                            <th class="min-w" scope="col">Abrir</th>
+                            <th class="min-w" scope="col">Eliminar</th>
                         </tr>
                     </thead>
                     <tbody id="listaConversacionesPaciente">

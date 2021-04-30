@@ -14,17 +14,17 @@ include_once '../include/navPacientes.php';
 
         <!-- 2º row contiene listado de próximas citas -->
         <div class="row">
-            <div class="col">
+            <div class="col table-responsive">
                 <h2 class="pt-4">Próximas citas</h2>
-                <table class="table table-sm table-hover" id="tablaProxCitas">
+                <table class="table table-sm table-hover " id="tablaProxCitas">
                     <thead>
                         <tr>
-                            <th scope="col">Profesional</th>
-                            <th scope="col">Especialidad</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Hora</th>
-                            <th scope="col">Modificar</th>
-                            <th scope="col">Cancelar</th>
+                            <th class="min-w" scope="col">Profesional</th>
+                            <th class="min-w" scope="col">Especialidad</th>
+                            <th class="min-w" scope="col">Fecha</th>
+                            <th class="min-w" scope="col">Hora</th>
+                            <th class="min-w" scope="col">Modificar</th>
+                            <th class="min-w" scope="col">Cancelar</th>
                         </tr>
                     </thead>
                     <tbody id="listaCitasPaciente">
@@ -43,15 +43,15 @@ include_once '../include/navPacientes.php';
 
         <!-- 3º row contiene listado de citas pasadas -->
         <div id="historialCitas" class="row">
-            <div class="col">
+            <div class="col table-responsive">
                 <h2 class="pt-4">Historial de citas</h2>
                 <table class="table table-sm table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Profesional</th>
-                            <th scope="col">Especialidad</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Hora</th>
+                            <th class="min-w" scope="col">Profesional</th>
+                            <th class="min-w" scope="col">Especialidad</th>
+                            <th class="min-w" scope="col">Fecha</th>
+                            <th class="min-w" scope="col">Hora</th>
                         </tr>
                     </thead>
                     <tbody id="listaHistorialCitas">

@@ -21,12 +21,12 @@ function listarEspecialidades() {
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
         let htmlTr = "";
-    
+
         arrayRespuesta.especialidades.forEach((especialidad, i) => {
             htmlTr += "<tr>"+
                         "<td id='tdNombreEsp("+especialidad.id_especialidad+")'>"+ especialidad.nombre +"</td>"+
-                        "<td><button type='button' onclick='modalEditarEspecialidad("+especialidad.id_especialidad+")' id='btnEditarEspecialidad("+especialidad.id_especialidad+")' class='btn btn-warning btn-sm mt-0 px-3' data-toggle='modal' data-target='#editarEspecialidad'><i class='fas fa-pen' aria-hidden='true'></i></button></td>"+
-                        "<td><button type='button' onclick='modalBorrarEspecialidad("+especialidad.id_especialidad+")' class='btn btn-danger btn-sm mt-0 px-3' data-toggle='modal' data-target='#eliminarEspecialidad'><i class='fas fa-trash' aria-hidden='true'></i></button></td>"+
+                        "<td><button type='button' onclick='modalEditarEspecialidad("+especialidad.id_especialidad+")' id='btnEditarEspecialidad("+especialidad.id_especialidad+")' class='btn btn-warning btn-sm mt-0 px-3 no-margin' data-toggle='modal' data-target='#editarEspecialidad'><i class='fas fa-pen' aria-hidden='true'></i></button></td>"+
+                        "<td><button type='button' onclick='modalBorrarEspecialidad("+especialidad.id_especialidad+")' class='btn btn-danger btn-sm mt-0 px-3 no-margin' data-toggle='modal' data-target='#eliminarEspecialidad'><i class='fas fa-trash' aria-hidden='true'></i></button></td>"+
                     "</tr>";
         });
         $('#listaEspecialidades').html(htmlTr);
@@ -91,7 +91,7 @@ function modificarEspecialidad() {
             let arrayRespuesta = $.parseJSON(respuesta);
             if (arrayRespuesta.success) {
                 divExito.style.display = 'block';
-                divError.style.display = 'none'; 
+                divError.style.display = 'none';
             }
             listarEspecialidades();
         });
@@ -105,7 +105,7 @@ function agregarEspecialidad() {
     divExito.style.display = 'none';
     divError.style.display = 'none';
     let msgError = "";
-  
+
     if (nuevaEspecialidad === "") {
         divExito.style.display = 'none';
         msgError += 'Error: el campo no puede estar vacío';
@@ -119,7 +119,7 @@ function agregarEspecialidad() {
             data: {"nuevaEspecialidad" : nuevaEspecialidad},
         }).done(function(respuesta) {
             let arrayRespuesta = $.parseJSON(respuesta);
-            
+
             if (arrayRespuesta.success) {
                 divExito.style.display = 'block';
                 divError.style.display = 'none';
