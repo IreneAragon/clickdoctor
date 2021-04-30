@@ -1,9 +1,8 @@
 <?php
-// muestra errores php
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-// Inicia sesión solo si no lo está ya
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -13,22 +12,18 @@ include_once '../include/navPacientes.php';
 
 $idPaciente = $_SESSION['idUsuario'];
 $datosPaciente = DB::datosPaciente($idPaciente);
-// $nombreApellidos = $datosPaciente['nombre'].' '.$datosPaciente['apellidos'];
 $nombre = $datosPaciente['nombre'];
 $apellidos = $datosPaciente['apellidos'];
 $dni = $datosPaciente['dni'];
 $email = $datosPaciente['email'];
 $fNac = $datosPaciente['f_nacimiento'];
 $srcImgPerfil = 'perfil/'.$datosPaciente['srcImg'];
-// var_dump('----x-xxx---',$srcImgPerfil);
 $exp = explode('-', $fNac);
 $fNacDDMMYYY = $exp[2].'-'.$exp[1].'-'.$exp[0];
-
 
 ?>
 
 <div class="container mt-5">
-    <!-- Muestra los mensajes de error o de éxito en caso de haberlos -->
     <div class="alert-danger mt-5 text-center">
       <?php
         if(isset($msgError)){

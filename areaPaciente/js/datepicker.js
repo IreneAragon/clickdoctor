@@ -18,7 +18,6 @@
      dayNamesMin: ['D','L','M','X','J','V','S'],
      weekHeader: 'Sm',
      dateFormat: 'dd-mm-yy',
-     // onSelect: '25-01-2021',
      firstDay: 1,
      isRTL: false,
      showMonthAfterYear: false,

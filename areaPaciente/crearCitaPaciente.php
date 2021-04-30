@@ -2,15 +2,12 @@
 include_once '../include/cabeceraUsuarios.html';
 include_once '../include/navPacientes.php';
 
-// require '../clases/claseDB.php';
 ?>
 
 <div class="container pt-5 text-center">
     <h2 class="mt-5 pt-2">Crea una cita con un profesional</h2>
     <form id="tablaCrearCita" class="pt-5" method="post">
-        <!-- 1º row -->
         <div class="row pt-3">
-            <!-- 1º col ESPECIALIDAD -->
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for="selectEspecialidad">Elige una especialidad</label>
@@ -25,7 +22,6 @@ include_once '../include/navPacientes.php';
                     </select>
                 </div>
             </div>
-            <!-- 2º col ESPECIALISTA -->
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for="selectEspecialista">Elige especialista</label>
@@ -36,10 +32,7 @@ include_once '../include/navPacientes.php';
                 </div>
             </div>
         </div>
-        <!-- /1º row -->
-        <!-- 2º row -->
         <div class="row pt-3">
-            <!-- 1º col FECHA -->
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for="fechaCita">Elige la fecha</label>
@@ -48,7 +41,6 @@ include_once '../include/navPacientes.php';
 
                 </div>
             </div>
-            <!-- 2º col HORA -->
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     <label for="horaCita">Elija la hora</label>
@@ -59,22 +51,16 @@ include_once '../include/navPacientes.php';
                 </div>
             </div>
         </div>
-        <!-- /2º row -->
-        <!-- 3º row -->
         <div class="row mt-2">
             <div class="col">
                 <button type="button" id="btnCrearCita" class="btn btn-success">Crear cita</button>
             </div>
         </div>
-        <!-- /3º row -->
     </form>
 
-    <!-- Se muestra cuando la cita ha sido creada -->
     <div id="citaCreada" class="alert alert-success mt-5" role="alert">
         La cita ha sido creada con éxito, <a href="citasPaciente.php" class="alert-link">puedes verla haciendo click aquí</a>.
     </div>
-
-    <!-- Muestra los errores al crear una cita -->
     <div id="errorCita" class="alert alert-danger mt-5" role="alert">
     </div>
 </div>

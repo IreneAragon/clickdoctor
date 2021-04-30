@@ -46,7 +46,6 @@ function listarConversaciones(){
 /* ELIMINAR CONVERSACIÓN */
 /* Asignar al botón de borrado el ID de la conversación a eliminar */
 function modalEliminarConver(idConver) {
-    console.log('entra modal');
     btnEliminarConver.setAttribute('data-idConver',idConver);
 }
 

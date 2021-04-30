@@ -1,6 +1,4 @@
 
-/* CREAR CONVERSACION */
-// Cuando pulsa el botón "enviar" entra en la función
 var btnCrearConver = document.getElementById("btnCrearConver");
 btnCrearConver.addEventListener("click", crearConversacion);
 var divError = document.getElementById("errorCrearConver");

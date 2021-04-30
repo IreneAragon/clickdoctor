@@ -7,7 +7,6 @@ btnBorrarCita.addEventListener("click", borrarCita);
 var btnGuardarCitaEditada = document.getElementById("btnGuardarCitaEditada");
 btnGuardarCitaEditada.addEventListener("click", modificarCita);
 
-
 /* Listar las próximas citas del paciente */
 function listarCitas() {
     $.ajax({
@@ -117,20 +116,14 @@ function modalEditarCita(idCita, idProf, idEsp) {
     $('#editEspecialista').html(tdProfText);
     $('#editEspecialidad').html(tdEspText);
 
-
     var idsCita = document.getElementById('idsCita');
     idsCita.setAttribute('data-valores', JSON.stringify({'idProf' : idProf, 'idEsp' : idEsp, 'idCita' : idCita}));
 
-
     $("#editFecha").datepicker("setDate", tdFechaText);
-
-
     traerDisponibilidad(idProf, tdFechaText);
-
 }
 
 function traerDisponibilidad(idEspecialista, fecha) {
-
     // Cambiar el formato de la fecha recibida para que la acepte la consulta a la BD
     fecha = fecha.split("-");
     let fechayyyymmdd =    fecha[2]+'-'+ fecha[1] +'-'+  fecha[0];
@@ -211,24 +204,7 @@ function modificarCita() {
 
                 divExito.style.display = 'block';
                 listarCitas();
-
             }
         });
-
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**/

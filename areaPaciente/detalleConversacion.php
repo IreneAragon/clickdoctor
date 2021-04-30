@@ -1,10 +1,8 @@
 <?php
 
-// muestra errores php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-// Inicia sesión solo si no lo está ya
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -39,17 +37,12 @@ require_once '../include/navPacientes.php';
     </div>
 
     <div class="campo-respuesta">
-        <!-- <form class="" method="post"> -->
-            <input type="text" name="" id="inputAgregarMensaje" placeholder="Escribe tu respuesta..." class="">
-            <button type="submit" id="btnEnviarMensaje" name="button" data-chat="<?= $idConversacion ?>"><img src="../img/send.png" alt="Enviar mensaje" class="icon-send"></button>
-        <!-- </form> -->
+        <input type="text" name="" id="inputAgregarMensaje" placeholder="Escribe tu respuesta..." class="">
+        <button type="submit" id="btnEnviarMensaje" name="button" data-chat="<?= $idConversacion ?>"><img src="../img/send.png" alt="Enviar mensaje" class="icon-send"></button>
     </div>
     <div class="alert alert-danger errorCita text-center" role="alert">
     </div>
 </div>
-
-
-
 
 <script src="mensajeria/js/listarMensajes.js" charset="utf-8"></script>
  <?php

@@ -1,25 +1,16 @@
 <?php
 
-
-// $2y$10$ngeyEvnA25hZ.d8qsRBStOssLF5vSaNOAAkec7L2E93A26uXHVNYq
-
-
-
-// muestra errores php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-// Inicia sesión solo si no lo está ya
 if (!isset($_SESSION)) {
     session_start();
 }
 
 require_once '../clases/claseDB.php';
 
-// $idUsuario = $_SESSION['email'];
 $idUsuario = $_SESSION['idUsuario'];
 
-// Recibir datos a través de $_POST
 if (!empty($_POST)) {
 
     // Variables utilizadas para las verificaciones
@@ -118,7 +109,4 @@ if (!empty($_POST)) {
             include_once("editarPerfil.php");
         }
     }
-
-
-
 }

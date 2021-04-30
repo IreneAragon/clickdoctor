@@ -1,9 +1,6 @@
 
 var selectorEspecialidades = document.getElementById("selectEspecialidad");
 selectorEspecialidades.addEventListener("change", traerEspecialistas);
-// var selectorEspecialidadesMsg = document.getElementById("selectEspecialistaMsg");
-// selectorEspecialidadesMsg.addEventListener("change", traerEspecialistas);
-
 
 function traerEspecialistas() {
     let idEspecialidad = selectorEspecialidades.value;

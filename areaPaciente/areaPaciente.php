@@ -37,9 +37,7 @@ if ($datosPaciente['genero'] === 'mujer') {
                 <img src="../img/bnn-covid-sm.png" class="img-fluid" alt="Banner sobre la covid-19" title="Imagen con informacion sobre la covid-19">
             </a>
         </div>
-
     </div>
-
 </div>
 
 <?php

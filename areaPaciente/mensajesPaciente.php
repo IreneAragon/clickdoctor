@@ -34,7 +34,6 @@ include_once '../include/navPacientes.php';
         </div>
     </div>
 
-
     <!-- Modal eliminar Conversación -->
     <div class="modal fade" id="eliminarConversacion" tabindex="-1" role="dialog" aria-labelledby="eliminarConversacionLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -53,7 +52,6 @@ include_once '../include/navPacientes.php';
             </div>
         </div>
     </div>
-    <!-- /modal -->
 
 </div>
 
