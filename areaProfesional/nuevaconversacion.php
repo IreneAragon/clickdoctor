@@ -20,7 +20,7 @@ require_once '../clases/claseDB.php';
                     <!-- Nombre Paciente -->
                     <label for="selectNombrePaciente">A quién va dirigido el mensaje</label>
                     <select class="form-control" id="selectNombrePaciente">
-                        <option value="0">Seleccione un paciente</option>
+                        <option value="0">Selecciona un paciente</option>
                         <?php
                             $datosPaciente = DB::pacientes();
                             foreach ($datosPaciente as $paciente) {
@@ -50,7 +50,7 @@ require_once '../clases/claseDB.php';
 
     <!-- Se muestra cuando la conversación ha sido creada -->
     <div id="converCreadaProf" class="text-center mb-5">
-        <h5 class="alert alert-success mt-5" role="alert">Su mensaje ha sido enviado con éxito.</h5>
+        <h5 class="alert alert-success mt-5" role="alert">El mensaje ha sido enviado con éxito.</h5>
         <a href="mensajesProfesionales.php" class="btn btn-primary mb-5"> Mis mensajes </a>
     </div>
     <!-- Muestra los errores al crear una conversación -->

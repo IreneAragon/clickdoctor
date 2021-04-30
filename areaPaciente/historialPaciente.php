@@ -8,7 +8,7 @@ include_once '../include/navPacientes.php';
             <h2 class="pt-5">Mis Informes</h2>
 
             <div id="msgNoInformesPaciente" class="alert alert-primary" role="alert">
-                Aún no tiene informes.
+                Aún no tienes informes.
             </div>
 
             <div class="container mt-5">

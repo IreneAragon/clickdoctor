@@ -20,7 +20,7 @@ $(document).ready(function() {
                   Swal.fire({
                       icon: 'error',
                       title: 'Error',
-                      text: 'Seleccione una imagen primero'
+                      text: 'Selecciona una imagen primero'
                       // footer: '<a href>Why do I have this issue?</a>'
                     })
               } else if (response == 1) {
@@ -38,7 +38,7 @@ $(document).ready(function() {
                   Swal.fire({
                       icon: 'error',
                       title: 'Error',
-                      text: 'Hubo un problema con la operación, pruebe de nuevo'
+                      text: 'Hubo un problema con la operación, prueba de nuevo'
                       // footer: '<a href>Why do I have this issue?</a>'
                     })
               } else if (response != 0 || response != 1 || response != 2) {

@@ -174,7 +174,7 @@ function modificarCita() {
     let msgError = '';
 
     if (fechayyyymmdd === 'undefined-undefined-') {
-        msgError += "Debe seleccionar una fecha.<br>";
+        msgError += "Debes seleccionar una fecha.<br>";
     }
 
     if (!regexFecha.test(fechayyyymmdd)) {
@@ -182,7 +182,7 @@ function modificarCita() {
     }
 
     if (hora === '0') {
-        msgError += "Debe seleccionar una hora.";
+        msgError += "Debes seleccionar una hora.";
     }
 
     if (msgError === '') {

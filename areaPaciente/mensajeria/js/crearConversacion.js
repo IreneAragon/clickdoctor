@@ -17,16 +17,16 @@ function crearConversacion() {
     let msgError = "";
 
     if (idEspecialidad === '0') {
-        msgError += "Debe seleccionar una especialidad.<br>";
+        msgError += "Debes seleccionar una especialidad.<br>";
     }
     if (idProfesional === '0') {
-        msgError += "Debe seleccionar un especialista.<br>";
+        msgError += "Debes seleccionar un especialista.<br>";
     }
     if (asunto === '') {
-        msgError += "Debe escribir un asunto.<br>";
+        msgError += "Debes escribir un asunto.<br>";
     }
     if (mensaje === '') {
-        msgError += "Debe escribir un mensaje.<br>";
+        msgError += "Debes escribir un mensaje.<br>";
     }
 
     if (msgError === '') {

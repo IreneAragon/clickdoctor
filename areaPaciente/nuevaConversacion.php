@@ -10,9 +10,9 @@ include_once '../include/navPacientes.php';
             <div class="form-row mb-2">
                 <div class="col-sm-6 col-12">
                     <!-- Especialidad -->
-                    <label for="selectEspecialidadMsg">Elija una especialidad</label>
+                    <label for="selectEspecialidadMsg">Elige una especialidad</label>
                     <select class="form-control" id="selectEspecialidadMsg">
-                        <option value="0">Seleccione</option>
+                        <option value="0">Selecciona</option>
                         <?php
                             $especialidades = DB::especialidades();
                             foreach ($especialidades as $especialidad) {
@@ -24,10 +24,10 @@ include_once '../include/navPacientes.php';
                 <div class="col-sm-6 col-12">
                     <!-- Prosesional -->
                     <!-- <label for="newProf" class="form-label ml-2">Profesional</label>
-                    <input type="text" id="newProf" name="newProf" class="form-control" placeholder="Elija un profesional" required> -->
-                    <label for="selectEspecialistaMsg">Elija especialista</label>
+                    <input type="text" id="newProf" name="newProf" class="form-control" placeholder="Elige un profesional" required> -->
+                    <label for="selectEspecialistaMsg">Elige especialista</label>
                     <select class="form-control" id="selectEspecialistaMsg">
-                        <option value="0">Primero seleccione una especialidad</option>
+                        <option value="0">Primero selecciona una especialidad</option>
                         <!-- options obtenidas desde función ajax -->
                     </select>
                 </div>
@@ -52,7 +52,7 @@ include_once '../include/navPacientes.php';
 
     <!-- Se muestra cuando la conversación ha sido creada -->
     <div id="converCreada" class="text-center mb-5">
-        <h5 class="alert alert-success mt-5" role="alert">Su mensaje ha sido enviado con éxito, el profesional le contestará lo antes posible.</h5>
+        <h5 class="alert alert-success mt-5" role="alert">El mensaje ha sido enviado con éxito, el profesional te contestará lo antes posible.</h5>
         <a href="mensajesPaciente.php" class="btn btn-primary mb-5"> Mis mensajes </a>
     </div>
     <!-- Muestra los errores al crear una conversación -->

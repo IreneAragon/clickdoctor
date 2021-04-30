@@ -60,9 +60,9 @@ $idProf = $_SESSION['idUsuario'];
 
             <p class="h4 mb-4 mt-5">Introduce los datos de la especialidad de la consulta</p>
             <div class="col-12 form-row">
-                <label for="selectMiEspecialidad">Elija una especialidad</label>
+                <label for="selectMiEspecialidad">Elige una especialidad</label>
                 <select class="form-control" id="selectMiEspecialidad" name="selectMiEspecialidad">
-                    <option value="0">Seleccione</option>
+                    <option value="0">Selecciona</option>
                     <?php
                         $especialidades = DB::nombreEspecialidadesPracticaProf($idProf);
                         foreach ($especialidades as $especialidad) {

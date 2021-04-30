@@ -36,7 +36,7 @@ include_once '../include/navProfesionales.php';
     </table>
 
     <div id="msgNoCitasProf" class="alert alert-primary" role="alert">
-        No tiene citas programadas.
+        No tienes citas programadas.
     </div>
 
     <div id="historialCitasProf">
@@ -89,7 +89,7 @@ include_once '../include/navProfesionales.php';
 
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group">
-                                    <label for="editFechaProf">Elija la fecha</label>
+                                    <label for="editFechaProf">Elige la fecha</label>
                                     <!-- <input type="date" name="fechaCita" id="fechaCita" max="2025-12-31" min="2020-01-01" class="form-control"> -->
                                     <input type="text" name="editFechaProf" id="editFechaProf" class="campo form-control">
 
@@ -98,9 +98,9 @@ include_once '../include/navProfesionales.php';
 
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group">
-                                    <label for="editHoraProf">Elija la hora</label>
+                                    <label for="editHoraProf">Elige la hora</label>
                                     <select class="form-control" name="editHoraProf" id="editHoraProf">
-                                        <option value="0">Primero seleccione una fecha</option>
+                                        <option value="0">Primero selecciona una fecha</option>
                                         <!-- options obtenidas desde función ajax -->
                                     </select>
                                 </div>

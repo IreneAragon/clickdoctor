@@ -22,7 +22,7 @@ include_once '../include/navProfesionales.php';
             <div class="container mt-5">
                 <!-- Se muestra cuando la conversación ha sido borrada -->
                 <div id="msgEliminarConverProf" class="alert alert-success mt-5" role="alert">
-                    Su conversación ha sido borrada con éxito.
+                    La conversación ha sido borrada con éxito.
                 </div>
                 <h3>Mis conversaciones</h3>
                 <table class="table table-sm table-hover">
@@ -51,7 +51,7 @@ include_once '../include/navProfesionales.php';
                     <h5 class="modal-title" id="eliminarConversacionProfLabel">Eliminar conversación</h5>
                 </div>
                 <div class="modal-body">
-                    <h3 class="text-center">¿Seguro que desea eliminar la conversación?</h3>
+                    <h3 class="text-center">¿Seguro que deseas eliminar la conversación?</h3>
                     <h6 class="text-center">Todos los mensajes se eliminarán y no podrán ser recuperados.</h6>
                 </div>
                 <div class="modal-footer">

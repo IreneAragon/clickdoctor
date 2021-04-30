@@ -70,7 +70,7 @@ if (!empty($_POST)) {
 
 } else {
     $error = true;
-    $msgError .= "Ocurrió un error, pruebe de nuevo";
+    $msgError .= "Ocurrió un error, prueba de nuevo";
     include_once("crearInforme.php");
     return;
 }

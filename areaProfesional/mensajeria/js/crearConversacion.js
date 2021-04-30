@@ -13,13 +13,13 @@ function crearConversacion() {
     let msgError = "";
 
     if (idPaciente === '0') {
-        msgError += "Debe seleccionar a un paciente.<br>";
+        msgError += "Debes seleccionar a un paciente.<br>";
     }
     if (asunto === '') {
-        msgError += "Debe escribir un asunto.<br>";
+        msgError += "Debes escribir un asunto.<br>";
     }
     if (mensaje === '') {
-        msgError += "Debe escribir un mensaje.<br>";
+        msgError += "Debes escribir un mensaje.<br>";
     }
 
     if (msgError === '') {

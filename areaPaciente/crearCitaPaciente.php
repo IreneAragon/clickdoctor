@@ -13,9 +13,9 @@ include_once '../include/navPacientes.php';
             <!-- 1º col ESPECIALIDAD -->
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
-                    <label for="selectEspecialidad">Elija una especialidad</label>
+                    <label for="selectEspecialidad">Elige una especialidad</label>
                     <select class="form-control" id="selectEspecialidad">
-                        <option value="0">Seleccione</option>
+                        <option value="0">Selecciona</option>
                         <?php
                             $especialidades = DB::especialidades();
                             foreach ($especialidades as $especialidad) {
@@ -28,9 +28,9 @@ include_once '../include/navPacientes.php';
             <!-- 2º col ESPECIALISTA -->
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
-                    <label for="selectEspecialista">Elija especialista</label>
+                    <label for="selectEspecialista">Elige especialista</label>
                     <select class="form-control" id="selectEspecialista">
-                        <option value="0">Primero seleccione una especialidad</option>
+                        <option value="0">Primero selecciona una especialidad</option>
                         <!-- options obtenidas desde función ajax -->
                     </select>
                 </div>
@@ -42,7 +42,7 @@ include_once '../include/navPacientes.php';
             <!-- 1º col FECHA -->
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
-                    <label for="fechaCita">Elija la fecha</label>
+                    <label for="fechaCita">Elige la fecha</label>
                     <!-- <input type="date" name="fechaCita" id="fechaCita" max="2025-12-31" min="2020-01-01" class="form-control"> -->
                     <input type="text" name="fechaCita" id="fechaCita" class="campo form-control" placeholder="Haga click para elegir la fecha">
 
@@ -53,7 +53,7 @@ include_once '../include/navPacientes.php';
                 <div class="form-group">
                     <label for="horaCita">Elija la hora</label>
                     <select class="form-control" id="horaCita">
-                        <option value="0">Primero seleccione una fecha</option>
+                        <option value="0">Primero selecciona una fecha</option>
                         <!-- options obtenidas desde función ajax -->
                     </select>
                 </div>
@@ -71,7 +71,7 @@ include_once '../include/navPacientes.php';
 
     <!-- Se muestra cuando la cita ha sido creada -->
     <div id="citaCreada" class="alert alert-success mt-5" role="alert">
-        Su cita ha sido creada con éxito, <a href="citasPaciente.php" class="alert-link">puede verla haciendo click aquí</a>.
+        La cita ha sido creada con éxito, <a href="citasPaciente.php" class="alert-link">puedes verla haciendo click aquí</a>.
     </div>
 
     <!-- Muestra los errores al crear una cita -->

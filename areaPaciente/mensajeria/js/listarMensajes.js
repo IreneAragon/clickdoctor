@@ -148,7 +148,7 @@ function agregarMensaje(){
     let msgError = '';
 
     if (inputAgregarMensaje.value === "") {
-        msgError = 'No puede enviar un mensaje vacío, escriba algo.';
+        msgError = 'No puedes enviar un mensaje vacío, escribe algo.';
         $('.errorCita').html(msgError);
         $(".errorCita").show("fast");
         setTimeout(function(){ $(".errorCita").fadeOut(); }, 4000);
@@ -165,7 +165,7 @@ function agregarMensaje(){
                 $("#inputAgregarMensaje").val('');
                 listarMensajes(id_chat);
             } else {
-                msgError = 'Ocurrió un error, pruebe de nuevo.';
+                msgError = 'Ocurrió un error, prueba de nuevo.';
                 $('.errorCita').html(msgError);
                 $(".errorCita").show("fast");
                 setTimeout(function(){ $(".errorCita").fadeOut(); }, 4000);

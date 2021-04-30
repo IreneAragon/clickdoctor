@@ -116,7 +116,7 @@ function modalEditarCita(idCita, idProf, idEsp) {
     // Pinta los datos de la cita a modificar
     $('#editEspecialista').html(tdProfText);
     $('#editEspecialidad').html(tdEspText);
-    
+
 
     var idsCita = document.getElementById('idsCita');
     idsCita.setAttribute('data-valores', JSON.stringify({'idProf' : idProf, 'idEsp' : idEsp, 'idCita' : idCita}));
@@ -177,7 +177,7 @@ function modificarCita() {
     let msgError = '';
 
     if (fechayyyymmdd === 'undefined-undefined-') {
-        msgError += "Debe seleccionar una fecha.<br>";
+        msgError += "Debes seleccionar una fecha.<br>";
     }
 
     if (!regexFecha.test(fechayyyymmdd)) {
@@ -185,7 +185,7 @@ function modificarCita() {
     }
 
     if (hora === '0') {
-        msgError += "Debe seleccionar una hora.";
+        msgError += "Debes seleccionar una hora.";
     }
 
     if (msgError === '') {

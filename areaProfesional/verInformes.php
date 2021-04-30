@@ -16,7 +16,7 @@ include_once '../include/navProfesionales.php';
      <h1 class="mt-5">Informes creados por mi</h1>
 
      <div id="msgNoInformes" class="alert alert-primary" role="alert">
-         Aún no ha creado ningún informe.
+         Aún no has creado ningún informe.
      </div>
 
      <table class="table table-sm table-hover" id="tablaProfInformes">

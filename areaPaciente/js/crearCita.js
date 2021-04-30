@@ -28,19 +28,19 @@ function crearCitaPaciente() {
     let horaSeleccionada = orden.options[orden.selectedIndex].text;
 
     if (idEspecialidad === '0') {
-        msgError += "Debe seleccionar una especialidad.<br>";
+        msgError += "Debes seleccionar una especialidad.<br>";
     }
     if (idProfesional === '0') {
-        msgError += "Debe seleccionar un especialista.<br>";
+        msgError += "Debes seleccionar un especialista.<br>";
     }
     if (fechaCita === '') {
-        msgError += "Debe seleccionar una fecha.<br>";
+        msgError += "Debes seleccionar una fecha.<br>";
     }
     if (horaCita === '0') {
-        msgError += "Debe seleccionar una hora.<br>";
+        msgError += "Debes seleccionar una hora.<br>";
     }
     if (!esFechaFutura(fechaCita, horaSeleccionada)){
-        msgError += "Debe seleccionar fecha y hora posterior a este momento.";
+        msgError += "Debes seleccionar fecha y hora posterior a este momento.";
     }
 
     if (msgError === '') {

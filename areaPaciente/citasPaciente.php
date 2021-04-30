@@ -33,7 +33,7 @@ include_once '../include/navPacientes.php';
                 </table>
 
                 <div id="msgNoCitas" class="alert alert-primary" role="alert">
-                    No tiene citas programadas.
+                    No tienes citas programadas.
                 </div>
 
 
@@ -134,7 +134,7 @@ include_once '../include/navPacientes.php';
                         </form>
                         <!-- Se muestra cuando la cita ha sido creada -->
                         <div id="citaModificada" class="alert alert-success mt-2" role="alert">
-                            Su cita ha sido modificada con éxito.
+                            La cita se ha sido modificada con éxito.
                         </div>
                         <!-- Muestra los errores al crear una cita -->
                         <div id="errorCita" class="alert alert-danger mt-2" role="alert">
@@ -162,7 +162,7 @@ include_once '../include/navPacientes.php';
                         <h5 class="modal-title" id="cancelarCitaLabel">Cancelar cita</h5>
                     </div>
                     <div class="modal-body">
-                        <h3>¿Seguro que desea cancelar la cita?</h3>
+                        <h3>¿Seguro que deseas cancelar la cita?</h3>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">¡no!</button>
@@ -173,7 +173,7 @@ include_once '../include/navPacientes.php';
         </div> <!-- /modal cancelar cita -->
         <!-- Se muestra cuando la cita ha sido borrada -->
         <div id="msgBorradoCita" class="alert alert-success mt-5" role="alert">
-            Su cita ha sido borrada con éxito.
+            La cita ha sido borrada con éxito.
         </div>
     </div> <!-- /container -->
 </div> <!-- /main -->
