@@ -95,6 +95,7 @@ function crearCitaPaciente() {
      showMonthAfterYear: false,
      yearSuffix: '',
      showAnim: "fadeIn",
+     minDate: new Date(),
      onSelect: function() {
          traerDisponibilidad();
      }

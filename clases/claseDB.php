@@ -953,14 +953,18 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
 
     public static function insertarNuevoUsuarioProfesional($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass, $ejerce, $nColegiado){
         try {
-            $consulta = 'INSERT INTO profesionales (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password, ejerce_en, n_colegiado)
+
+            $sql = 'INSERT INTO profesionales (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password, ejerce_en, n_colegiado)
                         VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $fNacimiento .'", "'. $dni .'", "'. $rol .'", "'. $genero .'", "'. $hashPass .'", "'. $ejerce .'", "'. $nColegiado .'")';
-            $resultado = self::ejecutaConsulta($consulta);
-            $count = $resultado->rowCount();
+            // $resultado = self::ejecutaConsulta($consulta);
+            $consulta = new PDO(self::DB_DNS, self::DB_USER, self::DB_PASS, self::DB_OPT);
+            $resultado = $consulta->query($sql);
+            $lastInsertId = $consulta->lastInsertId();
+
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
-        return ($count === 1) ? true : false;
+        return ($resultado) ? $lastInsertId : null;
     }
 
     public static function insertarEspecialidadNuevoProf($idEspecialidades, $idNuevoProf){

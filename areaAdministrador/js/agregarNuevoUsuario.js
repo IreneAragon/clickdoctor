@@ -150,16 +150,25 @@ function agregarUsuario() {
                    "password" : password,
                    "passwordRep" : passwordRep},
         }).done(function(respuesta) {
-            msgExito += 'Has agregado un nuevo usuario con éxito'
-            if (msgExito === '') {
-                divExito.style.display = 'none';
-            } else {
+            let arrayRespuesta = $.parseJSON(respuesta);
+            if (arrayRespuesta.respuesta) {
+                msgExito += 'Has agregado un nuevo usuario con éxito';
                 divExito.innerHTML = msgExito;
                 divExito.style.display = 'block';
                 divError.style.display = 'none';
+                $("#formNuevoUsuario").trigger("reset");
+                $('#nuevoUsuarioEspecialidades').val(null).trigger('change');
+            } else {
+                msgError += 'Ocurrió un error inesperado';
+                // pintar errores
+                divExito.style.display = 'none';
+                divError.style.display = 'block';
+                divError.innerHTML = msgError;
+            }
+            if (msgExito === '') {
+                divExito.style.display = 'none';
             }
         });
-
     } else {
         // pintar errores
         divExito.style.display = 'none';

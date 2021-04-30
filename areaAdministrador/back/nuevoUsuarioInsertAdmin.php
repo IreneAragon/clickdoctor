@@ -14,16 +14,16 @@ $idEspecialidades = filter_input(INPUT_POST, 'idEspecialidades', FILTER_DEFAULT,
 $ejerce = filter_input(INPUT_POST, 'ejerce', FILTER_DEFAULT);
 $password = filter_input(INPUT_POST, "password", FILTER_DEFAULT);
 $hashPass = password_hash($password, PASSWORD_DEFAULT);
-
-$ultimoIdProfresional = DB::ultimoIdProfresional();
-$idNuevoProf = intval($ultimoIdProfresional['max_id']) +1;
-$insertaEspecialidadNuevoProf = DB::insertarEspecialidadNuevoProf($idEspecialidades, $idNuevoProf);
-
+$repuesta = 1;
 if ($rol === "paciente") {
     $insertarNuevoUsuarioPaciente = DB::insertarNuevoUsuarioPaciente($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass);
 } else {
-    $insertarNuevoUsuarioProfesional = DB::insertarNuevoUsuarioProfesional($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass, $ejerce, $nColegiado);
-
+    $idProfesionalInsertado = DB::insertarNuevoUsuarioProfesional($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass, $ejerce, $nColegiado);
+    if(!is_null($idProfesionalInsertado)) {
+        $insertaEspecialidadNuevoProf = DB::insertarEspecialidadNuevoProf($idEspecialidades, $idProfesionalInsertado);
+        $repuesta = $idProfesionalInsertado;
+    }
 }
 
-// echo json_encode(array('especialidades' => $insertaEspecialidadNuevoProf, 'paciente' => $insertarNuevoUsuarioPaciente, 'profesional' => $insertarNuevoUsuarioProfesional ));
+// echo json_encode(array('idProf' => null));
+echo json_encode(array('respuesta' => $repuesta));

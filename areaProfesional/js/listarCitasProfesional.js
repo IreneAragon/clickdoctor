@@ -240,6 +240,7 @@ $("#editFechaProf").datepicker({
     showMonthAfterYear: false,
     yearSuffix: '',
     showAnim: "fadeIn",
+    minDate: new Date(),
     onSelect: function(fecha) {
         let valores = document.getElementById('idsCitaProf').getAttribute('data-valores');
         let jsonValores = JSON.parse(valores);

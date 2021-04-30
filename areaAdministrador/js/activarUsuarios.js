@@ -1,4 +1,4 @@
-
+console.log('aqui');
 window.onload = listarUsuariosNoActivados();
 
 $('#msgExito').hide();
@@ -23,10 +23,7 @@ function listarUsuariosNoActivados() {
         let htmlTr = "";
 
         arrayRespuesta.usuarios.forEach((usuario, i) => {
-
-            let rolUsuario = 0;
-            (usuario.rol === "profesional") ? rolUsuario = 1  : rolUsuario = 2 ;
-
+            let rolUsuario = (usuario.rol === "profesional") ? 1 : 2 ;
             htmlTr += "<tr>"+
                         "<td id='tdIdUsuarioNoActivado("+usuario.id_usuario+")' data-rol="+usuario.rol+" data-id="+usuario.id_usuario+">"+ usuario.nombre +" "+ usuario.apellidos + "</td>"+
                         "<td>"+ usuario.dni +"</td>"+
@@ -39,8 +36,7 @@ function listarUsuariosNoActivados() {
 }
 
 function activarUsuario(id, rolUsuario) {
-    let rol = "";
-    (rolUsuario === 1) ? rol = "profesional" : rol = "paciente";
+    let rol = (rolUsuario === 1) ? "profesional" : "paciente";
     $.ajax({
         url: "back/activarUsuario.php",
         type: "post",

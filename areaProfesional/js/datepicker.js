@@ -26,7 +26,7 @@
  //     showAnim: "fadeIn"
  //
  // });
-
+console.log('lola');
  $("#editFechaProf").datepicker({
      beforeShowDay: bloquearFinSemana,
      firstDay: 1,
