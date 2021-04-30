@@ -69,7 +69,7 @@ $fNacDDMMYYY = $exp[2].'-'.$exp[1].'-'.$exp[0];
 <div class="container">
     <h4 class="m-4">Modifica tus datos</h4>
     <!-- Formulario de edición -->
-    <form id="formEditarPerfil" class="p-4 formBackground" action="gestionaEditarPerfil.php" method="post">
+    <form id="formEditarPerfil" class="p-4" action="gestionaEditarPerfil.php" method="post">
       <div class="form-group">
         <!-- NOMBRE APELLIDOS -->
         <div class="row">

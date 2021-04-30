@@ -39,9 +39,8 @@
 			</a>
             <br><br>
             <!-- Formulario de Registro -->
-			<!-- TODO: arreglar, pantalla 991px formulario demasiado grande -->
-            <!-- <form class="p-5 formBackground" action="" method="post"> -->
-                <p class="h4 mb-4">Crear cuenta</p>
+			<div class="formBackground">
+				<p class="h4 mb-4">Crear cuenta</p>
                 <div class="form-row mb-2">
                     <div class="col-12 col-lg-6 mb-2 mb-lg-0">
                         <!-- Nombre -->
@@ -113,7 +112,7 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<div class="col-lg-12 col-sm-6">                                                 
+						<div class="col-lg-12 col-sm-6">
 							<!-- Especialidad -->
 							<select id="regEspecialidades" name="regEspecialidades" class="mul-select w-100 h-100 form-control" multiple="true">
 								<!-- Options cargadas desde la base de datos -->
@@ -131,7 +130,7 @@
                 <!-- Muestra los mensajes de error o de éxito en caso de haberlos -->
                 <div class="alert-danger text-center m-3" id="msgErrorReg"></div>
                 <div class="alert-success text-center m-3" id="msgExitoReg"></div>
-    
+
                 <!-- Botón de registro -->
 				<input type="submit" id="submitReg" name="submitReg" value="REGISTRAR" class="btn btn-info my-4 btn-block">
                 <!-- <button class="btn btn-info my-4 btn-block" type="submit">REGISTRAR</button> -->
@@ -153,6 +152,8 @@
                     <a href="../index.php" target="_blank">política de privacidad</a>
                 </p>
             <!-- </form> -->
+			</div>
+
             <!-- Default form register -->
         </div>
         <!-- Ends content -->

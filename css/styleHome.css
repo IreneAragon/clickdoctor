@@ -12,6 +12,15 @@ html, body, header,
   }
 }
 
+@media (max-width: 767px) {
+    .sizeLogo {
+        width: 90%!important;
+    }
+    .sizeDoctor {
+        display: none!important;
+    }
+}
+
 body {
   background-image: url("../img/doctor-tablet2.jpg");
   background-repeat: no-repeat;
@@ -27,23 +36,20 @@ body {
 
 .sizeLogo {
     margin: 0 auto;
-    width: 100%;
+    width: 70%;
 }
 
 .sizeDoctor {
     margin-top: -4em;
+    margin-bottom: -4em;
     width: 100%;
 }
 
 .formBackground {
     background: rgba(255, 255, 255, 0.7);
+    padding: 30px;
     border-radius: 3px;
 }
-
-/* .registroOK {
-    text-align: center;
-    color: green;
-} */
 
 #datosProfesional {
     visibility: hidden;
