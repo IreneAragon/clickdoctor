@@ -141,7 +141,7 @@ include_once '../include/navPacientes.php';
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                         <button id="btnGuardarCitaEditada" type="button" class="btn btn-success">Guardar cambios</button>
                         <input type="hidden" name="idsCita" id="idsCita" value="" data-valores="">
                     </div>

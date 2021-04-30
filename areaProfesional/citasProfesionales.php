@@ -116,7 +116,7 @@ include_once '../include/navProfesionales.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                     <button id="btnGuardarCitaEditadaProf" type="button" class="btn btn-success">Guardar cambios</button>
                     <input type="hidden" name="idsCitaProf" id="idsCitaProf" value="" data-valores="">
                 </div>
