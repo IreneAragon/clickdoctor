@@ -29,10 +29,10 @@ $srcImgPerfil = '../areaProfesional/perfil/'.$datosProfesional['srcImg'];
     <nav class="navbar light-blue accent-1 mynav fixed-top scrolling-navbar">
         <i class="fas fa-bars openbtn light-blue accent-1" onclick="openNav()"></i>
         <a class="navbar-brand" href="areaProfesional.php">
-            <img src="../img/logoNav.png" height="20" alt="click doctor logo" title="Ir a inicio">
+            <img class="img-fluid img-logo" src="../img/logoNav.png" height="20" alt="click doctor logo" title="Ir a inicio">
         </a>
         <a href="perfil.php">
-            <img class="avatarNav" src="<?php echo $srcImgPerfil; ?>" alt="imagen de perfil" title="Ver perfil">
+            <img class="avatarNav reduce" src="<?php echo $srcImgPerfil; ?>" alt="imagen de perfil" title="Ver perfil">
         </a>
         <div id="mySidebar" class="sidebar light-blue accent-1 ">
             <a class="closebtn" onclick="closeNav()">×</a>

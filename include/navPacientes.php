@@ -20,7 +20,7 @@ $srcImgPerfil = '../areaPaciente/perfil/'.$datosPaciente['srcImg'];
         <!-- <button class="openbtn light-blue accent-1" onclick="openNav()">☰</button> -->
         <!-- <button class="openbtn light-blue accent-1" id="openNav">☰</button> -->
         <a class="navbar-brand" href="areaPaciente.php">
-            <img src="../img/logoNav.png" class="float-right" height="20" alt="click doctor logo" title="Ir a inicio">
+            <img class="img-fluid img-logo" src="../img/logoNav.png" class="float-right" height="20" alt="click doctor logo" title="Ir a inicio">
         </a>
         <a href="perfil.php">
             <img class="avatarNav" src="<?php echo $srcImgPerfil; ?>" alt="imagen de perfil" title="Ver perfil">

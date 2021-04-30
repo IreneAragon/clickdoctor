@@ -94,6 +94,22 @@ En pantallas pequeñas donde el ancho sea menor de 450px cambia el estilo del si
     }
 }
 
+.img-logo {
+    max-width: 250px;
+}
+
+@media (max-width: 420px) {
+
+    .img-logo {
+        max-width: 175px;
+    }
+
+    .avatarNav {
+        width: 40px!important;
+        height: 40px!important;
+    }
+
+}
 
 /***************
 *  Botón Menú  *
@@ -232,7 +248,7 @@ footer {
 *                                                             *
 ***************************************************************/
 
-#especialidadAgregada, 
+#especialidadAgregada,
 #errorAddEsp,
 #msgBorradoUsuario {
     display: none;
@@ -248,13 +264,13 @@ footer {
     width: 50px;
     height: 25px;
   }
-  
-  .switch input { 
+
+  .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
+
   .slider {
     position: absolute;
     cursor: pointer;
@@ -266,7 +282,7 @@ footer {
     -webkit-transition: .2s;
     transition: .2s;
   }
-  
+
   .slider:before {
     position: absolute;
     content: "";
@@ -279,26 +295,26 @@ footer {
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   input:checked + .slider {
     background-color: #5aacdf;
   }
-  
+
   input:focus + .slider {
     box-shadow: 0 0 1px #5aacdf;
   }
-  
+
   input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
-  
+
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
-  
+
   .slider.round:before {
     border-radius: 50%;
   }
