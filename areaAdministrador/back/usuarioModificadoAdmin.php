@@ -1,6 +1,6 @@
 <?php
 
-require '../../clases/claseDB.php';
+require_once '../../clases/claseDB.php';
 
 $idUsuario = filter_input(INPUT_POST, "idUsuario", FILTER_DEFAULT);
 $rolUsuario = filter_input(INPUT_POST, "rolUsuario", FILTER_DEFAULT);
@@ -14,11 +14,10 @@ $idEspecialidades = filter_input(INPUT_POST, "idEspecialidades", FILTER_DEFAULT,
 if ($rolUsuario === "paciente") {
     $adminModificaPaciente = DB::adminModificaPaciente($idUsuario, $nombre, $apellidos, $email, $fNacimiento);
     echo json_encode(array('success' => $adminModificaPaciente));
-}                       
+}
 
 if ($rolUsuario === "profesional") {
     $adminModificaProfesional = DB::adminModificaProfesional($idUsuario, $nombre, $apellidos, $email, $fNacimiento, $n_colegiado);
     $adminModificaEspecialidadesProfesional = DB::modificarEspecialidadesProfesional($idEspecialidades, $idUsuario);
-    
     echo json_encode(array('successData' => $adminModificaProfesional, 'successEsp' => $adminModificaEspecialidadesProfesional ));
-}   
+}

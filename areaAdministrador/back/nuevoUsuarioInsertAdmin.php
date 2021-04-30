@@ -1,6 +1,6 @@
 <?php
 
-require '../../clases/claseDB.php';
+require_once '../../clases/claseDB.php';
 
 $nombre = filter_input(INPUT_POST, "nombre", FILTER_DEFAULT);
 $apellidos = filter_input(INPUT_POST, "apellidos", FILTER_DEFAULT);
@@ -15,16 +15,13 @@ $ejerce = filter_input(INPUT_POST, 'ejerce', FILTER_DEFAULT);
 $password = filter_input(INPUT_POST, "password", FILTER_DEFAULT);
 $hashPass = password_hash($password, PASSWORD_DEFAULT);
 
-// insertar especialidades del profesional
 $ultimoIdProfresional = DB::ultimoIdProfresional();
-$idNuevoProf = intval($ultimoIdProfresional['max_id']) +1;  
+$idNuevoProf = intval($ultimoIdProfresional['max_id']) +1;
 $insertaEspecialidadNuevoProf = DB::insertarEspecialidadNuevoProf($idEspecialidades, $idNuevoProf);
 
 if ($rol === "paciente") {
-    // insert paciente
     $insertarNuevoUsuarioPaciente = DB::insertarNuevoUsuarioPaciente($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass);
 } else {
-    // insert profesional
     $insertarNuevoUsuarioProfesional = DB::insertarNuevoUsuarioProfesional($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass, $ejerce, $nColegiado);
 
 }

@@ -20,12 +20,11 @@ function agregarUsuario() {
     let checkRol = document.querySelector('input[name="rol"]:checked');
     var nColegiado =  document.getElementById("nuevoUsuarioNcolegiado").value;
     var ejerce =  document.getElementById("nuevoUsuarioEjerce").value;
-    // var idEspecialidades =  document.getElementById("nuevoUsuarioEspecialidades").value;
     var idEspecialidades = $('#nuevoUsuarioEspecialidades').val();
     var divError = document.getElementById('msgErrorNuevoUsuario');
     var divExito = document.getElementById('msgExitoNuevoUsuario');
- 
-    // flags 
+
+    // flags
     let esMujer = false;
     let esHombre = false;
     let esOtro = false;
@@ -53,8 +52,8 @@ function agregarUsuario() {
     } else if (otro.checked) {
         esOtro = true;
         genero = "no_binario";
-    } 
-    
+    }
+
     // conocer rol
     if (paciente.checked) {
         esPaciente = true;
@@ -68,12 +67,12 @@ function agregarUsuario() {
     // campos obligatorios
     if (!nombre || !apellidos || !email || !dni || !fNacimiento || checkGenero === null || checkRol === null ) {
         msgError += 'Ningún campo del formulario puede estar vacío<br>';
-    } 
+    }
 
    if (esProfesional) {
         if (!nombre || !apellidos || !email || !dni || !fNacimiento || checkGenero === null ||  checkRol === null || !nColegiado || !ejerce || idEspecialidades.length < 1) {
             msgError += 'Ningún campo del formulario puede estar vacío<br>';
-        } 
+        }
     }
 
     // email
@@ -83,57 +82,56 @@ function agregarUsuario() {
         }
     }
 
-    
+
     // dni
     if (dni != "") {
         if (!regexDni.test(dni)) {
             msgError += 'DNI incorrecto<br>';
-        } 
+        }
     }
 
     // número de colegiado
     if (nColegiado != "") {
         if (!regexNCol.test(nColegiado)) {
             msgError += 'Número de colegiado incorrecto<br>';
-        } 
+        }
     }
 
     // fecha de nacimiento regexFnacimiento
     if (fNacimiento != "") {
         if (!regexFnacimiento.test(fNacimiento)) {
             msgError += 'Formato de fecha incorrecto<br>';
-        } 
+        }
     }
-    
+
     // contraseña
     if (password != "") {
         if (!regexPsw.test(password)) {
             msgError += "Formato de contraseña incorrecto, debe contener mayúsuclas, minúsculas y números y tener entre 6 y 16 caracteres.<br>";
-        } 
+        }
     }
 
     if (passwordRep != "") {
         if (!regexPsw.test(passwordRep)) {
             msgError += "El formato de la contraseña repetida es incorrecto, debe contener mayúsuclas, minúsculas y números y tener entre 6 y 16 caracteres.<br>";
-        } 
+        }
     }
 
     // si alguno de los campos de la contraseña está vacío
     if ( (!password && passwordRep) || (password && !passwordRep) ) {
         msgError += 'Debes escribir la contraseña en ambos campos<br>';
     } else {
-        // comprobar regex 
+        // comprobar regex
         if ( (!regexPsw.test(password)) || (!regexPsw.test(passwordRep)) ) {
             msgError += "Formato de contraseña incorrecto, debe contener mayúsuclas, minúsculas y números y tener entre 6 y 16 caracteres.<br>";
         } else {
             //comprobar que coinciden
             if (password != passwordRep) {
                 msgError += 'Las contraseñas no coinciden<br>';
-            } 
+            }
         }
     }
 
-    // si no hay errores se procede a hacer el ajax que inserta la usuario en la base de datos
     if (msgError ==="") {
         divError.style.display = 'none';
         $.ajax({
@@ -170,6 +168,3 @@ function agregarUsuario() {
     }
 
 }
-
-
-

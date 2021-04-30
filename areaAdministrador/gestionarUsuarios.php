@@ -10,14 +10,12 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// require_once '../clases/claseDB.php';
-
 ?>
 
 <div class="container mt-5">
 
     <h2 class="text-center mt-5">Gestión de Usuarios</h2>
-    
+
     <div class="d-flex justify-content-around flex-wrap">
         <!-- btn crear usuario -->
         <div class="d-flex justify-content-center  align-content-center m-3">
@@ -35,7 +33,7 @@ if (!isset($_SESSION)) {
             </div>
         </div>
     </div>
-    
+
     <!-- tabla listar usuarios -->
     <table class="table table-sm table-hover">
         <thead>
@@ -66,42 +64,12 @@ if (!isset($_SESSION)) {
                 </div>
             </div>
         </div>
-    </div> <!-- /modal eliminar usuarios -->
-    <!-- Se muestra cuando el usuario ha sido borrado -->
+    </div>
     <div id="msgBorradoUsuario" class="alert alert-success mt-5" role="alert">
-        El usuario se ha eliminado con éxito. 
+        El usuario se ha eliminado con éxito.
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div> <!-- end container -->
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div> 
 
 <script src="js/gestionarUsuarios.js" charset="utf-8"></script>
 

@@ -4,7 +4,7 @@ window.onload = listarUsuariosNoActivados();
 $('#msgExito').hide();
 
 function listarUsuariosNoActivados() {
-    
+
     $.ajax({
         url: "back/listarUsuariosNoActivados.php",
         type: "post",
@@ -19,9 +19,9 @@ function listarUsuariosNoActivados() {
             $('#msgActiveUsu').show();
             $('#msgNoActiveUsu').hide();
         }
-        
+
         let htmlTr = "";
-    
+
         arrayRespuesta.usuarios.forEach((usuario, i) => {
 
             let rolUsuario = 0;
@@ -32,9 +32,7 @@ function listarUsuariosNoActivados() {
                         "<td>"+ usuario.dni +"</td>"+
                         "<td>"+ usuario.rol +"</td>"+
                         "<td><button type='button' id='btnActivarUsuario("+usuario.id_usuario+","+usuario.rol+")' onclick='activarUsuario("+usuario.id_usuario+","+rolUsuario+")' class='btn btn-success btn-sm mt-0 px-3'><i class='fas fa-check-circle fa-lg'></i></button></td>"+
-                        
-                        // "<td><button type='button' id='btnActivarUsuario("+usuario.id_usuario+","+usuario.rol+")' class='btn btn-success btn-sm mt-0 px-3'><i class='fas fa-check-circle fa-lg'></i></button></td>"+
-                    "</tr>";
+                      "</tr>";
         });
         $('#listaUsuariosNoActivados').html(htmlTr);
     });

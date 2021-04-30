@@ -6,7 +6,6 @@ include_once '../include/navAdministrador.php';
 $rol = $_GET['rol'];
 $id = $_GET['id'];
 
-
 ?>
 
 <div class="container mt-5">
@@ -55,7 +54,6 @@ $id = $_GET['id'];
         </div>
     </div>
 
-
     <div class="container mt-3 mb-5">
         <!-- Muestra los mensajes de error o de éxito en caso de haberlos -->
         <div class="alert-danger text-center" id="msgErrorPerfilAdmin"></div>
@@ -72,25 +70,10 @@ $id = $_GET['id'];
 
 </div>
 
-
-
-
-
-
-
 <script src="../js/multiselect.js"></script>
 <script src="js/obtenerDatosPerfilUsuario.js" charset="utf-8"></script>
 <script src="js/modificarPerfilUsuario.js" charset="utf-8"></script>
 
-		<!-- <script>
-			$(document).ready(function(){
-				$(".mul-select").select2({
-						placeholder: "Elige una o varias especialidades",
-						tags: true,
-						tokenSeparators: ['/',',',';'," "]
-					});
-				})
-		</script> -->
 <?php
 include_once '../include/footer.html';
 ?>

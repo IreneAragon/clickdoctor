@@ -14,7 +14,7 @@ function obtenerListadoEspecialidades(idUsuario) {
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
         let especialidades = arrayRespuesta.datos;
-        
+
         if (rolUsuario === 'profesional') {
             especialidades.forEach((especialidad,i) => {
                 selectDatos.push( {"id": parseInt(especialidad.id), "text": especialidad.text, selected: especialidad.practica});
@@ -23,7 +23,7 @@ function obtenerListadoEspecialidades(idUsuario) {
         } else {
             $('#formEsp').hide();
         }
-         
+
     });
 }
 
@@ -46,8 +46,6 @@ function obtenerDatosUsuario(idUsuario, rolUsuario) {
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
         let datosPerfil = arrayRespuesta.datosUsuario;
-        console.log('llega -',datosPerfil.n_colegiado);
-
         $('#editarNombreAdmin').val(datosPerfil.nombre);
         $('#editarApellidosAdmin').val(datosPerfil.apellidos);
         $('#editarEmailAdmin').val(datosPerfil.email);
@@ -56,8 +54,6 @@ function obtenerDatosUsuario(idUsuario, rolUsuario) {
             $('#formNCol').hide();
         } else {
             $('#editNcolegiadoAdmin').val(datosPerfil.n_colegiado);
-        }  
-       
-        
+        }
     });
 }

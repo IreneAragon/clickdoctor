@@ -1,7 +1,6 @@
 <?php
 include_once '../include/cabeceraAdmins.html';
 include_once '../include/navAdministrador.php';
-
 ?>
 
 <div class="container mt-5">
@@ -38,7 +37,7 @@ include_once '../include/navAdministrador.php';
         Usuario activado con éxito
     </div>
 
-</div> 
+</div>
 
 <script src="js/activarUsuarios.js" charset="utf-8"></script>
 <?php

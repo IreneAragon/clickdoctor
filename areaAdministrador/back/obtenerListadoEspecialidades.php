@@ -1,14 +1,12 @@
 <?php
 
-require '../../clases/claseDB.php';
+require_once '../../clases/claseDB.php';
 
 $idProf = filter_input(INPUT_POST, "idUsuario", FILTER_DEFAULT);
-
 $especialidades = DB::especialidades();
 $nombreEspecialidadesPracticaProf = DB::nombreEspecialidadesPracticaProf($idProf);
 
 $idEspProf = [];
-
 foreach ($nombreEspecialidadesPracticaProf as $especialidadProf) {
     $idEspProf[] = $especialidadProf['id_especialidad'];
 }

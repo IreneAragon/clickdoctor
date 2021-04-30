@@ -34,7 +34,6 @@ function listarUsuarios(rol) {
         data: {"rol" : rol},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
-        console.log(arrayRespuesta);
         let htmlTr = "";
         arrayRespuesta.usuarios.forEach((usuario, i) => {
             htmlTr += "<tr>"+

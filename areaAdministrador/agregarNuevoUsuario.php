@@ -5,17 +5,11 @@ ini_set('display_errors', '1');
 
 include_once '../include/cabeceraAdmins.html';
 include_once '../include/navAdministrador.php';
-
-// if (!isset($_SESSION)) {
-//     session_start();
-// }
-
 require_once '../clases/claseDB.php';
 
 ?>
 
 <div class="container mt-5">
-
     <p class="h4 mb-4 mt-5">Crear nuevo usuario</p>
     <div class="form-row mb-2">
         <div class="col-12 col-lg-6 mb-2 mb-lg-0">
@@ -98,7 +92,6 @@ require_once '../clases/claseDB.php';
                             echo '<option value="'.$especialidad['id_especialidad'].'">'.$especialidad['nombre'].'</option>';
                         }
                     ?>
-
                 </select>
             </div>
         </div>
@@ -111,31 +104,11 @@ require_once '../clases/claseDB.php';
     <div class="alert-danger text-center m-3" id="msgErrorNuevoUsuario"></div>
     <div class="alert-success text-center m-3" id="msgExitoNuevoUsuario"></div>
 
-
 </div>
-
-
-
-
-
-
-
 
 <script src="../js/habilitarInputAdmin.js"></script>
 <script src="../js/multiselect.js"></script>
 <script src="js/agregarNuevoUsuario.js" charset="utf-8"></script>
-<!-- Script muestra o no los inputs correspondientes según el tipo de paciente -->
-		
-
-		<!-- <script>
-			$(document).ready(function(){
-				$(".mul-select").select2({
-						placeholder: "Elige una o varias especialidades",
-						tags: true,
-						tokenSeparators: ['/',',',';'," "]
-					});
-				})
-		</script> -->
 
 <?php
 include_once '../include/footer.html';

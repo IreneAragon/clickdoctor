@@ -43,21 +43,16 @@ if (!isset($_SESSION)) {
                 </div>
                 <div id="modalEditBody" class="modal-body">
                     <form id="tablaEditEspecialidad" class="" method="post">
-
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="editNombreEsp">Nombre</label>
                                 <input type="text" id="editNombreEsp" class="form-control">
-                                <!-- <p id="editNombreEsp"></p> -->
                             </div>
                         </div>
-
                     </form>
-                    <!-- Se muestra cuando la especialidad ha sido modificada -->
                     <div id="especialidadModificada" class="alert alert-success mt-2" role="alert">
                         Especialidad modificada con éxito
                     </div>
-                    <!-- Muestra los errores al editar una especialidad -->
                     <div id="errorEditEsp" class="alert alert-danger mt-2" role="alert">
                     </div>
                 </div>
@@ -85,8 +80,7 @@ if (!isset($_SESSION)) {
                 </div>
             </div>
         </div>
-    </div> <!-- /modal cancelar cita -->
-    <!-- Se muestra cuando la cita ha sido borrada -->
+    </div>
     <div id="msgBorradoEsp" class="alert alert-success mt-5" role="alert">
         La especialidad se ha eliminado con éxito.
     </div>
@@ -107,11 +101,9 @@ if (!isset($_SESSION)) {
                             </div>
                         </div>
                     </form>
-                    <!-- Se muestra cuando la especialidad ha sido añadida -->
                     <div id="especialidadAgregada" class="alert alert-success mt-2" role="alert">
                         Especialidad añadida con éxito
                     </div>
-                    <!-- Muestra los errores al editar una especialidad -->
                     <div id="errorAddEsp" class="alert alert-danger mt-2" role="alert">
                     </div>
                 </div>

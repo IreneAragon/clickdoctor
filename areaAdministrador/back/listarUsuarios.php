@@ -1,5 +1,5 @@
 <?php
-require '../../clases/claseDB.php';
+require_once '../../clases/claseDB.php';
 
 $rol = filter_input(INPUT_POST, "rol", FILTER_DEFAULT);
 
