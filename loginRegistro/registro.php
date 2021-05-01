@@ -2,7 +2,6 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 
-	// require_once 'registroUsuario.php'
 	require_once '../clases/claseDB.php';
 ?>
 
@@ -56,7 +55,7 @@
                 <!-- Contraseña -->
                 <input type="password" id="regPassword" name="regPassword" class="form-control" placeholder="Contraseña" value="<?php isset($contrasena) ? print $contrasena : ''; ?>">
                 <small class="form-text text-muted mb-2">
-                    Al menos 6 caracteres y 1 dígito
+                    Al menos 6 caracteres, mayúsculas y minúsculas y 1 dígito
                 </small>
                 <!-- Repetir Contraseña -->
                 <input type="password" id="regPasswordRep" name="regPasswordRep" class="form-control mb-2" placeholder="Repita contraseña" value="<?php isset($contrasenaRep) ? print $contrasenaRep : ''; ?>">
@@ -133,17 +132,7 @@
 
                 <!-- Botón de registro -->
 				<input type="submit" id="submitReg" name="submitReg" value="REGISTRAR" class="btn btn-info my-4 btn-block">
-                <!-- <button class="btn btn-info my-4 btn-block" type="submit">REGISTRAR</button> -->
-				<!-- Muestra los mensajes de error en caso de haberlos -->
-				<!-- <div class="mensajeError">
-					<?php
 
-						// if(isset($mensajeError)){
-						// 	echo ($mensajeError);
-						// 	var_dump($mensajeError);
-						// }
-					?>
-				</div> -->
 				<hr>
                 <!-- Terms of service -->
                 <p> Haciendo click en <em>Registrar</em> acepta nuestros
@@ -151,38 +140,13 @@
                     y reconoce que ha leído nuestra
                     <a href="../index.php" target="_blank">política de privacidad</a>
                 </p>
-            <!-- </form> -->
 			</div>
 
-            <!-- Default form register -->
         </div>
-        <!-- Ends content -->
-
- <!-- if(isset($mensajeError)){
-    echo $mensajeError;
-    header('Location: registro.php'); // no para la ejecución a no ser que ponga return
-    return;
- } -->
-
-
-
-
-		<!-- Script muestra o no los inputs correspondientes según el tipo de paciente -->
 
 		<script src="../js/multiselect.js"></script>
         <script src="../js/habilitarInput.js"></script>
         <script src="js/insertarNuevoUsuario.js" charset="utf-8"></script>
-
-		<!-- <script>
-			$(document).ready(function(){
-				$(".mul-select").select2({
-						placeholder: "Elija una o varias especialidades",
-						tags: true,
-						tokenSeparators: ['/',',',';'," "]
-					});
-				})
-		</script> -->
-
 
     </body>
 </html>

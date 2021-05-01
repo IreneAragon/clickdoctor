@@ -14,12 +14,11 @@ $idEspecialidades = filter_input(INPUT_POST, 'idEspecialidades', FILTER_DEFAULT,
 $ejerce = filter_input(INPUT_POST, 'ejerce', FILTER_DEFAULT);
 $password = filter_input(INPUT_POST, "password", FILTER_DEFAULT);
 $hashPass = password_hash($password, PASSWORD_DEFAULT);
-// var_dump('idEspecialidades', $idEspecialidades); die;
 
 if ($rol === "profesional") {
     // insertar especialidades del profesional
     $ultimoIdProfresional = DB::ultimoIdProfresional();
-    $idNuevoProf = intval($ultimoIdProfresional['max_id']) +1;  
+    $idNuevoProf = intval($ultimoIdProfresional['max_id']) +1;
     $insertaEspecialidadNuevoProf = DB::insertarEspecialidadNuevoProf($idEspecialidades, $idNuevoProf);
 
 }
