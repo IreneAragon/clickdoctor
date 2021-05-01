@@ -1,12 +1,4 @@
 <?php
-require_once 'claseAdministrador.php';
-require_once 'claseCita.php';
-require_once 'claseCorreo.php';
-require_once 'claseEspecialidad.php';
-require_once 'claseInforme.php';
-require_once 'claseMensaje.php';
-require_once 'clasePaciente.php';
-require_once 'claseProfesional.php';
 
 class DB {
 
@@ -365,11 +357,11 @@ class DB {
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
-        var_dump('---DbB---',$idUsuario['id_usuario']);
+
         return $idUsuario['id_usuario'];
     }
 
-    /* Obtener id admin */
+
 
     /* Obtener ID del usuario a través del dni */
     public static function obteneridPacientePorDni($dniPac) {
@@ -384,7 +376,7 @@ class DB {
         return $idPaciente['id_paciente'];
     }
 
-    //comprobarDniPacienteExiste($dniPac)******************
+    /* Obtiene la existencia del paciente a través del dni */
     public static function comprobarDniPacienteExiste($dniPac) {
         try {
             $consulta = 'SELECT id_paciente FROM pacientes WHERE dni = "'. $dniPac .'"';
@@ -397,20 +389,6 @@ class DB {
         return ($count === 1) ? true : false;
     }
 
-/*
-public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $hashPass, $idUsuario) {
-    try {
-        $consulta = 'UPDATE pacientes SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'", password ="'.$hashPass.'" WHERE id_paciente ="'.$idUsuario.'"';
-        $resultado = self::ejecutaConsulta($consulta);
-        $count = $resultado->rowCount();
-    } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
-    }
-    // si se ha editado el perfil correctamente devuelve true
-    return ($count === 1) ? true : false;
-
-}
- */
 
     /* Obtener el género del profesional */
     public static function getGeneroUsuario($email) {
@@ -529,47 +507,6 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         // si se ha editado el perfil correctamente devuelve true
         return ($count === 1) ? true : false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public static function datosPaciente($idPaciente) {
         try {
@@ -810,9 +747,6 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         }
     }
 
-
-/*  listarInformesProfesional($idProfesional)   */
-
     public static function listarInformesProfesional($idProfesional) {
          try {
              $consulta = 'SELECT * FROM informes WHERE id_profesional_FK = "'.$idProfesional.'"';
@@ -951,12 +885,13 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return ($count === 1) ? true : false;
     }
 
+    /* inserta un nuevo profesional y devuelve el id de éste, para ser utilizado en la inserción de las especialidades  */
     public static function insertarNuevoUsuarioProfesional($nombre, $apellidos, $email, $fNacimiento, $dni, $rol, $genero, $hashPass, $ejerce, $nColegiado){
         try {
 
             $sql = 'INSERT INTO profesionales (nombre, apellidos, email, f_nacimiento, dni, rol, genero, password, ejerce_en, n_colegiado)
                         VALUES ("'. $nombre .'", "'. $apellidos .'", "'. $email .'", "'. $fNacimiento .'", "'. $dni .'", "'. $rol .'", "'. $genero .'", "'. $hashPass .'", "'. $ejerce .'", "'. $nColegiado .'")';
-            // $resultado = self::ejecutaConsulta($consulta);
+
             $consulta = new PDO(self::DB_DNS, self::DB_USER, self::DB_PASS, self::DB_OPT);
             $resultado = $consulta->query($sql);
             $lastInsertId = $consulta->lastInsertId();
@@ -1042,109 +977,6 @@ public static function modificarDatosUsuario($name, $lastname, $email, $fNac, $h
         return ($count === 1) ? true : false;
     }
 
-
-
-
-/*
-adminModificaEspecialidadesProfesional($idUsuario, $idEspecialidades)
-
-
-
-adminModificaPaciente($idUsuario, $nombre, $apellidos, $email, $fNacimiento)
-
-adminModificaProfesional($idUsuario, $nombre, $apellidos, $email, $fNacimiento, $n_colegiado)
-
-    public static function modificarDatosProfesional($name, $lastname, $email, $fNac, $nColegiado, $hashPass, $idEspecialidad, $idUsuario) {
-        try {
-            $consulta = 'UPDATE profesionales SET nombre = "'.$name.'", apellidos = "'.$lastname.'", email ="'.$email.'", f_nacimiento ="'.$fNac.'", n_colegiado ="'.$nColegiado.'"';
-            if(!empty($hashPass)) {
-                $consulta .= ', password ="'.$hashPass.'"';
-            }
-            $consulta .= ' WHERE id_profesional ="'.$idUsuario.'"';
-
-            $resultado = self::ejecutaConsulta($consulta);
-            $count = $resultado->rowCount();
-        } catch (PDOException $e) {
-            die("Error: " . $e->getMessage());
-        }
-        // si se ha editado el perfil correctamente devuelve true
-        return ($count === 1) ? true : false;
-    }
-
-
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
      /* FORMATO DE EMAIL */
      public static function emailValido($email){
          if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -1205,52 +1037,6 @@ adminModificaProfesional($idUsuario, $nombre, $apellidos, $email, $fNacimiento, 
             return false;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 } // ENDS Class DB
