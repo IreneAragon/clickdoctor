@@ -24,17 +24,16 @@
 		<!-- CONTENIDO -->
 		<div class="view full-page-intro">
 			<div class="mask d-flex justify-content-center align-items-center">
-				<!-- CONTAINER -->
 				<div class="container">
 					<div class="row wow fadeIn">
 						<a href="index.php">
 							<img src="img/logo2.png" alt="Click Doctor logo" class="align-items-center sizeLogo">
 						</a>
-						<!-- Primera columna [IMAGEN] -->
+
 						<div class="col-md-6 mb-4 justify-content-center">
 							<img src="img/OnlineDoctor.png" alt="Online Doctor image" class="sizeDoctor">
 						</div>
-						<!-- Segunda columna [FORMULARIO] -->
+
 						<div class="col-md-6 col-xl-5 mb-4">
 							<form class="text-center" action="accesoUsuario.php" method="post">
 								<br>
@@ -42,7 +41,7 @@
 									<h5 class="card-header grey-text text-center py-4">
 									<strong>Accede</strong>
 									</h5>
-									<!-- Inputs -->
+
 									<div class="card-body px-lg-5 pt-0">
 										<div class="md-form">
 											<input type="email" id="loginEmail" name="loginEmail" class="form-control" placeholder="E-mail" value="<?php isset($email) ? print $email : ''; ?>">
@@ -70,11 +69,11 @@
 									</div>
 								</div>
 							</form>
-						</div> <!-- /formulario -->
+						</div>
 					</div>
-				</div> <!-- /container -->
+				</div>
 			</div>
-		</div> <!-- /contenido -->
+		</div> 
 
 		<!-- SCRIPTS -->
 	    <!-- Propios -->
