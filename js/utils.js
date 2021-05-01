@@ -15,5 +15,5 @@ function formatearFechaDDMMYYY(fecha, separacion = '-') {
     }
 
     return dia + separacion + mes + separacion + ano;
-    // console.log(dia + '-' + mes + '-' + ano);
+    
 }

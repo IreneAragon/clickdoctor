@@ -1,5 +1,3 @@
-console.log('entra nuevo script multiselect');
-
 
 $(document).ready(function(){
     $(".mul-select").select2({
