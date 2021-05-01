@@ -7,14 +7,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-
-
 require_once '../clases/claseDB.php';
 $idProf = $_SESSION['idUsuario'];
 $datosProfesional = DB::datosProfesional($idProf);
 $srcImgPerfil = '../areaProfesional/perfil/'.$datosProfesional['srcImg'];
-
-
 
 ?>
 
