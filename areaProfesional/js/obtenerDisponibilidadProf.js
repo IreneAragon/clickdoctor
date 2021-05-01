@@ -19,7 +19,7 @@ function traerDisponibilidad() {
                "fechayyyymmdd" : fechayyyymmdd},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
-        console.log(arrayRespuesta);
+        
         let htmlOptions = '<option value="0">Selecciona la hora</option>';
         if (arrayRespuesta.isEmpty) {
             htmlOptions = '<option value="0">No hay citas para este día</option>';

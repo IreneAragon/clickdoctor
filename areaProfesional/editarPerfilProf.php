@@ -1,7 +1,5 @@
 <?php
-// muestra errores php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+
 
 include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';

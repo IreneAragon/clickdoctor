@@ -1,12 +1,8 @@
 <?php
 
-
 require_once '../../clases/claseDB.php';
-// require '../includes/funciones.php';
-// muestra errores php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-// Inicia sesión solo si no lo está ya
+
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -15,7 +11,6 @@ date_default_timezone_set("Europe/Madrid");
 // Obtiene el string del datetime
 $dateTime = date('dmYHis');
 
-// echo "entraphp";
 if (is_array($_FILES) && count($_FILES) > 0) {
     if (($_FILES["file"]["type"] == "image/pjpeg")
         || ($_FILES["file"]["type"] == "image/jpeg")

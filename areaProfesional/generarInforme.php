@@ -1,11 +1,7 @@
 <?php
-// muestra errores php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-// var_dump($nombreInforme);die();
+
 require_once '../clases/claseDB.php';
 
-// Inicia sesión solo si no lo está ya
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -35,7 +31,6 @@ if (!empty($_POST)) {
     $comprobarDniPac = DB::comprobarDniPacienteExiste($dniPac);
 
     if ($comprobarDniPac) {
-        // $dniPacExiste = true;
         $idPac = DB::obteneridPacientePorDni($dniPac);
         $pathConCarpetaId = PDF_PATH.$idPac.'/';
     } else {
@@ -44,9 +39,6 @@ if (!empty($_POST)) {
         include_once("crearInforme.php");
         return;
     }
-
-    // $idPac     = DB::obteneridPacientePorDni($dniPac);
-    // $pathConCarpetaId = PDF_PATH.$idPac.'/';
 
     if (!file_exists($pathConCarpetaId)) {
         mkdir($pathConCarpetaId, 0777, true);
@@ -76,4 +68,3 @@ if (!empty($_POST)) {
 }
 
  ?>
-<!-- <script src="js/listarInformesProfesional.js" charset="utf-8"></script> -->

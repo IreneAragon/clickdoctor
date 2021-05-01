@@ -1,8 +1,5 @@
 <?php
-// muestra errores php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-// Inicia sesión solo si no lo está ya
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -44,12 +41,7 @@ include_once '../include/navProfesionales.php';
     <div class="alert alert-danger errorCita text-center" id="errorMsgProf" role="alert">
     </div>
 
-
 </div>
-
-
-
-
 
 <script src="mensajeria/js/listarMensajes.js" charset="utf-8"></script>
  <?php

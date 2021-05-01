@@ -76,7 +76,7 @@ function borrarCita() {
         data: {"idCita": idCita},
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
-        console.log(arrayRespuesta);
+        
         if (arrayRespuesta.borradoOk) {
             $('#msgBorradoCitaProf').show();
             $('#cancelarCitaProf').modal('hide');
@@ -128,8 +128,6 @@ function traerDisponibilidad(idEspecialista, fecha) {
     // Cambiar el formato de la fecha recibida para que la acepte la consulta a la BD
     fecha = fecha.split("-");
     let fechayyyymmdd =    fecha[2]+'-'+ fecha[1] +'-'+  fecha[0];
-    console.log('fecha',fecha);
-    console.log('fechayyyymmdd',fechayyyymmdd);
 
     $.ajax({
         url: "back/obtenerDisponibilidad.php",

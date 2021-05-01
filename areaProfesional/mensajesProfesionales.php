@@ -1,8 +1,5 @@
 <?php
-// muestra errores php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-// Inicia sesión solo si no lo está ya
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -64,23 +61,6 @@ include_once '../include/navProfesionales.php';
     <!-- /modal -->
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script src="mensajeria/js/listarConversacionesProfesionales.js" charset="utf-8"></script>
 <?php

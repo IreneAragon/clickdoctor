@@ -1,8 +1,5 @@
 <?php
-// muestra errores php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-// Inicia sesión solo si no lo está ya
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -55,10 +52,6 @@ include_once '../include/navProfesionales.php';
             </tbody>
         </table>
     </div>
-
-
-
-
 
     <!-- Modal editar cita -->
     <div class="modal fade" id="editarCitaProf" tabindex="-1" role="dialog" aria-labelledby="editarCitaProfLabel" aria-hidden="true">
@@ -125,24 +118,6 @@ include_once '../include/navProfesionales.php';
     </div>
     <!-- /modal editar cita -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Modal cancelar cita -->
     <div class="modal fade" id="cancelarCitaProf" tabindex="-1" role="dialog" aria-labelledby="cancelarCitaProfLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -166,27 +141,6 @@ include_once '../include/navProfesionales.php';
     </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script src="js/listarCitasProfesional.js" charset="utf-8"></script>
 <script src="../js/utils.js" charset="utf-8"></script>

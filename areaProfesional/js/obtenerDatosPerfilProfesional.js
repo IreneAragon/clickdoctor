@@ -34,7 +34,7 @@ function obtenerDatosPerfil(idProf) {
     }).done(function(respuesta) {
         let arrayRespuesta = $.parseJSON(respuesta);
         let datosPerfil = arrayRespuesta.datos;
-        // console.log(datosPerfil);
+        
         $('#editarNombreProf').val(datosPerfil.nombre);
         $('#editarApellidosProf').val(datosPerfil.apellidos);
         $('#editarEmailProf').val(datosPerfil.email);

@@ -12,7 +12,6 @@ $dni = filter_input(INPUT_POST, "dni", FILTER_DEFAULT);
 $idEspecialidades = filter_input(INPUT_POST, 'idEspecialidades', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
 $password = filter_input(INPUT_POST, "password", FILTER_DEFAULT);
 $passwordRep = filter_input(INPUT_POST, "passwordRep", FILTER_DEFAULT);
-// var_dump('kkk',$_POST['idEspecialidades']);die;
 $hashPass = "";
 if(!empty($password)) {
     $hashPass = password_hash($password, PASSWORD_DEFAULT);

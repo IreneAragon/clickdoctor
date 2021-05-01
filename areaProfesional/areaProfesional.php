@@ -1,7 +1,6 @@
 <?php
 include_once '../include/cabeceraProfesionales.html';
 include_once '../include/navProfesionales.php';
-// datosProfesional($idProfesional)
 
 if (!isset($_SESSION)) {
     session_start();

@@ -48,14 +48,3 @@ function listarInformes() {
         $('#listaProfInformes').html(htmlTr);
     });
 }
-
-
-
-
-
-
-
-/*
-    pattern: cualquier letra, número o símbolo más que acabe en .pdf
-        var patt = /^[a-z0-9_()\-\[\]]+\.pdf$/i;
-*/

@@ -1,6 +1,5 @@
 <?php
 
-// Inicia sesión solo si no lo está ya
 if (!isset($_SESSION)) {
     session_start();
 }
