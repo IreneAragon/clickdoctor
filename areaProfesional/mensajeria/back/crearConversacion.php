@@ -11,11 +11,12 @@ if (!isset($_SESSION)) {
 
 require_once '../../../clases/claseDB.php';
 
-$idProf =  $_SESSION['idUsuario'];
+$idProf = $_SESSION['idUsuario'];
 $idPaciente = filter_input(INPUT_POST, "idPaciente", FILTER_DEFAULT);
 $asunto = filter_input(INPUT_POST, "asunto", FILTER_DEFAULT);
 $mensaje = filter_input(INPUT_POST, "mensaje", FILTER_DEFAULT);
+$rol = $_SESSION['rol'];
 
-$crearConversacion = DB::crearConversacion($asunto, $mensaje, $idProf, $idPaciente);
+$crearConversacion = DB::crearConversacion($asunto, $mensaje, $idProf, $idPaciente, $rol);
 
 echo json_encode(array('success' => $crearConversacion));

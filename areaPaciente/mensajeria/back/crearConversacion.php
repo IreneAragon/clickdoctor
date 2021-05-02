@@ -14,7 +14,8 @@ $id_paciente  =  $_SESSION['idUsuario'];
 $id_profesional = filter_input(INPUT_POST, "idProfesional", FILTER_DEFAULT);
 $asunto = filter_input(INPUT_POST, "asunto", FILTER_DEFAULT);
 $mensaje = filter_input(INPUT_POST, "mensaje", FILTER_DEFAULT);
+$rol = $_SESSION['rol'];
 
-$crearConversacion = DB::crearConversacion($asunto, $mensaje, $id_profesional, $id_paciente);
+$crearConversacion = DB::crearConversacion($asunto, $mensaje, $id_profesional, $id_paciente, $rol);
 
 echo json_encode(array('success' => $crearConversacion));

@@ -14,7 +14,6 @@ class DB {
     const ORDEN_6 = "13:00";
 
 
-
     /**
      * Conexión a la base de datos
      * @param  [type] $sql
@@ -24,7 +23,12 @@ class DB {
         // $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4");
         // $dsn = "mysql:host=localhost;dbname=CLICK_DOCTOR";
         // $usuario = 'admincd';
-        // $contrasena = 'clickdoc2021';
+        // $contrasenalocal = 'clickdoc2021';
+        // 000webhost
+        // $contrasenahost = i[A~{kx[|dac+]o0
+        // DB name id16728780_click_doctor
+        // DB user id16728780_admincd
+        // DB host localhost
         try {
             $consulta = new PDO(self::DB_DNS, self::DB_USER, self::DB_PASS, self::DB_OPT);
             $resultado = null;
@@ -625,10 +629,10 @@ class DB {
             }
         }
 
-    public static function crearConversacion($asunto, $texto, $idProf, $idPac) {
+    public static function crearConversacion($asunto, $texto, $idProf, $idPac, $rol) {
         try {
-            $consulta = 'INSERT INTO correos (asunto, texto, id_prof_FK, id_pac_FK)
-                         VALUES ("'. $asunto .'", "'. $texto .'", "'. $idProf .'", "'. $idPac .'")';
+            $consulta = 'INSERT INTO correos (asunto, texto, emisor, id_prof_FK, id_pac_FK)
+                         VALUES ("'. $asunto .'", "'. $texto .'", "'. $rol .'", "'. $idProf .'", "'. $idPac .'")';
             $resultado = self::ejecutaConsulta($consulta);
 
             if ($resultado) {

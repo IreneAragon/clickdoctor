@@ -59,6 +59,11 @@ function listarMensajes(id_chat) {
                                 '<path fill="rgba(128, 216, 255, 0.7)" d="M5.188 0H0v11.193l6.467-8.625C7.526 1.156 6.958 0 5.188 0z"></path>'+
                             '</svg>' +
                         '</span>';
+
+
+
+
+
         } else {
             claseTipoUsuario = 'receptor';
             // Pico receptor
@@ -68,6 +73,7 @@ function listarMensajes(id_chat) {
                                '<path fill="rgba(222, 243, 250, 0.7)" d="M1.533 2.568L8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"></path>'+
                            '</svg>' +
                        '</span>';
+
         }
 
         html_primer_mensaje += '<div class="'+claseTipoUsuario+'">' +
@@ -179,8 +185,8 @@ function addZero(i) {
     return i;
 }
 
-function refrescarMensajes() {
-  setTimeout(function(){
-      listarMensajes(id_chat);
-  }, 3000);
-}
+// function refrescarMensajes() {
+//   setTimeout(function(){
+//       listarMensajes(id_chat);
+//   }, 3000);
+// }

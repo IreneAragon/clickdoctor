@@ -78,9 +78,11 @@ if (!empty($_POST)) {
                     $_SESSION['email'] = $email;
                     // Si el usuario está activo, se le redirige a su página privada en función del tipo de usuario
                     if ($esPaciente) {
+                        $_SESSION['rol'] = 'paciente';
                         header('Location: areaPaciente/areaPaciente.php');
                         die();
                     } else if ($esProfesional) {
+                        $_SESSION['rol'] = 'profesional';
                         header('Location: areaProfesional/areaProfesional.php');
                         die();
                     }
@@ -88,6 +90,7 @@ if (!empty($_POST)) {
             } else if ($esAdministrador) {
                 $idUsuario = DB::getIdUsuario($email);
                 $_SESSION['idUsuario'] = $idUsuario;
+                $_SESSION['rol'] = 'admin';
                 header('Location: areaAdministrador/areaAdministrador.php');
                 die();
             }
