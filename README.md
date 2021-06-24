@@ -38,4 +38,4 @@ Podéis trastear pidiendo citas, generando informes, chateando, o lo que querái
 
 
 ## Disclaimer!!
-Este proyecto lo realicé con conocimientos básicos de los lenguajes, soy consciente de que hay mucho por mejorar de este proyecto pero lo realicé en su día con unos conocimientos muy básicos ofrecidos por el ciclo, debido a que no he parado de estudiar y de investigar ahora conozco mejores formas de hacer las cosas, desde que he descubierto el destructuring y el spread operator se han convertido en mis mejores amigos :), puedes chequear otros repositorios donde estoy aplicando mejores prácticas. 
+Este proyecto lo realicé con conocimientos básicos de los lenguajes, soy consciente de que hay mucho por mejorar de este proyecto pero lo realicé en su día con unos conocimientos muy básicos ofrecidos por el ciclo, debido a que no he parado de estudiar y de investigar ahora conozco mejores formas de hacer las cosas, desde que he descubierto el destructuring y el spread operator (entre otros) se han convertido en mis mejores amigos :), puedes chequear otros repositorios donde estoy aplicando mejores prácticas. 
