@@ -28,7 +28,7 @@ El proyecto posee 3 tipos de usuario: Administrador, Paciente y Profesional Sani
   - Gestionar su perfl. 
 
 ## Míralo! 
-- Está alojado en: http://clickdoctor.000webhostapp.com/CLICK_DOCTOR/
+- Está alojado en: https://clickdoctor.000webhostapp.com/CLICK_DOCTOR/
 - Puedes entrar con los perfiles: 
   - Paciente: paciente_test@mail.com | Password: Aaa111
   - Profesional: profesional_test@mail.com | Password: Abc123
